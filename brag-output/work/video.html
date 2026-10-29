@@ -1,0 +1,173 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  :root{--navy:#0A1428;--navy2:#0F1E3A;--teal:#0F766E;--teal2:#14B8A6;--red:#DC2626;--white:#F8FAFC;--muted:#94A3B8}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1920px;height:1080px;overflow:hidden;background:var(--navy);font-family:Inter,"Inter Display",sans-serif;color:var(--white)}
+  #stage{position:absolute;inset:0;background:radial-gradient(1200px 800px at 50% 45%,#13264A 0%,var(--navy) 70%)}
+  #redglow{position:absolute;inset:0;background:radial-gradient(900px 700px at 50% 55%,rgba(220,38,38,.28),transparent 70%);opacity:0}
+  .abs{position:absolute}
+  /* phone */
+  #phoneWrap{position:absolute;left:0;top:0;width:460px;height:940px;will-change:transform}
+  #phone{position:absolute;inset:0;border-radius:72px;background:#1B2638;padding:16px;box-shadow:0 40px 120px rgba(0,0,0,.55),inset 0 0 0 2px #2C3A52}
+  #screen{position:relative;width:100%;height:100%;border-radius:58px;background:#050B18;overflow:hidden}
+  #notch{position:absolute;left:50%;top:14px;width:120px;height:34px;margin-left:-60px;border-radius:20px;background:#000;z-index:20}
+  #status{position:absolute;left:0;right:0;top:0;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 36px;font-weight:600;font-size:22px;z-index:15}
+  #status .right{display:flex;gap:10px;align-items:center}
+  /* scene 1 */
+  #s1{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px}
+  #tile{width:190px;height:190px;border-radius:50%;background:#1E293B;display:flex;align-items:center;justify-content:center}
+  #toggle{width:120px;height:66px;border-radius:40px;background:#334155;position:relative}
+  #knob{position:absolute;top:6px;left:6px;width:54px;height:54px;border-radius:50%;background:#fff;box-shadow:0 2px 6px rgba(0,0,0,.4)}
+  #s1 .lbl{font-size:30px;font-weight:600;color:#CBD5E1}
+  /* scene 2 app */
+  #app{position:absolute;inset:0;background:#0B1730;opacity:0}
+  #apphead{position:absolute;left:0;right:0;top:0;height:170px;background:var(--teal);padding:76px 30px 0;display:flex;align-items:center;justify-content:space-between}
+  #apphead .name{display:flex;align-items:center;gap:12px;font-size:38px;font-weight:800;letter-spacing:1px}
+  .pill{font-size:19px;font-weight:700;padding:8px 14px;border-radius:30px;background:rgba(255,255,255,.18);display:flex;align-items:center;gap:8px}
+  .dot{width:10px;height:10px;border-radius:50%;background:#FDE68A}
+  #q{position:absolute;left:30px;top:200px;font-size:26px;font-weight:600;color:#CBD5E1}
+  #box{position:absolute;left:24px;right:24px;top:248px;height:300px;border-radius:24px;background:#13213F;border:3px solid var(--teal2);padding:22px 24px;font-size:34px;line-height:1.3;font-weight:600}
+  #cursor{display:inline-block;width:4px;height:38px;background:var(--teal2);vertical-align:-6px;margin-left:2px}
+  #btn{position:absolute;left:24px;right:24px;top:576px;height:84px;border-radius:22px;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800}
+  /* scene 3 card */
+  #card{position:absolute;left:14px;right:14px;bottom:14px;height:655px;border-radius:44px;background:var(--red);padding:40px 30px;box-shadow:0 -20px 60px rgba(0,0,0,.5);transform:translateY(110%)}
+  #card .t1{font-size:64px;font-weight:900;line-height:1.02;letter-spacing:.5px;margin-top:30px}
+  #card .t2{font-size:58px;font-weight:800;line-height:1.05;margin-top:22px}
+  #badge{position:absolute;left:18px;right:18px;bottom:30px;height:82px;border-radius:42px;background:#fff;color:var(--teal);display:flex;align-items:center;justify-content:center;gap:10px;font-size:26px;white-space:nowrap;font-weight:800;opacity:0}
+  /* right column text */
+  .big{position:absolute;left:1010px;width:840px;font-weight:800;letter-spacing:-2px}
+  #t1{top:420px;font-size:150px;line-height:1}
+  #t2{top:380px;font-size:104px;line-height:1.05}
+  #t2 .sm{display:block;font-size:30px;letter-spacing:4px;color:var(--teal2);font-weight:800;margin-bottom:24px}
+  /* scene 4 */
+  #s4{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0}
+  #logo{display:flex;align-items:center;gap:40px}
+  #mark{width:190px;height:190px;border-radius:52px;background:var(--teal);display:flex;align-items:center;justify-content:center;box-shadow:0 20px 70px rgba(15,118,110,.45)}
+  #word{font-size:210px;font-weight:900;letter-spacing:6px;line-height:1}
+  #tag{margin-top:64px;font-size:72px;font-weight:700;color:#E2E8F0;letter-spacing:-1px}
+  #tag b{color:var(--teal2);font-weight:800}
+</style></head>
+<body>
+<div id="stage"></div>
+<div id="redglow"></div>
+
+<div id="t1" class="big">No internet.</div>
+<div id="t2" class="big"><span class="sm">THE ASHA WORKER</span>She types what she sees.</div>
+
+<div id="phoneWrap"><div id="phone"><div id="screen">
+  <div id="notch"></div>
+  <div id="status">
+    <span>9:41</span>
+    <span class="right">
+      <svg id="plane" width="30" height="30" viewBox="0 0 24 24" fill="#F8FAFC" style="opacity:0"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg>
+      <svg id="bars" width="34" height="24" viewBox="0 0 34 24"><rect x="0" y="16" width="6" height="8" rx="1.5" fill="#F8FAFC"/><rect x="9" y="11" width="6" height="13" rx="1.5" fill="#F8FAFC"/><rect x="18" y="6" width="6" height="18" rx="1.5" fill="#F8FAFC"/><rect x="27" y="0" width="6" height="24" rx="1.5" fill="#F8FAFC"/></svg>
+      <svg id="wifi" width="32" height="24" viewBox="0 0 32 24" fill="none" stroke="#F8FAFC" stroke-width="3.4" stroke-linecap="round"><path d="M2 8.5a20 20 0 0 1 28 0"/><path d="M7 13.5a13 13 0 0 1 18 0"/><path d="M12 18.5a6 6 0 0 1 8 0"/><circle cx="16" cy="22" r="1.6" fill="#F8FAFC" stroke="none"/></svg>
+      <svg width="44" height="22" viewBox="0 0 44 22"><rect x="1" y="1" width="38" height="20" rx="6" fill="none" stroke="#F8FAFC" stroke-width="2" opacity=".6"/><rect x="4" y="4" width="26" height="14" rx="3.5" fill="#F8FAFC"/><rect x="40.5" y="7" width="3" height="8" rx="1.5" fill="#F8FAFC" opacity=".6"/></svg>
+    </span>
+  </div>
+  <div id="s1">
+    <div id="tile"><svg width="100" height="100" viewBox="0 0 24 24" fill="#F8FAFC"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg></div>
+    <div class="lbl">Airplane mode</div>
+    <div id="toggle"><div id="knob"></div></div>
+  </div>
+  <div id="app">
+    <div id="apphead">
+      <div class="name"><svg width="44" height="44" viewBox="0 0 48 48"><rect width="48" height="48" rx="13" fill="#fff"/><path d="M8 26h8l4-9 6 17 4-8h10" fill="none" stroke="#0F766E" stroke-width="4.4" stroke-linecap="round" stroke-linejoin="round"/></svg>ASHA</div>
+      <div class="pill"><span class="dot"></span>Offline</div>
+    </div>
+    <div id="q">What do you see?</div>
+    <div id="box"><span id="typed"></span><span id="cursor"></span></div>
+    <div id="btn">Check</div>
+    <div id="card">
+      <svg width="86" height="78" viewBox="0 0 24 22"><path d="M12 1 23 21H1z" fill="#fff" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/><rect x="11" y="7.5" width="2" height="7" rx="1" fill="#DC2626"/><circle cx="12" cy="17.3" r="1.3" fill="#DC2626"/></svg>
+      <div class="t1">DANGER SIGN.</div>
+      <div class="t2">Escalate now.</div>
+      <div id="badge"><svg width="34" height="34" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#0F766E"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Checked on the phone</div>
+    </div>
+  </div>
+</div></div></div>
+
+<div id="s4">
+  <div id="logo">
+    <div id="mark"><svg width="130" height="130" viewBox="0 0 48 48"><path d="M5 26h9l5-11 8 22 5-11h11" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <div id="word">ASHA</div>
+  </div>
+  <div id="tag"><b>Works offline.</b> Telugu + English.</div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const p=(t,a,b)=>clamp((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);              // ease out cubic
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const back=x=>{const c=1.5;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const lerp=(a,b,x)=>a+(b-a)*x;
+const TEXT="Pregnant woman is bleeding heavily right now.";
+const TYPE_A=3.55, TYPE_B=5.75;
+window.TYPE_A=TYPE_A;window.TYPE_B=TYPE_B;window.TEXT_LEN=TEXT.length;
+
+window.render=function(t){
+  // phone position: left column for scenes 1-2, glides to center in scene 3
+  const mv=eio(p(t,6.85,7.55));
+  let px=lerp(410,730,mv), py=70, sc=lerp(1,1.0,mv);
+  // entrance
+  const ent=eo(p(t,0,0.45)); py+=lerp(40,0,ent);
+  // shake
+  if(t>7.35&&t<8.1){const k=(t-7.35)/0.75;px+=Math.sin(k*Math.PI*9)*16*(1-k);}
+  // scene 4 exit
+  const ex=eio(p(t,10.75,11.25));
+  sc*=lerp(1,0.9,ex);
+  $('phoneWrap').style.transform=`translate(${px}px,${py}px) scale(${sc})`;
+  $('phoneWrap').style.opacity=ent*(1-ex);
+
+  // scene 1: airplane toggle on at 0.45
+  const on=eo(p(t,0.45,0.7));
+  $('knob').style.transform=`translateX(${54*on}px)`;
+  $('toggle').style.background=on>0.5?'#0F766E':'#334155';
+  $('tile').style.background=on>0.5?'#0F766E':'#1E293B';
+  $('tile').style.transform=`scale(${1+0.08*Math.sin(Math.PI*p(t,0.45,0.75))})`;
+  const gone=eo(p(t,0.8,1.15));
+  for(const id of ['bars','wifi']){$(id).style.opacity=1-gone;$(id).style.transform=`scale(${1-0.6*gone})`;$(id).style.width=(1-gone)*(id=='bars'?34:32)+'px'}
+  $('plane').style.opacity=eo(p(t,1.0,1.3));
+  // t1
+  const t1in=eo(p(t,0.95,1.35)), t1out=p(t,2.75,3.0);
+  $('t1').style.opacity=t1in*(1-t1out);
+  $('t1').style.transform=`translateY(${lerp(50,0,t1in)-40*t1out}px)`;
+
+  // scene 2: app opens 2.95-3.35
+  const ap=eo(p(t,2.95,3.35));
+  $('s1').style.opacity=1-p(t,2.9,3.1);
+  $('app').style.opacity=ap;
+  $('app').style.transform=`scale(${lerp(0.88,1,ap)})`;
+  const n=Math.round(TEXT.length*clamp((t-TYPE_A)/(TYPE_B-TYPE_A)));
+  $('typed').textContent=TEXT.slice(0,n);
+  const typing=t>=TYPE_A&&t<TYPE_B+0.15;
+  $('cursor').style.opacity=(typing||Math.floor(t*2.2)%2==0)&&t<7.2?1:0;
+  // button press
+  const pr=Math.sin(Math.PI*p(t,6.5,6.8));
+  $('btn').style.transform=`scale(${1-0.06*pr})`;
+  $('btn').style.filter=`brightness(${1+0.35*pr})`;
+  // t2
+  const t2in=eo(p(t,3.3,3.75)), t2out=p(t,6.6,6.95);
+  $('t2').style.opacity=t2in*(1-t2out);
+  $('t2').style.transform=`translateY(${lerp(50,0,t2in)-40*t2out}px)`;
+
+  // scene 3: card slides up
+  const cu=back(p(t,7.0,7.45));
+  $('card').style.transform=`translateY(${lerp(110,0,cu)}%)`;
+  const bd=eo(p(t,8.0,8.35));
+  $('badge').style.opacity=bd;$('badge').style.transform=`translateY(${lerp(20,0,bd)}px)`;
+  const glow=eo(p(t,7.1,7.5))*(1-p(t,10.6,11.1));
+  $('redglow').style.opacity=glow*(0.8+0.2*Math.sin(t*5));
+
+  // scene 4: logo
+  const l=eo(p(t,11.35,11.85)), tg=eo(p(t,11.95,12.4));
+  $('s4').style.opacity=1;
+  $('logo').style.opacity=l;$('logo').style.transform=`scale(${lerp(0.9,1,l)})`;
+  $('tag').style.opacity=tg;$('tag').style.transform=`translateY(${lerp(30,0,tg)}px)`;
+};
+render(0);
+</script>
+</body></html>
