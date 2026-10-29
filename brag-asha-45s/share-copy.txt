@@ -1,0 +1,1 @@
+No signal? ASHA still works. Visits ranked by urgency, saved offline, danger signs checked on the phone, and answers from approved protocol text in Telugu or English. Demo uses synthetic data; safety rules are a draft pending clinical review.

@@ -1,0 +1,353 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  @font-face{font-family:"Noto Sans Telugu";font-weight:400;src:url(fonts/package/files/noto-sans-telugu-telugu-400-normal.woff2) format("woff2")}
+  @font-face{font-family:"Noto Sans Telugu";font-weight:700;src:url(fonts/package/files/noto-sans-telugu-telugu-700-normal.woff2) format("woff2")}
+  @font-face{font-family:"Noto Sans Telugu";font-weight:800;src:url(fonts/package/files/noto-sans-telugu-telugu-800-normal.woff2) format("woff2")}
+  :root{--navy:#0B1220;--teal:#0F766E;--teal2:#14B8A6;--red:#DC2626;--white:#F8FAFC;--muted:#94A3B8;--card:#15213A;--green:#16A34A;--amber:#F59E0B;--yellow:#FACC15}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1920px;height:1080px;overflow:hidden;background:var(--navy);font-family:Inter,"Noto Sans Telugu",sans-serif;color:var(--white)}
+  .te{font-family:"Noto Sans Telugu",Inter,sans-serif}
+  #stage{position:absolute;inset:0;background:radial-gradient(1300px 900px at 40% 45%,#13213D 0%,var(--navy) 70%)}
+  #redglow{position:absolute;inset:0;background:radial-gradient(800px 700px at 25% 55%,rgba(220,38,38,.30),transparent 70%);opacity:0}
+  /* captions */
+  .cap{position:absolute;left:850px;width:1010px;font-weight:800;letter-spacing:-2px;line-height:1.06;opacity:0}
+  .c84{font-size:88px}
+  .c120{font-size:124px}
+  .cap .accent{color:var(--teal2)}
+  .cap .red{color:#F87171}
+  /* phone */
+  #phoneWrap{position:absolute;left:0;top:0;width:480px;height:980px}
+  #phone{position:absolute;inset:0;border-radius:76px;background:#1B2638;padding:16px;box-shadow:0 40px 120px rgba(0,0,0,.55),inset 0 0 0 2px #2C3A52}
+  #screen{position:relative;width:100%;height:100%;border-radius:62px;background:#0A1326;overflow:hidden}
+  #notch{position:absolute;left:50%;top:14px;width:124px;height:36px;margin-left:-62px;border-radius:20px;background:#000;z-index:30}
+  #status{position:absolute;left:0;right:0;top:0;height:66px;display:flex;align-items:center;justify-content:space-between;padding:0 38px;font-weight:700;font-size:22px;z-index:25}
+  #status .right{display:flex;gap:10px;align-items:center}
+  .scr{position:absolute;inset:0;opacity:0}
+  /* scene 1 */
+  #scrLock{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;background:#060C1A}
+  #bigbars{display:flex;align-items:flex-end;gap:16px;height:170px}
+  #bigbars div{width:40px;border-radius:9px;background:var(--white)}
+  #nosvc{font-size:34px;font-weight:800;color:#CBD5E1}
+  #tileRow{display:flex;align-items:center;gap:22px;margin-top:30px;background:#141E33;border-radius:30px;padding:18px 24px}
+  #tile{width:84px;height:84px;border-radius:50%;background:#334155;display:flex;align-items:center;justify-content:center}
+  #tileRow .lbl{font-size:26px;font-weight:700}
+  #toggle{width:96px;height:54px;border-radius:30px;background:#334155;position:relative}
+  #knob{position:absolute;top:5px;left:5px;width:44px;height:44px;border-radius:50%;background:#fff}
+  /* app header */
+  #appHead{position:absolute;left:0;right:0;top:0;height:150px;background:var(--teal);padding:76px 26px 0;display:flex;align-items:center;justify-content:space-between;opacity:0;z-index:5}
+  #appHead .name{display:flex;align-items:center;gap:10px;font-size:34px;font-weight:900;letter-spacing:1px}
+  #chip{position:relative;height:44px;min-width:120px;border-radius:24px;font-size:18px;font-weight:800;display:flex;align-items:center;gap:8px;padding:0 16px;background:rgba(255,255,255,.18);white-space:nowrap}
+  #chipDot{width:12px;height:12px;border-radius:50%;background:#CBD5E1}
+  /* home */
+  #scrHome .h{position:absolute;left:24px;top:168px;font-size:26px;font-weight:800;color:#CBD5E1}
+  .stat{position:absolute;width:196px;height:132px;border-radius:24px;background:var(--card);padding:16px 18px}
+  .stat .n{font-size:58px;font-weight:900;line-height:1}
+  .stat .l{font-size:21px;font-weight:700;color:#CBD5E1;margin-top:10px}
+  #af{position:absolute;left:24px;top:508px;font-size:24px;font-weight:800;color:var(--teal2);letter-spacing:1px}
+  .row{position:absolute;left:20px;right:20px;height:88px;border-radius:22px;background:var(--card);padding:13px 18px}
+  .row .c{font-size:24px;font-weight:800}
+  .row .s{font-size:19px;color:#CBD5E1;margin-top:6px;font-weight:600}
+  .tag{position:absolute;right:16px;top:14px;font-size:18px;font-weight:900;padding:6px 12px;border-radius:12px;background:var(--red)}
+  .tag.soft{background:#334155}
+  #recBtn{position:absolute;left:20px;right:20px;bottom:22px;height:80px;border-radius:24px;background:var(--teal);display:flex;align-items:center;justify-content:center;gap:12px;font-size:30px;font-weight:900}
+  /* visit form */
+  #scrVisit .h{position:absolute;left:24px;top:170px;font-size:30px;font-weight:900}
+  #scrVisit .sub{position:absolute;left:24px;top:214px;font-size:22px;font-weight:700;color:var(--teal2)}
+  .fld{position:absolute;left:20px;right:20px;height:88px;border-radius:20px;background:var(--card);padding:12px 18px}
+  .fld .k{font-size:17px;font-weight:700;color:var(--muted)}
+  .fld .v{font-size:25px;font-weight:800;margin-top:4px}
+  #saveBtn{position:absolute;left:20px;right:20px;top:668px;height:86px;border-radius:24px;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:900}
+  #toast{position:absolute;left:40px;right:40px;top:790px;height:76px;border-radius:40px;background:#1E293B;display:flex;align-items:center;justify-content:center;gap:12px;font-size:24px;font-weight:800;opacity:0}
+  /* ask */
+  #seg{position:absolute;left:24px;top:170px;width:400px;height:60px;border-radius:32px;background:var(--card);display:flex;font-size:24px;font-weight:800}
+  #segPill{position:absolute;top:5px;left:5px;width:195px;height:50px;border-radius:26px;background:var(--teal2)}
+  #seg span{position:relative;flex:1;display:flex;align-items:center;justify-content:center}
+  #inBox{position:absolute;left:20px;right:20px;top:250px;height:196px;border-radius:24px;background:#13213F;border:3px solid var(--teal2);padding:18px 20px;font-size:30px;line-height:1.3;font-weight:700}
+  #cursor{display:inline-block;width:4px;height:34px;background:var(--teal2);vertical-align:-5px;margin-left:2px}
+  #mic{position:absolute;right:14px;bottom:14px;width:62px;height:62px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center}
+  #wave{position:absolute;left:20px;bottom:22px;display:flex;align-items:center;gap:6px;height:50px;opacity:0}
+  #wave div{width:7px;border-radius:4px;background:var(--teal2)}
+  #checkBtn{position:absolute;left:20px;right:20px;top:464px;height:78px;border-radius:22px;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:900}
+  .card{position:absolute;left:12px;right:12px;bottom:12px;border-radius:36px;padding:26px 24px;transform:translateY(115%)}
+  #ansCard{height:400px;background:#F8FAFC;color:#0B1220}
+  #ansCard .k{font-size:17px;font-weight:900;letter-spacing:1.5px;color:var(--teal)}
+  #ansCard .p{font-size:26px;font-weight:700;line-height:1.3;margin-top:10px}
+  #ansCard .src{font-size:18px;font-weight:700;color:#475569;margin-top:14px;line-height:1.35}
+  #ansCard .yt{position:absolute;left:24px;bottom:22px;background:var(--yellow);color:#422006;font-size:19px;font-weight:900;padding:8px 14px;border-radius:12px}
+  #dangerCard{height:700px;background:#1A0D14;border:5px solid var(--red);box-shadow:0 -10px 60px rgba(220,38,38,.35)}
+  #dangerCard .t1{font-size:62px;font-weight:900;color:#F87171;line-height:1;margin-top:16px}
+  #dangerCard .t2{font-size:54px;font-weight:900;line-height:1.05;margin-top:12px}
+  #callBtn{position:absolute;left:22px;right:22px;top:398px;height:92px;border-radius:24px;background:var(--red);display:flex;align-items:center;justify-content:center;gap:14px;font-size:32px;font-weight:900}
+  #dBadge{position:absolute;left:22px;right:22px;bottom:24px;border-radius:24px;background:#fff;color:var(--teal);display:flex;align-items:center;gap:12px;font-size:23px;font-weight:900;padding:14px 18px;line-height:1.2;opacity:0}
+  #outCard{height:388px;background:#334155}
+  #outCard .t1{font-size:38px;font-weight:900;margin-top:10px;white-space:nowrap}
+  #outCard .t2{font-size:28px;font-weight:700;line-height:1.3;margin-top:12px;color:#E2E8F0}
+  #vChips{position:absolute;left:20px;right:20px;top:566px;opacity:0}
+  .vc{border-radius:20px;padding:14px 18px;font-size:22px;font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:12px;line-height:1.25}
+  #vNote{font-size:20px;font-weight:700;color:#CBD5E1;margin-top:6px;padding:0 6px;line-height:1.35}
+  /* tap */
+  #tap{position:absolute;width:70px;height:70px;margin:-35px 0 0 -35px;border-radius:50%;background:rgba(255,255,255,.45);border:3px solid rgba(255,255,255,.9);opacity:0;z-index:40}
+  /* end card */
+  #s8{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  #logo{display:flex;align-items:center;gap:44px}
+  #word{font-size:220px;font-weight:900;letter-spacing:8px;line-height:1}
+  #tag8{margin-top:60px;font-size:84px;font-weight:800;letter-spacing:-1.5px}
+  #tag8 b{color:var(--teal2)}
+  #foot{position:absolute;bottom:70px;left:0;right:0;text-align:center;font-size:30px;font-weight:600;color:#94A3B8}
+</style></head>
+<body>
+<div id="stage"></div>
+<div id="redglow"></div>
+
+<div id="c1" class="cap c120" style="top:330px">Poor signal.<br><span class="red">Real emergencies.</span></div>
+<div id="c2" class="cap c84" style="top:360px">Today's visits, ranked by <span class="accent">urgency.</span></div>
+<div id="c3" class="cap c84" style="top:390px">Save offline.<br><span class="accent">Sync later.</span></div>
+<div id="c4" class="cap c84" style="top:270px">Answers come from approved protocol text, with the <span class="accent">source shown.</span></div>
+<div id="c5" class="cap c84" style="top:360px"><span class="red">Danger signs</span> checked first, on the phone.</div>
+<div id="c6" class="cap c84" style="top:390px">No medicine doses.<br><span class="accent">No guessing.</span></div>
+<div id="c7" class="cap c120" style="top:400px">Speak in <span class="accent">Telugu.</span></div>
+
+<div id="phoneWrap"><div id="phone"><div id="screen">
+  <div id="notch"></div>
+  <div id="status">
+    <span>9:41</span>
+    <span class="right">
+      <svg id="plane" width="28" height="28" viewBox="0 0 24 24" fill="#F8FAFC"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg>
+      <svg id="bars" width="34" height="24" viewBox="0 0 34 24"><rect id="sb0" x="0" y="16" width="6" height="8" rx="1.5"/><rect id="sb1" x="9" y="11" width="6" height="13" rx="1.5"/><rect id="sb2" x="18" y="6" width="6" height="18" rx="1.5"/><rect id="sb3" x="27" y="0" width="6" height="24" rx="1.5"/></svg>
+      <svg width="44" height="22" viewBox="0 0 44 22"><rect x="1" y="1" width="38" height="20" rx="6" fill="none" stroke="#F8FAFC" stroke-width="2" opacity=".6"/><rect x="4" y="4" width="26" height="14" rx="3.5" fill="#F8FAFC"/><rect x="40.5" y="7" width="3" height="8" rx="1.5" fill="#F8FAFC" opacity=".6"/></svg>
+    </span>
+  </div>
+
+  <!-- scene 1 -->
+  <div id="scrLock" class="scr">
+    <div id="bigbars"><div style="height:50px"></div><div style="height:90px"></div><div style="height:130px"></div><div style="height:170px"></div></div>
+    <div id="nosvc">No service</div>
+    <div id="tileRow">
+      <div id="tile"><svg width="46" height="46" viewBox="0 0 24 24" fill="#F8FAFC"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg></div>
+      <div class="lbl">Airplane mode</div>
+      <div id="toggle"><div id="knob"></div></div>
+    </div>
+  </div>
+
+  <!-- shared header -->
+  <div id="appHead">
+    <div class="name"><svg width="42" height="42" viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#fff"/><path d="M24 9l12 4.5v9.5c0 8-5.3 13.3-12 16-6.7-2.7-12-8-12-16v-9.5z" fill="#0F766E"/><path d="M24 17v14M17 24h14" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg>ASHA</div>
+    <div id="chip"><span id="chipDot"></span><span id="chipTxt">Offline</span></div>
+  </div>
+
+  <!-- scene 2/3 home -->
+  <div id="scrHome" class="scr">
+    <div class="h">Today · Village route 4</div>
+    <div class="stat" style="left:20px;top:214px"><div class="n" id="n0">0</div><div class="l">due today</div></div>
+    <div class="stat" style="left:232px;top:214px"><div class="n" id="n1">0</div><div class="l">overdue</div></div>
+    <div class="stat" style="left:20px;top:360px"><div class="n" id="n2">0</div><div class="l">upcoming</div></div>
+    <div class="stat" style="left:232px;top:360px"><div class="n" id="n3">0</div><div class="l">open referrals</div></div>
+    <div id="af">ATTEND FIRST</div>
+    <div class="row" id="r0" style="top:546px;box-shadow:inset 0 0 0 3px var(--red)"><div class="c">HH-SYN-00316</div><div class="s">Pregnancy check · overdue</div><div class="tag">Urgent</div></div>
+    <div class="row" id="r1" style="top:644px"><div class="c">HH-SYN-00142</div><div class="s">Newborn visit · due today</div><div class="tag soft">Due</div></div>
+    <div class="row" id="r2" style="top:742px"><div class="c">HH-SYN-00287</div><div class="s">Immunisation · due today</div><div class="tag soft">Due</div></div>
+    <div id="recBtn"><svg width="34" height="34" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>Record visit</div>
+  </div>
+
+  <div id="scrVisit" class="scr">
+    <div class="h">Record visit</div>
+    <div class="sub">HH-SYN-00316</div>
+    <div class="fld" style="top:262px"><div class="k">Visit type</div><div class="v">Pregnancy check</div></div>
+    <div class="fld" style="top:364px"><div class="k">Checked</div><div class="v" id="fv1"></div></div>
+    <div class="fld" style="top:466px"><div class="k">Next visit</div><div class="v" id="fv2"></div></div>
+    <div class="fld" style="top:568px"><div class="k">Referred</div><div class="v">Yes · to PHC (demo)</div></div>
+    <div id="saveBtn">Save</div>
+    <div id="toast"><svg width="28" height="28" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#14B8A6"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Saved on this phone</div>
+  </div>
+
+  <!-- scenes 4-7 ask / check -->
+  <div id="scrAsk" class="scr">
+    <div id="seg"><div id="segPill"></div><span id="segEn">English</span><span id="segTe" class="te">తెలుగు</span></div>
+    <div id="inBox"><span id="inTxt"></span><span id="cursor"></span>
+      <div id="wave"></div>
+      <div id="mic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><rect x="9" y="2.5" width="6" height="12" rx="3" fill="#fff" stroke="none"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg></div>
+    </div>
+    <div id="checkBtn">Check</div>
+    <div id="vChips">
+      <div class="vc" style="background:#1E3A5F"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#7DD3FC" stroke-width="2.4" stroke-linecap="round"><path d="M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0"/><circle cx="12" cy="19.5" r="1.2" fill="#7DD3FC"/></svg>Online speech</div>
+      <div class="vc" style="background:#123B37"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#5EEAD4" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg><span>Offline Telugu voice<br>(optional 44 MB download)</span></div>
+      <div id="vNote">Check the words, then press Check.</div>
+    </div>
+    <div id="ansCard" class="card">
+      <div class="k">APPROVED PROTOCOL TEXT</div>
+      <div class="p">Wash hands with soap and clean water before and after every home visit, and before touching a newborn.</div>
+      <div class="src">Source: Demo Protocol Guide<br>Section 2.1 · Page 4</div>
+      <div class="yt">Sample text for the demo</div>
+    </div>
+    <div id="dangerCard" class="card">
+      <svg width="70" height="64" viewBox="0 0 24 22"><path d="M12 1 23 21H1z" fill="#DC2626" stroke="#DC2626" stroke-width="1.5" stroke-linejoin="round"/><rect x="11" y="7.5" width="2" height="7" rx="1" fill="#fff"/><circle cx="12" cy="17.3" r="1.3" fill="#fff"/></svg>
+      <div class="t1">DANGER SIGN.</div>
+      <div class="t2">Escalate now.</div>
+      <div id="callBtn"><svg width="34" height="34" viewBox="0 0 24 24" fill="#fff"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>Call supervisor</div>
+      <div id="dBadge"><svg width="34" height="34" viewBox="0 0 24 24" style="flex:none"><circle cx="12" cy="12" r="11" fill="#0F766E"/><path d="M7 12.5l3.2 3.2L17 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Checked on the phone,<br>no internet needed</span></div>
+    </div>
+    <div id="outCard" class="card">
+      <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#E2E8F0" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><path d="M5 19L19 5"/></svg>
+      <div class="t1">Outside this app.</div>
+      <div class="t2">Do not give doses from here. Ask your supervising doctor.</div>
+    </div>
+  </div>
+  <div id="tap"></div>
+</div></div></div>
+
+<div id="s8">
+  <div id="logo">
+    <svg id="mark" width="210" height="210" viewBox="0 0 48 48"><circle cx="24" cy="24" r="24" fill="#fff"/><path d="M24 8.5l12.5 4.7v9.8c0 8.3-5.5 13.8-12.5 16.6-7-2.8-12.5-8.3-12.5-16.6v-9.8z" fill="#0F766E"/><path d="M24 16.5v15M16.5 24h15" stroke="#fff" stroke-width="4.2" stroke-linecap="round"/></svg>
+    <div id="word">ASHA</div>
+  </div>
+  <div id="tag8"><b>Works offline.</b> Telugu + English.</div>
+  <div id="foot">App about 53 MB. Demo uses synthetic data. Safety rules are a draft pending clinical review.</div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const p=(t,a,b)=>clamp((t-a)/(b-a));
+const eo=x=>1-Math.pow(1-x,3);
+const eio=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const back=x=>{const c=1.4;return 1+(c+1)*Math.pow(x-1,3)+c*Math.pow(x-1,2)};
+const lerp=(a,b,x)=>a+(b-a)*x;
+// window [a,b] with fade in/out of d seconds
+const win=(t,a,b,d=0.3)=>eo(p(t,a,a+d))*(1-p(t,b-d,b));
+
+const Q1="How often should I wash my hands?";
+const Q2="Pregnant woman is bleeding heavily right now.";
+const Q3="How much paracetamol should I give?";
+const QTE="చేతులు ఎంత తరచుగా కడుక్కోవాలి?";
+// typing schedule, exported for the audio script
+window.TYPING=[[Q1,17.7,19.0],[Q2,25.7,27.3],[Q3,32.45,33.6]];
+// taps: [time, x, y] in screen coords, exported for audio
+window.TAPS=[[11.35,224,886],[12.85,224,710],[19.3,224,503],[27.6,224,503],[30.0,224,500],[33.85,224,503],[37.15,312,200]];
+const STATS=[14,14,25,27];
+
+// waveform bars
+for(let i=0;i<22;i++){const d=document.createElement('div');$('wave').appendChild(d)}
+
+function typed(s,a,b,t){return s.slice(0,Math.round(s.length*clamp((t-a)/(b-a))))}
+
+window.render=function(t){
+  // ---------- phone placement
+  const ent=eo(p(t,0,0.5)), ex=eio(p(t,40.75,41.2));
+  let px=240, py=50+lerp(40,0,ent);
+  if(t>28.0&&t<28.8){const k=(t-28.0)/0.8;px+=Math.sin(k*Math.PI*9)*16*(1-k);}
+  $('phoneWrap').style.transform=`translate(${px}px,${py}px) scale(${lerp(1,0.9,ex)})`;
+  $('phoneWrap').style.opacity=ent*(1-ex);
+
+  // ---------- status bar signal: drop 0.5-1.6, airplane on 2.0, back on 14.4-14.9 (airplane off 14.3), airplane on again 25.1
+  let lit=4;
+  if(t<14.3){lit=4-Math.floor(clamp((t-0.5)/1.1)*4.999);}
+  else if(t<25.1){lit=Math.min(4,Math.floor(clamp((t-14.4)/0.5)*5));}
+  else lit=0;
+  const plane=(t>=2.0&&t<14.3)||t>=25.1;
+  for(let i=0;i<4;i++)$('sb'+i).setAttribute('fill',i<lit?'#F8FAFC':'rgba(248,250,252,.25)');
+  $('plane').style.opacity=plane?1:0;
+  $('plane').style.width=plane?'28px':'0px';
+  // big bars on lock screen
+  [...$('bigbars').children].forEach((d,i)=>{const off=t>0.5+i*0.0+ (3-i)*0.27;d.style.background=off?'#334155':'#F8FAFC';});
+  $('nosvc').style.opacity=eo(p(t,1.5,1.8));
+  const on=eo(p(t,2.0,2.25));
+  $('knob').style.transform=`translateX(${42*on}px)`;
+  $('toggle').style.background=on>.5?'#0F766E':'#334155';
+  $('tile').style.background=on>.5?'#0F766E':'#334155';
+
+  // ---------- screens (stagger: old out fast, new in)
+  const sLock=1-p(t,3.8,4.0);
+  const sHome=eo(p(t,4.0,4.35))*(1-p(t,11.5,11.7));
+  const sVisit=eo(p(t,11.7,12.05))*(1-p(t,16.8,17.0));
+  const sAsk=eo(p(t,17.0,17.35));
+  $('scrLock').style.opacity=sLock;
+  $('scrHome').style.opacity=sHome;$('scrHome').style.transform=`translateY(${lerp(30,0,eo(p(t,4.0,4.35)))}px)`;
+  $('scrVisit').style.opacity=sVisit;$('scrVisit').style.transform=`translateX(${lerp(60,0,eo(p(t,11.7,12.05)))}px)`;
+  $('scrAsk').style.opacity=sAsk;$('scrAsk').style.transform=`translateX(${lerp(60,0,sAsk)}px)`;
+  $('appHead').style.opacity=eo(p(t,4.0,4.35));
+
+  // ---------- header chip
+  let chipTxt='Offline',dot='#CBD5E1',bg='rgba(255,255,255,.18)';
+  if(t>=13.15&&t<14.95){chipTxt='1 waiting to sync';dot='#FDE68A';bg='rgba(245,158,11,.9)';}
+  else if(t>=14.95&&t<25.1){chipTxt='All changes synced';dot='#fff';bg='#16A34A';}
+  $('chipTxt').textContent=chipTxt;$('chipDot').style.background=dot;$('chip').style.background=bg;
+  const pop=Math.sin(Math.PI*p(t,13.15,13.45))+Math.sin(Math.PI*p(t,14.95,15.25));
+  $('chip').style.transform=`scale(${1+0.12*pop})`;
+
+  // ---------- home: count-up + rows
+  STATS.forEach((v,i)=>{$('n'+i).textContent=Math.round(v*eo(p(t,4.5+i*0.12,5.6+i*0.12)))});
+  $('n1').style.color='#F8FAFC';
+  for(let i=0;i<3;i++){const r=eo(p(t,6.0+i*0.18,6.4+i*0.18));$('r'+i).style.opacity=r;$('r'+i).style.transform=`translateX(${lerp(40,0,r)}px)`;}
+  $('af').style.opacity=eo(p(t,5.8,6.1));
+  const urg=0.5+0.5*Math.sin((t-6.6)*5);
+  $('r0').style.boxShadow=t>6.6?`inset 0 0 0 3px rgba(220,38,38,${0.55+0.45*urg})`:'inset 0 0 0 3px #DC2626';
+  $('recBtn').style.opacity=eo(p(t,10.5,10.9));
+  $('recBtn').style.transform=`scale(${1-0.05*Math.sin(Math.PI*p(t,11.3,11.55))})`;
+
+  // ---------- visit form
+  $('fv1').textContent=t>12.1?'BP · Weight':'';
+  $('fv2').textContent=t>12.35?'In 7 days':'';
+  $('saveBtn').style.transform=`scale(${1-0.05*Math.sin(Math.PI*p(t,12.8,13.05))})`;
+  const ts=eo(p(t,13.1,13.4))*(1-p(t,16.4,16.7));
+  $('toast').style.opacity=ts;$('toast').style.transform=`translateY(${lerp(20,0,ts)}px)`;
+
+  // ---------- ask screen state
+  // language toggle: Telugu selected from 37.15
+  const te=eo(p(t,37.15,37.45));
+  $('segPill').style.transform=`translateX(${195*te}px)`;
+  $('segEn').style.color=te>.5?'#94A3B8':'#0B1220';$('segTe').style.color=te>.5?'#0B1220':'#94A3B8';
+  let txt='',isTe=false;
+  if(t<25.4) txt=typed(Q1,17.7,19.0,t);
+  else if(t<32.2) txt=typed(Q2,25.7,27.3,t);
+  else if(t<36.9) txt=typed(Q3,32.45,33.6,t);
+  else { // Telugu words appear from speech
+    const w=QTE.split(' '); const k=Math.floor(clamp((t-38.0)/1.3)*w.length+0.0001);
+    txt=w.slice(0,Math.min(w.length,k)).join(' ');isTe=true;
+  }
+  $('inTxt').textContent=txt;$('inTxt').className=isTe?'te':'';
+  $('inBox').style.fontSize=isTe?'32px':'30px';
+  const typing=window.TYPING.some(([s,a,b])=>t>=a&&t<b+0.1);
+  $('cursor').style.opacity=(typing||Math.floor(t*2.2)%2==0)?1:0;
+  // mic & waveform (scene 7)
+  const lis=win(t,37.45,39.6,0.2);
+  $('wave').style.opacity=lis;
+  [...$('wave').children].forEach((d,i)=>{d.style.height=(8+38*Math.abs(Math.sin(t*9+i*0.9)*Math.sin(t*3.3+i*0.37)))*lis+'px'});
+  $('mic').style.background=lis>0.1?'#DC2626':'#0F766E';
+  $('mic').style.transform=`scale(${1+0.1*lis*(0.5+0.5*Math.sin(t*10))})`;
+  $('vChips').style.opacity=eo(p(t,38.9,39.3));$('vChips').style.transform=`translateY(${lerp(30,0,eo(p(t,38.9,39.3)))}px)`;
+  // check button presses
+  const prs=[19.3,27.6,33.85].reduce((m,a)=>Math.max(m,Math.sin(Math.PI*p(t,a-0.05,a+0.25))),0);
+  $('checkBtn').style.transform=`scale(${1-0.05*prs})`;$('checkBtn').style.filter=`brightness(${1+0.3*prs})`;
+  // cards
+  const ans=back(p(t,19.55,20.0))*(1-eio(p(t,25.0,25.35)));
+  $('ansCard').style.transform=`translateY(${lerp(115,0,ans)}%)`;
+  const dg=back(p(t,27.85,28.3))*(1-eio(p(t,31.8,32.15)));
+  $('dangerCard').style.transform=`translateY(${lerp(115,0,dg)}%)`;
+  const db=eo(p(t,28.9,29.25));$('dBadge').style.opacity=db;$('dBadge').style.transform=`translateY(${lerp(16,0,db)}px)`;
+  const cb=Math.sin(Math.PI*p(t,29.95,30.3));$('callBtn').style.transform=`scale(${1-0.05*cb})`;$('callBtn').style.filter=`brightness(${1+0.35*cb})`;
+  const oc=back(p(t,34.1,34.55))*(1-eio(p(t,36.75,37.05)));
+  $('outCard').style.transform=`translateY(${lerp(115,0,oc)}%)`;
+  $('redglow').style.opacity=eo(p(t,27.9,28.3))*(1-p(t,31.6,32.1))*(0.85+0.15*Math.sin(t*5));
+
+  // ---------- tap indicator
+  let tp=null;for(const tap of window.TAPS){if(t>=tap[0]-0.12&&t<tap[0]+0.35)tp=tap;}
+  if(tp){const k=p(t,tp[0]-0.12,tp[0]+0.35);$('tap').style.opacity=Math.sin(Math.PI*k)*0.95;$('tap').style.left=tp[1]+'px';$('tap').style.top=tp[2]+'px';$('tap').style.transform=`scale(${0.7+0.6*k})`;}
+  else $('tap').style.opacity=0;
+
+  // ---------- captions [id, in, out]
+  [['c1',1.0,3.9],['c2',4.6,10.9],['c3',11.6,16.9],['c4',19.7,24.9],['c5',28.3,31.9],['c6',34.3,36.95],['c7',37.3,40.75]].forEach(([id,a,b])=>{
+    const i=eo(p(t,a,a+0.45)),o=p(t,b-0.3,b);
+    $(id).style.opacity=i*(1-o);$(id).style.transform=`translateY(${lerp(40,0,i)-30*o}px)`;
+  });
+
+  // ---------- end card
+  const l=eo(p(t,41.3,41.8)),tg=eo(p(t,41.85,42.3)),ft=eo(p(t,42.2,42.6));
+  $('logo').style.opacity=l;$('logo').style.transform=`scale(${lerp(0.9,1,l)})`;
+  $('tag8').style.opacity=tg;$('tag8').style.transform=`translateY(${lerp(30,0,tg)}px)`;
+  $('foot').style.opacity=ft;
+};
+window.ready=Promise.all([document.fonts.load('700 30px "Noto Sans Telugu"','తెలుగు'),document.fonts.load('800 30px Inter'),document.fonts.load('900 30px Inter')]).then(()=>document.fonts.ready);
+render(0);
+</script>
+</body></html>
