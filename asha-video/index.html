@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ASHA explainer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Icon sprite (stroke icons, 24x24 grid) -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M10 12h11"/><path d="M10 18h11"/><path d="M10 6h11"/><path d="M4 10h2"/><path d="M4 6h1v4"/><path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"/></symbol>
+    <symbol id="i-wifioff" viewBox="0 0 24 24"><path d="M12 20h.01"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/><path d="M5 12.859a10 10 0 0 1 5.17-2.69"/><path d="M19 12.859a10 10 0 0 0-2.007-1.523"/><path d="M2 8.82a15 15 0 0 1 4.177-2.643"/><path d="M22 8.82a15 15 0 0 0-11.288-3.764"/><path d="m2 2 20 20"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M12 19v3"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></symbol>
+    <symbol id="i-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/><path d="M6 6h.01"/><path d="M6 18h.01"/></symbol>
+    <symbol id="i-clip" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M8 11h8"/><path d="M8 16h5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M9 12h6"/><path d="M12 9v6"/></symbol>
+    <symbol id="i-lang" viewBox="0 0 24 24"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+    <symbol id="i-sync" viewBox="0 0 24 24"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+    <symbol id="i-cloudoff" viewBox="0 0 24 24"><path d="m2 2 20 20"/><path d="M5.782 5.782A7 7 0 0 0 9 19h8.5a4.5 4.5 0 0 0 1.307-.193"/><path d="M21.532 16.5A4.5 4.5 0 0 0 17.5 10h-1.79A7.008 7.008 0 0 0 10 5.07"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></symbol>
+    <symbol id="i-flask" viewBox="0 0 24 24"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></symbol>
+    <symbol id="i-plane" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M21 4h-7"/><path d="M10 4H3"/><path d="M21 12h-9"/><path d="M8 12H3"/><path d="M21 20h-5"/><path d="M12 20H3"/><path d="M14 2v4"/><path d="M8 10v4"/><path d="M16 18v4"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-usb" viewBox="0 0 24 24"><circle cx="10" cy="7" r="1"/><circle cx="4" cy="20" r="1"/><path d="M4.7 19.3 19 5"/><path d="m21 3-3 1 2 2Z"/><path d="M9.26 7.68 5 12l2 5"/><path d="m10 14 5 2 3.5-3.5"/><path d="m18 12 1-1 1 1-1 1Z"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></symbol>
+    <symbol id="i-tablet" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M12 18h.01"/></symbol>
+    <symbol id="i-mobile" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+    <symbol id="i-steth" viewBox="0 0 24 24"><path d="M11 2v2"/><path d="M5 2v2"/><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"/><path d="M8 15a6 6 0 0 0 12 0v-3"/><circle cx="20" cy="10" r="2"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <!-- ASHA logo: white circle, teal shield, white plus -->
+    <symbol id="logo" viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="#fff" stroke="none"/><path d="M50 18c7 6 15 9 24 9v20c0 17-10 28-24 34-14-6-24-17-24-34V27c9 0 17-3 24-9z" fill="#0F766E" stroke="none"/><path d="M50 36v28M36 50h28" stroke="#fff" stroke-width="7" stroke-linecap="round" fill="none"/></symbol>
+  </defs>
+</svg>
+
+<div id="stage">
+  <div id="bg"><div class="glow g1"></div><div class="glow g2"></div><div class="dots"></div></div>
+
+  <!-- ============ SCENE 1: WHY ============ -->
+  <section class="scene" id="s1">
+    <div class="kicker" data-in="0.15" style="left:120px;top:90px">Andhra Pradesh · home visit</div>
+    <div class="sigwrap" style="left:150px;top:230px">
+      <div class="bars" id="s1bars"><i></i><i></i><i></i><i></i></div>
+      <div class="sigLabel" id="s1sigtxt">4G</div>
+      <div class="nosvc" id="s1nosvc" data-in="3.0" data-a="pop" data-whoosh><svg class="ic"><use href="#i-x"/></svg>No service</div>
+    </div>
+    <div class="house" style="left:960px;top:150px" data-in="0.5" data-a="right">
+      <svg viewBox="0 0 640 560" class="houseSvg">
+        <path d="M60 230 L320 40 L580 230" fill="none" stroke="#14B8A6" stroke-width="10" stroke-linejoin="round" stroke-linecap="round" opacity=".55"/>
+        <rect x="110" y="230" width="420" height="300" rx="18" fill="#111C30" stroke="#1E2C46" stroke-width="4"/>
+        <!-- seated pregnant woman (abstract) -->
+        <ellipse cx="320" cy="520" rx="170" ry="16" fill="#0B1220"/>
+        <path d="M228 520 C220 430 240 370 285 350 L355 350 C395 368 412 420 405 470 C440 480 452 505 445 520 Z" fill="#0F766E"/>
+        <ellipse cx="370" cy="455" rx="58" ry="56" fill="#14B8A6"/>
+        <path d="M268 360 C300 380 330 380 360 360 L352 410 L276 410 Z" fill="#0d6b64"/>
+        <circle cx="320" cy="300" r="46" fill="#B9825A"/>
+        <path d="M274 296 C276 258 300 242 326 244 C352 246 368 266 366 290 C350 270 300 268 274 296 Z" fill="#1F2937"/>
+        <circle cx="362" cy="262" r="20" fill="#1F2937"/>
+      </svg>
+      <div class="dropBadge" id="s1drop" data-in="c1+0.2" data-a="pop"><svg class="ic"><use href="#i-drop"/></svg></div>
+      <div class="chip red" style="left:60px;top:600px" data-in="c1+0.4">Bleeding · pregnant</div>
+      <div class="chip" style="left:60px;top:690px" data-in="c1+0.8"><svg class="ic"><use href="#i-steth"/></svg>No doctor to ask</div>
+      <div class="chip" style="left:60px;top:780px" data-in="c1+1.1"><svg class="ic"><use href="#i-wifioff"/></svg>No network</div>
+    </div>
+    <div class="headline" style="left:120px;top:820px" data-in="c1+1.6">Poor signal.<br><span class="red">Real emergencies.</span></div>
+  </section>
+
+  <!-- ============ SCENE 2: WITHOUT ASHA ============ -->
+  <section class="scene" id="s2">
+    <div class="kicker" data-in="0.1" style="left:120px;top:80px">How it is done today, without ASHA</div>
+    <div class="card2" style="left:120px;top:190px" data-in="c0+0.3"><div class="icbox"><svg class="ic"><use href="#i-clip"/></svg></div><div>Visits on<br>paper registers</div></div>
+    <div class="card2" style="left:990px;top:190px" data-in="c0+1.2"><div class="icbox"><svg class="ic"><use href="#i-clock"/></svg></div><div>Schedules kept<br>in memory</div></div>
+    <div class="card2" style="left:120px;top:470px" data-in="c1+0.1"><div class="icbox"><svg class="ic"><use href="#i-book"/></svg></div><div>Long protocol<br>documents</div></div>
+    <div class="card2" style="left:990px;top:470px" data-in="c2+0.1"><div class="icbox"><svg class="ic"><use href="#i-phone"/></svg></div><div>Call a supervisor<br>only with signal</div></div>
+    <div class="headline sm" style="left:120px;top:790px" data-in="c3">Urgent families are <span class="red">easy to miss.</span></div>
+    <div class="foot" style="left:120px;top:960px" data-in="c0+0.6">General context. No statistics claimed.</div>
+  </section>
+
+  <!-- ============ SCENE 3: WHAT ASHA DOES ============ -->
+  <section class="scene" id="s3">
+    <div class="brand" style="left:120px;top:80px" data-in="0.1"><svg class="logo"><use href="#logo"/></svg><span>What ASHA does</span></div>
+    <div class="feat" style="left:120px;top:270px" data-in="c0+0.2"><div class="icbox red"><svg class="ic"><use href="#i-alert"/></svg></div><div>Danger signs<br>on the phone</div></div>
+    <div class="feat" style="left:990px;top:270px" data-in="c0+1.4"><div class="icbox"><svg class="ic"><use href="#i-book"/></svg></div><div>Answers from<br>approved text</div></div>
+    <div class="feat" style="left:120px;top:590px" data-in="c0+2.6"><div class="icbox"><svg class="ic"><use href="#i-list"/></svg></div><div>Ranked<br>visit list</div></div>
+    <div class="feat" style="left:990px;top:590px" data-in="c1"><div class="icbox"><svg class="ic"><use href="#i-cloudoff"/></svg></div><div>Works offline<br>Telugu + English</div></div>
+  </section>
+
+  <!-- ============ SCENE 4: FEATURE TOUR ============ -->
+  <section class="scene" id="s4">
+    <div class="tablet" id="s4tablet" data-in="c7-0.1" data-a="right" style="left:640px;top:90px">
+      <div class="tscreen">
+        <div class="appbar"><svg class="logo sm"><use href="#logo"/></svg><b>ASHA</b><span class="pill grey">Offline</span></div>
+        <div class="tcols">
+          <div>
+            <div class="tiles">
+              <div class="tile"><b>6</b>Due today</div><div class="tile warn"><b>2</b>Overdue</div>
+              <div class="tile"><b>11</b>Upcoming</div><div class="tile"><b>3</b>Open referrals</div>
+            </div>
+          </div>
+          <div>
+            <div class="sect">Attend first</div>
+            <div class="row"><span class="rank r">1</span><div><b>HH-SYN-00322</b><small>Open referral · ANC</small></div></div>
+            <div class="row"><span class="rank r">2</span><div><b>HH-SYN-00187</b><small>Overdue 3 days · PNC</small></div></div>
+            <div class="row"><span class="rank">3</span><div><b>HH-SYN-00451</b><small>Missed last visit</small></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone" id="s4phone" style="left:170px;top:40px">
+      <div class="screen">
+        <div class="status"><span>9:41</span><span class="sbars"><i></i><i></i><i></i><i></i></span></div>
+        <!-- Home -->
+        <div class="scr" data-in="0.2" data-out="c2-0.2" data-a="slide">
+          <div class="appbar"><svg class="logo sm"><use href="#logo"/></svg><b>ASHA</b><span class="pill grey">Offline</span></div>
+          <div class="tiles">
+            <div class="tile"><b>6</b>Due today</div><div class="tile warn"><b>2</b>Overdue</div>
+            <div class="tile"><b>11</b>Upcoming</div><div class="tile"><b>3</b>Open referrals</div>
+          </div>
+          <div class="sect">Attend first <small>ranked by urgency</small></div>
+          <div class="row" data-in="c1+0.3"><span class="rank r">1</span><div><b>HH-SYN-00322</b><small>Open referral · ANC</small></div></div>
+          <div class="row" data-in="c1+0.6"><span class="rank r">2</span><div><b>HH-SYN-00187</b><small>Overdue 3 days · PNC</small></div></div>
+          <div class="row" data-in="c1+0.9"><span class="rank">3</span><div><b>HH-SYN-00451</b><small>Missed last visit</small></div></div>
+          <div class="row" data-in="c1+1.2"><span class="rank">4</span><div><b>HH-SYN-00096</b><small>Due today · Immunisation</small></div></div>
+          <div class="nav"><span class="on"><svg class="ic"><use href="#i-home"/></svg></span><span><svg class="ic"><use href="#i-users"/></svg></span><span><svg class="ic"><use href="#i-mic"/></svg></span><span><svg class="ic"><use href="#i-chart"/></svg></span><span><svg class="ic"><use href="#i-sliders"/></svg></span></div>
+        </div>
+        <!-- Households -->
+        <div class="scr" data-in="c2-0.2" data-out="c3-0.5" data-a="slide">
+          <div class="appbar"><b>Households</b></div>
+          <div class="search"><svg class="ic"><use href="#i-search"/></svg>Search code or village</div>
+          <div class="chips"><span class="on">All</span><span>ANC</span><span>PNC</span><span>Child</span><span>Referral</span></div>
+          <div class="row"><span class="hh"><svg class="ic"><use href="#i-home"/></svg></span><div><b>HH-SYN-00096</b><small>Demo village A · 4 members</small></div></div>
+          <div class="row"><span class="hh"><svg class="ic"><use href="#i-home"/></svg></span><div><b>HH-SYN-00187</b><small>Demo village A · 3 members</small></div></div>
+          <div class="row"><span class="hh"><svg class="ic"><use href="#i-home"/></svg></span><div><b>HH-SYN-00322</b><small>Demo village B · 5 members</small></div></div>
+          <div class="row"><span class="hh"><svg class="ic"><use href="#i-home"/></svg></span><div><b>HH-SYN-00451</b><small>Demo village B · 2 members</small></div></div>
+          <div class="fab" data-tap="c2+1.6"><svg class="ic"><use href="#i-plus"/></svg>Add family</div>
+        </div>
+        <!-- Household details -->
+        <div class="scr" data-in="c3-0.5" data-out="c4" data-a="slide">
+          <div class="appbar"><b>HH-SYN-00322</b></div>
+          <div class="card">
+            <div class="ct"><svg class="ic"><use href="#i-pin"/></svg>House location <span class="pill grey">Offline map</span></div>
+            <div class="minimap" data-tap="c3+0.4">
+              <svg viewBox="0 0 400 170"><rect width="400" height="170" fill="#E7EEF0"/><path d="M0 120 C120 100 220 140 400 90" stroke="#fff" stroke-width="16" fill="none"/><path d="M150 0 L190 170" stroke="#fff" stroke-width="12"/><path d="M300 0 L280 170" stroke="#fff" stroke-width="8"/><rect x="40" y="20" width="60" height="40" rx="6" fill="#D6E3E6"/><rect x="220" y="20" width="50" height="50" rx="6" fill="#D6E3E6"/></svg>
+              <svg class="ic pinred"><use href="#i-pin"/></svg>
+            </div>
+          </div>
+          <div class="card">
+            <div class="ct"><svg class="ic"><use href="#i-phone"/></svg>Phone numbers</div>
+            <div class="field"><label>Phone 1 <em>required</em></label><div class="inp">9XXXX XXXXX<span class="callbtn"><svg class="ic"><use href="#i-phone"/></svg></span></div></div>
+            <div class="field"><label>Phone 2 <em>optional</em></label><div class="inp empty">—</div></div>
+            <div class="hint"><svg class="ic"><use href="#i-lock"/></svg>10 digits, starts 6–9 · saved on this phone only</div>
+          </div>
+          <div class="bigmap" data-in="c3+0.6" data-out="c3+2.1" data-a="pop">
+            <svg viewBox="0 0 440 600"><rect width="440" height="600" fill="#E3ECEE"/><path d="M0 380 C140 330 260 420 440 300" stroke="#fff" stroke-width="26" fill="none"/><path d="M170 0 L230 600" stroke="#fff" stroke-width="18"/><path d="M340 0 L310 600" stroke="#fff" stroke-width="12"/><path d="M0 150 L440 190" stroke="#fff" stroke-width="10"/><rect x="40" y="40" width="100" height="70" rx="10" fill="#D3E1E4"/><rect x="260" y="230" width="60" height="60" rx="8" fill="#D3E1E4"/><rect x="40" y="440" width="110" height="80" rx="10" fill="#D3E1E4"/></svg>
+            <span class="lm" style="left:30px;top:120px">PHC</span>
+            <span class="lm" style="left:262px;top:300px">School</span>
+            <span class="lm" style="left:40px;top:530px">Temple</span>
+            <svg class="ic pinred big" style="left:180px;top:300px"><use href="#i-pin"/></svg>
+          </div>
+        </div>
+        <!-- Record visit -->
+        <div class="scr" data-in="c4" data-out="c5-0.1" data-a="slide">
+          <div class="appbar"><b>Record visit</b></div>
+          <div class="card"><div class="ct">HH-SYN-00322 · ANC visit</div>
+            <div class="tick"><svg class="ic"><use href="#i-check"/></svg>BP checked</div>
+            <div class="tick"><svg class="ic"><use href="#i-check"/></svg>Weight recorded</div>
+            <div class="tick"><svg class="ic"><use href="#i-check"/></svg>Next visit date set</div>
+          </div>
+          <div class="btn" data-tap="c4+0.5">Save visit</div>
+          <div class="syncchip amber" data-in="c4+0.7" data-out="c4+1.7" data-a="pop" data-collapse><svg class="ic"><use href="#i-cloudoff"/></svg>1 waiting to sync</div>
+          <div class="syncchip ok" data-in="c4+1.75" data-a="pop" data-collapse><svg class="ic"><use href="#i-check"/></svg>All changes synced</div>
+          <div class="card" data-in="c4+1.9"><div class="ct"><svg class="ic"><use href="#i-sync"/></svg>Sync centre</div><small class="muted">Last sync: just now · 0 pending</small></div>
+        </div>
+        <!-- Referrals / reports / alerts -->
+        <div class="scr" data-in="c5-0.1" data-out="c6" data-a="slide">
+          <div class="appbar"><b>Referrals</b></div>
+          <div class="chips"><span class="on">Open 3</span><span>Closed</span><span>Reports</span></div>
+          <div class="row"><span class="hh"><svg class="ic"><use href="#i-send"/></svg></span><div><b>HH-SYN-00322</b><small>Referred to PHC · open</small></div></div>
+          <div class="row"><span class="hh"><svg class="ic"><use href="#i-send"/></svg></span><div><b>HH-SYN-00187</b><small>Referred to PHC · open</small></div></div>
+          <div class="card"><div class="ct"><svg class="ic"><use href="#i-chart"/></svg>This month</div><div class="minichart"><i style="height:40%"></i><i style="height:65%"></i><i style="height:50%"></i><i style="height:80%"></i><i style="height:70%"></i></div></div>
+          <div class="notif" data-in="c5+0.5" data-a="down" data-whoosh><svg class="ic"><use href="#i-bell"/></svg><div><b>Urgent household</b><small>HH-SYN-00187 needs a visit now</small></div></div>
+        </div>
+        <!-- Settings -->
+        <div class="scr" data-in="c6" data-a="slide">
+          <div class="appbar"><b>Settings</b></div>
+          <div class="set"><span><svg class="ic"><use href="#i-lang"/></svg>Language</span><b>English · <span class="te">తెలుగు</span></b></div>
+          <div class="set"><span><svg class="ic"><use href="#i-phone"/></svg>Supervisor number</span><b>Saved</b></div>
+          <div class="set"><span><svg class="ic"><use href="#i-server"/></svg>Server address</span><b>192.168.x.x</b></div>
+          <div class="set col"><span><svg class="ic"><use href="#i-download"/></svg>Telugu voice pack · 44 MB</span><div class="prog"><i id="s4prog"></i></div></div>
+        </div>
+      </div>
+    </div>
+    <!-- captions -->
+    <div class="cap" data-in="0.25" data-out="c1-0.1"><div class="ct1">The whole app,<br>end to end</div></div>
+    <div class="cap" data-in="c1" data-out="c2-0.2"><div class="ct1">Home: <span class="teal">attend first</span></div><ul><li>Due today · overdue · upcoming</li><li>Open referrals</li><li>Ranked by due dates, referrals, missed visits, visit type</li></ul></div>
+    <div class="cap" data-in="c2-0.1" data-out="c3-0.5"><div class="ct1">Households</div><ul><li>Search</li><li>Filters</li><li>Add a new family</li></ul></div>
+    <div class="cap" data-in="c3-0.4" data-out="c4"><div class="ct1">Location + phones</div><ul><li>Offline map, red pin; big map with PHC, school, temple</li><li>Phone 1 required, Phone 2 optional</li><li>10-digit, starts 6–9, call button, stays on the phone</li></ul></div>
+    <div class="cap" data-in="c4+0.05" data-out="c5-0.1"><div class="ct1">Visits work offline</div><ul><li>Saved on the phone first</li><li>“1 waiting to sync” → “All changes synced”</li><li>Sync centre</li></ul></div>
+    <div class="cap" data-in="c5" data-out="c6"><div class="ct1">Referrals, reports,<br><span class="red">urgent alerts</span></div><ul><li>A notification when a household becomes urgent</li></ul></div>
+    <div class="cap" data-in="c6+0.05" data-out="c7-0.15"><div class="ct1">Settings</div><ul><li>Language</li><li>Supervisor number · server address</li><li>Voice pack download</li></ul></div>
+    <div class="cap low" data-in="c7"><div class="ct1">Phones and tablets</div></div>
+  </section>
+
+  <!-- ============ SCENE 5: ASK + VOICE ============ -->
+  <section class="scene" id="s5">
+    <div class="phone" style="left:120px;top:40px">
+      <div class="screen">
+        <div class="status"><span>9:41</span><span class="sbars"><i></i><i></i><i></i><i></i></span></div>
+        <div class="scr" style="opacity:1">
+          <div class="appbar"><b>Ask</b><span class="pill grey">Offline</span></div>
+          <div class="toggle"><span class="on">English</span><span class="te">తెలుగు</span></div>
+          <div class="qbox" id="s5box"><span class="ph" id="s5ph">Type or speak your question</span><span id="s5q1"><span class="w">how</span> <span class="w">often</span> <span class="w">to</span> <span class="w">weigh</span> <span class="w">a</span> <span class="w bad" id="s5bad" data-tap="c2+1.1">new bone</span><span class="w good" id="s5good">newborn</span> <span class="w">baby?</span></span><span id="s5q2"></span><span class="caret" id="s5caret"></span></div>
+          <div class="hintline" id="s5hint">Check the words below, fix any mistakes, then press Check.</div>
+          <div class="micwrap">
+            <div class="ring" id="s5r1"></div><div class="ring" id="s5r2"></div>
+            <div class="mic" id="s5mic" data-tap="c0+2.4"><svg class="ic"><use href="#i-mic"/></svg></div>
+            <div class="miclbl" id="s5micl">Speak</div>
+          </div>
+          <div class="btn" id="s5check" data-tap="c2+2.2,c4+3.9">Check</div>
+          <div class="sheet" id="s5ans">
+            <div class="ct"><svg class="ic"><use href="#i-book"/></svg>Approved protocol</div>
+            <p>“Weigh the baby at every home visit and write it on the card. If the weight is falling, refer to the PHC.”</p>
+            <div class="src">Sample protocol (demo) · Section 4.2 · Page 18</div>
+            <span class="tag">Sample text for the demo</span>
+          </div>
+          <div class="sheet grey" id="s5ref">
+            <div class="ct"><svg class="ic"><use href="#i-info"/></svg>Outside this app</div>
+            <p>Ask your supervising doctor.</p>
+            <small class="muted">Medicine doses are not answered.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="r5" data-in="0.3" data-out="c3-0.2">
+      <div class="step"><span class="n">1</span><span>Tap <b>Speak</b> · English or <span class="te">తెలుగు</span></span></div>
+      <div class="step" data-in="c1+0.2"><span class="n">2</span>Words fill the box</div>
+      <div class="step" data-in="c2+0.2"><span class="n">3</span><span>She fixes a word,<br>then presses <b>Check</b></span></div>
+    </div>
+    <div class="r5" data-in="c3-0.1" data-out="c4-0.15">
+      <div class="big">Voice only fills the box.<br><span class="teal">The worker decides.</span><br>Nothing is sent by itself.</div>
+    </div>
+    <div class="r5 eng" data-in="c4-0.1" data-out="c4+4.0">
+      <div class="h2">Which voice engine is used</div>
+      <div class="erow" data-in="c4+0.15"><span class="n">a</span><div><b>Phone’s own offline speech pack</b><small>if it has one for that language</small></div></div>
+      <div class="erow" data-in="c4+0.6"><span class="n">b</span><div><b>ASHA offline Telugu model</b><small>optional 44 MB download</small></div></div>
+      <div class="erow" data-in="c4+1.05"><span class="n">c</span><div><b>Phone’s online speech</b><small>only if “Online speech” is ON and there is internet</small></div></div>
+      <div class="enone" data-in="c4+1.5">None available → the app says why, she types.</div>
+      <div class="never" data-in="c4+1.9"><svg class="ic"><use href="#i-cloudoff"/></svg>Never a silent fallback to the cloud.</div>
+      <div class="priv" data-in="c4+2.3"><svg class="ic"><use href="#i-lock"/></svg>The app does not save the audio.</div>
+    </div>
+    <div class="r5 fixes" data-in="c4+4.05" data-out="c5+0.9">
+      <div class="h2">3 fixes after testing on a real phone</div>
+      <div class="fix" data-in="c4+4.2"><svg class="ic"><use href="#i-check"/></svg>Words no longer vanish when the last result is empty</div>
+      <div class="fix" data-in="c4+4.5"><svg class="ic"><use href="#i-check"/></svg>After Check, the next voice take starts a new question</div>
+      <div class="fix" data-in="c4+4.8"><svg class="ic"><use href="#i-check"/></svg>Recovers if the speech service drops its connection</div>
+    </div>
+    <div class="r5" data-in="c5+0.95">
+      <div class="big">Answers show their <span class="teal">source.</span><br>Medicine doses are <span class="muted2">refused.</span></div>
+    </div>
+  </section>
+
+  <!-- ============ SCENE 6: SAFETY LAYER ============ -->
+  <section class="scene" id="s6">
+    <div class="phone" style="left:1310px;top:40px">
+      <div class="screen">
+        <div class="status"><span>9:41</span><span class="sbars"><i></i><i></i><i></i><i></i></span></div>
+        <div class="scr" style="opacity:1">
+          <div class="appbar"><b>Ask</b><span class="pill grey">Offline</span></div>
+          <div class="qbox"><span id="s6q"></span><span class="caret" id="s6caret"></span></div>
+          <div class="btn" data-tap="c2-0.15">Check</div>
+          <div class="danger" id="s6danger" data-in="c2+0.35" data-a="pop" data-whoosh>
+            <svg class="ic dz"><use href="#i-alert"/></svg>
+            <div class="dt">DANGER SIGN</div>
+            <div class="ds">Escalate now.</div>
+            <div class="callsup" data-tap="c2+2.0"><svg class="ic"><use href="#i-phone"/></svg>Call supervisor</div>
+            <div class="badge"><svg class="ic"><use href="#i-check"/></svg>Checked on the phone</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="h1" data-in="0.2" style="left:110px;top:80px">The safety layer</div>
+    <div class="sub" data-in="0.7" style="left:110px;top:190px">Fixed rules, not a model.<br><span class="teal">Runs on the phone, no internet.</span></div>
+    <div class="pipe" data-in="c1-0.2" data-out="c3-0.2">
+      <div class="pbox" id="p1"><small>1 · typed</small><b>“bleeding in third trimester”</b></div>
+      <div class="parr"></div>
+      <div class="pbox teal" id="p2"><small>2 · checked FIRST</small><b>Fixed rules</b></div>
+      <div class="parr"></div>
+      <div class="pbox red" id="p3"><small>3 · result</small><b>DANGER SIGN</b></div>
+      <div class="parr dim"></div>
+      <div class="pbox dim" id="p4"><small>AI</small><b>not needed</b></div>
+      <div class="pdot" id="pdot"></div>
+    </div>
+    <div class="nums" data-in="c3" style="left:110px;top:440px">
+      <div class="num"><b><span class="cnt" data-to="48" data-at="c3+0.1">0</span> of 48</b><span>danger-sign test cases detected<br><em>0 false alarms (142 cases)</em></span></div>
+      <div class="num" data-in="c3+0.6"><b><span class="cnt" data-to="67" data-at="c3+0.7">0</span> of 67</b><span>spoken and misspelled variants detected<br><em>(83 cases)</em></span></div>
+    </div>
+    <div class="foot warnbox" id="s6foot" data-in="c3+1.4" style="left:110px;top:920px">Rules are a developer draft, not clinically validated. Tested on our own sets.</div>
+  </section>
+
+  <!-- ============ SCENE 7: AI AGENT ============ -->
+  <section class="scene" id="s7">
+    <div class="h1" data-in="0.15" style="left:110px;top:60px">The AI agent, and where it runs</div>
+    <div class="arch" id="s7arch">
+      <div class="abox" data-in="0.4"><svg class="ic"><use href="#i-mobile"/></svg><b>Phone</b><small>safety rules<br>local search<br>visit data</small></div>
+      <div class="alink" data-in="0.9"><svg class="ic"><use href="#i-usb"/></svg><small>USB or network</small></div>
+      <div class="abox" data-in="1.3"><svg class="ic"><use href="#i-server"/></svg><b>Mac server</b><small>FastAPI backend</small></div>
+      <div class="alink short" data-in="1.8"></div>
+      <div class="abox" data-in="c1-0.1"><svg class="ic"><use href="#i-cpu"/></svg><b>Ollama</b><small>running locally</small></div>
+      <div class="alink short" data-in="c1+0.6"></div>
+      <div class="mstack">
+        <div class="mbox" data-in="c1+3.4"><b>bge-m3</b><small>finds the approved passages · ~1.2 GB</small></div>
+        <div class="mbox hl" data-in="c1+1.2"><b>qwen3:8b</b><small>writes the explanation, Telugu + English · ~5.2 GB</small></div>
+      </div>
+    </div>
+    <div class="tnote" data-in="c1+2.0" data-out="c2-0.3">
+      <span class="x">qwen2.5:3b</span><span class="x">qwen3:4b</span><span class="x">gemma3</span><span>→ poor Telugu</span>
+      <span class="okk">qwen3:8b → the only one with correct Telugu</span>
+      <span class="spd">Mac CPU: 7–14 tokens per second</span>
+    </div>
+    <div class="rules" data-in="c2-0.2">
+      <div class="rule" data-in="c2"><svg class="ic"><use href="#i-check"/></svg><div><b>Short approved passage</b> → returned word for word, no model call</div></div>
+      <div class="rule" data-in="c2+1.0"><svg class="ic"><use href="#i-spark"/></svg><div><b>Long passage</b> → qwen3:8b behind guards: right language · stays on approved text · no doses · 9 s limit · approved text as fallback</div></div>
+      <div class="rule red" data-in="c3"><svg class="ic"><use href="#i-alert"/></svg><div><b>A danger sign never goes to the server</b></div></div>
+      <div class="rule" data-in="c3+0.6"><svg class="ic"><use href="#i-cloud"/></svg><div>Phone asks only when online <b>and</b> “Online AI help” is on</div></div>
+    </div>
+    <div class="score" data-in="c2+0.5">
+      <div><b>17 / 18</b><span>development questions answered correctly</span></div>
+      <div><b>4 / 4</b><span>out-of-scope questions refused</span></div>
+      <em>22 sample questions on sample text</em>
+    </div>
+  </section>
+
+  <!-- ============ SCENE 8: TELUGU VOICE ============ -->
+  <section class="scene" id="s8">
+    <div class="h1" data-in="0.15" style="left:90px;top:50px">Telugu voice: what we tested</div>
+    <div class="tbl">
+      <div class="tr th" data-in="0.4"><span>Option</span><span>Size</span><span>Word errors</span><span>Notes</span></div>
+      <div class="tr" data-in="c1"><span><b>Phone’s online speech</b><small>(Google)</small></span><span>adds no size</span><span class="good">best accuracy in our tests</span><span>needs internet</span></div>
+      <div class="tr" data-in="c2"><span><b>AI4Bharat IndicConformer</b></span><span>138 MB</span><span>20.7%<small>60 public Telugu test clips</small></span><span>fast</span></div>
+      <div class="tr rej" id="s8vosk" data-in="c3"><span><b>Vosk small Telugu</b></span><span>60 MB download<small>122 MB unpacked</small></span><span>76–88%<small>stated</small></span><span>+230 MB memory</span><div class="stamp" style="left:1120px;right:auto;top:-12px" data-in="c3+0.4" data-a="pop">REJECTED</div></div>
+      <div class="tr pick" id="s8wh" data-in="c4"><span><b>Whisper-tiny Telugu</b></span><span>103.6 MB<small>shrunk to a 44 MB pack</small></span><span>38–39% Mac · ~45% phone<small>58% with added noise</small></span><span>6–11 s per clip</span><div class="stamp teal" style="left:1150px;right:auto;top:-26px" data-in="c4+0.9" data-a="pop">CHOSEN FOR SIZE</div></div>
+    </div>
+    <div class="says" data-in="c4+2.2"><b>We chose Whisper to keep the whole app under 100 MB</b>, not because it is the most accurate.</div>
+    <div class="says2" data-in="c5"><span class="teal">Online voice stays the most accurate option.</span> Offline voice makes mistakes, so the worker always checks the words.</div>
+  </section>
+
+  <!-- ============ SCENE 9: SIZE, DATA, DEVICES ============ -->
+  <section class="scene" id="s9">
+    <div class="phaseA" data-out="c3-0.25" data-a="fade">
+      <div class="h1" data-in="0.15" style="left:110px;top:60px">App size, data and memory</div>
+      <div class="stat" style="left:110px;top:200px" data-in="c0+0.1"><b>55.7 MB</b><span>APK, 64-bit</span><small>43.4 MB for 32-bit</small></div>
+      <div class="stat" style="left:700px;top:200px" data-in="c1"><b>44 MB</b><span>Offline Telugu voice</span><small>optional download</small></div>
+      <div class="stat" style="left:1290px;top:200px" data-in="c1+1.6"><b>4.5 KB</b><span>Demo village map</span><small>a real one: 5–6 MB</small></div>
+      <div class="dataRow" data-in="c2-0.2"><svg class="ic"><use href="#i-db"/></svg><div><b>Local database on the phone</b><span>Households, visits and referrals, saved offline</span></div></div>
+      <div class="dataRow" data-in="c2+0.4" style="top:740px"><svg class="ic"><use href="#i-lock"/></svg><div><b>Phone numbers stay on the phone</b><span>Never sent to the server</span></div></div>
+      <div class="mem" data-in="c2+1.0">Memory: <b>130–150 MB</b> on normal screens · <b>~310 MB</b> while the Whisper voice is loaded</div>
+    </div>
+    <div class="phaseB" data-in="c3+0.1">
+      <div class="h1" style="left:110px;top:60px">Devices</div>
+      <div class="dcol ok" data-in="c3+0.1"><div class="dh"><svg class="ic"><use href="#i-check"/></svg>TESTED</div><p>Two real 64-bit ARM (arm64) Android phones</p></div>
+      <div class="dcol mid" data-in="c4"><div class="dh"><svg class="ic"><use href="#i-mobile"/></svg>BUILT, NOT RUN</div><p>32-bit ARM (armeabi-v7a) APK</p></div>
+      <div class="dcol no" data-in="c4+0.8"><div class="dh"><svg class="ic"><use href="#i-x"/></svg>NOT TESTED</div><p>1 GB and 2 GB RAM phones</p></div>
+      <div class="dsay" data-in="c4+1.6">Normal screens should fit. Offline voice is the risk on 2 GB, and not expected on 1 GB. Online voice needs no model.</div>
+      <div class="fleet" data-in="c4+2.6"><span class="fl">Target fleet</span><span>Samsung Galaxy A14 5G · 4 GB</span><span>A03 Core · 2 GB</span><span>Galaxy Tab A7 Lite · 3 GB</span></div>
+    </div>
+  </section>
+
+  <!-- ============ SCENE 10: HOW WE TESTED ============ -->
+  <section class="scene" id="s10">
+    <div class="h1" data-in="0.15" style="left:110px;top:60px">How we tested</div>
+    <div class="ctr" style="left:110px;top:200px" data-in="c0+0.1"><b class="cnt" data-to="427" data-at="c0+0.2" data-dur="1.6">0</b><span>automated app tests passing</span><small>+ backend tests passing</small></div>
+    <div class="ctr" style="left:700px;top:200px" data-in="c0+0.7"><b class="cnt" data-to="142" data-at="c0+0.8" data-dur="1.2">0</b><span>safety evaluation cases</span></div>
+    <div class="ctr" style="left:1290px;top:200px" data-in="c0+1.3"><b class="cnt" data-to="83" data-at="c0+1.4" data-dur="1.0">0</b><span>spoken-variant cases</span></div>
+    <div class="tl" style="top:600px" data-in="c0+2.4"><svg class="ic"><use href="#i-mic"/></svg>Voice models measured on public Telugu test audio</div>
+    <div class="tl" style="top:700px" data-in="c0+3.2"><svg class="ic"><use href="#i-plane"/></svg>Checks on real phones, including airplane mode</div>
+    <div class="tl" style="top:800px" data-in="c1-0.3"><svg class="ic"><use href="#i-flask"/></svg>Hidden Voice Test screen: 20 Telugu health sentences</div>
+    <div class="tlnote" data-in="c1+0.6">Danger signs, protocol questions, English drug names · results not shown: no real Telugu speech run through it yet</div>
+  </section>
+
+  <!-- ============ SCENE 11: LIMITS + CLOSE ============ -->
+  <section class="scene" id="s11">
+    <div class="limits" data-out="c1-0.3" data-a="fade">
+      <div class="h1" data-in="0.1" style="position:static;margin-bottom:40px">Honest limits</div>
+      <div class="lim" data-in="0.35"><svg class="ic"><use href="#i-info"/></svg>Demo uses synthetic data and sample protocol text</div>
+      <div class="lim" data-in="0.9"><svg class="ic"><use href="#i-info"/></svg>Safety rules are a draft pending clinical review</div>
+      <div class="lim" data-in="1.45"><svg class="ic"><use href="#i-info"/></svg>Real hackathon data not loaded yet</div>
+      <div class="lim" data-in="2.0"><svg class="ic"><use href="#i-info"/></svg>Offline Telugu voice makes mistakes</div>
+    </div>
+    <div class="endcard" data-in="c1-0.1" data-a="pop">
+      <svg class="logo xl"><use href="#logo"/></svg>
+      <div class="wordmark">ASHA</div>
+      <div class="tagline">Works offline. Telugu + English.</div>
+    </div>
+  </section>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

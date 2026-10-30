@@ -1,0 +1,131 @@
+{
+ "voice": "af_heart",
+ "speed": 0.92,
+ "scenes": [
+  {
+   "id": 1,
+   "start": 0,
+   "end": 12,
+   "lines": [
+    "Asha workers visit homes where the signal is weak or gone.",
+    "When something is wrong, they decide fast, alone.",
+    "A bleeding mother cannot wait for one bar of network."
+   ]
+  },
+  {
+   "id": 2,
+   "start": 12,
+   "end": 24,
+   "lines": [
+    "Today, visits live on paper and in memory.",
+    "Protocols are long documents.",
+    "Help depends on a signal.",
+    "Urgent families are easy to miss."
+   ]
+  },
+  {
+   "id": 3,
+   "start": 24,
+   "end": 34,
+   "lines": [
+    "Asha puts a safety check, a visit planner and approved protocol answers on the worker's own phone.",
+    "In Telugu and English, and it works offline."
+   ]
+  },
+  {
+   "id": 4,
+   "start": 34,
+   "end": 58,
+   "lines": [
+    "Here is the whole app, end to end.",
+    "Ranked visits: who to attend first, by due dates, referrals and missed visits.",
+    "Households, with search, filters and new families.",
+    "Each house has an offline map and phone numbers.",
+    "Visits are saved offline and synced later.",
+    "Referrals, reports and alerts.",
+    "Settings for language, supervisor and voice.",
+    "On phones and tablets."
+   ]
+  },
+  {
+   "id": 5,
+   "start": 58,
+   "end": 80,
+   "lines": [
+    "On the Ask page she can type or speak, in Telugu or English.",
+    "Her words fill the box.",
+    "She checks them, fixes a mistake, then presses Check.",
+    "Voice never sends anything on its own.",
+    "Offline engines come first. Online speech, only if she allows it.",
+    "Answers show their source, and medicine doses are refused."
+   ]
+  },
+  {
+   "id": 6,
+   "start": 80,
+   "end": 98,
+   "lines": [
+    "Danger signs are checked first, by fixed rules, on the phone.",
+    "She types: bleeding in third trimester.",
+    "The rules flag a danger sign before any AI is asked.",
+    "On our test sets, every escalation case was caught, with no false alarms.",
+    "A clinician must still review the rules."
+   ]
+  },
+  {
+   "id": 7,
+   "start": 98,
+   "end": 116,
+   "lines": [
+    "Answers come from a local AI on the server.",
+    "Ollama runs Qwen three to write the explanation, and B G E M three to find the approved text.",
+    "Short approved passages come back word for word.",
+    "Danger signs never wait for it."
+   ]
+  },
+  {
+   "id": 8,
+   "start": 116,
+   "end": 140,
+   "lines": [
+    "We tested four Telugu voice options.",
+    "The phone's online speech was the most accurate, but needs internet.",
+    "Indic Conformer was fast, at a hundred and thirty eight megabytes.",
+    "Vosk was rejected.",
+    "Whisper won on size, not accuracy, because it keeps the app near a hundred megabytes.",
+    "So the worker always checks the words first."
+   ]
+  },
+  {
+   "id": 9,
+   "start": 140,
+   "end": 158,
+   "lines": [
+    "The app is about fifty six megabytes.",
+    "Offline Telugu voice is an optional forty four megabyte download.",
+    "Phone numbers never leave the phone.",
+    "We tested on two sixty four bit phones.",
+    "Thirty two bit builds exist, and one and two gigabyte phones are the next test."
+   ]
+  },
+  {
+   "id": 10,
+   "start": 158,
+   "end": 170,
+   "lines": [
+    "We tested the app, the safety rules, the retrieval and every voice option, on real phones.",
+    "Four hundred twenty seven automated app tests pass."
+   ]
+  },
+  {
+   "id": 11,
+   "start": 170,
+   "end": 180,
+   "tail": 2.3,
+   "lines": [
+    "What is not done yet: the data is synthetic, and the rules await clinical review.",
+    "Asha. Works with zero bars."
+   ]
+  }
+ ]
+}
