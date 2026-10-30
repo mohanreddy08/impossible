@@ -10,6 +10,7 @@ cd "$BE"
 [ -d .venv ] || "$PYBIN" -m venv .venv
 .venv/bin/pip install -q -U pip
 .venv/bin/pip install -q -r requirements-dev.txt
+[ -f .env.example ] || { echo "ERROR: health-worker-backend/.env.example is missing (incomplete checkout?)" >&2; exit 1; }
 if [ ! -f .env ]; then
   rnd() { .venv/bin/python -c 'import secrets; print(secrets.token_hex(32))'; }
   sed -e "s|^SECRET_KEY=.*|SECRET_KEY=$(rnd)|" -e "s|^DEVICE_HASH_SALT=.*|DEVICE_HASH_SALT=$(rnd)|" -e "s|^AUTH_MODE=.*|AUTH_MODE=api_key|" \

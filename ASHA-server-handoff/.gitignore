@@ -1,6 +1,7 @@
 # secrets and local configuration: never commit
 .env
 .env.*
+!.env.example
 *.env
 *.key
 *.jks
