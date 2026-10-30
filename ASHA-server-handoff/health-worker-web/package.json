@@ -1,0 +1,7 @@
+{
+  "name": "asha-supervisor-web-e2e",
+  "private": true,
+  "description": "End-to-end browser tests for the supervisor website (the site itself needs no build step).",
+  "scripts": { "e2e": "node --test --test-concurrency=1 e2e/site.test.js" },
+  "devDependencies": { "playwright": "1.63.0" }
+}

@@ -8,7 +8,7 @@ from collections import Counter
 from typing import Dict, Iterable, List, Tuple
 
 from .expand import EXPAND
-from .normalize import fold_pattern, fold_roman, normalize
+from .normalize import normalize
 from .protocols import Section
 
 _TOK = re.compile(r"[a-z]+|\d+(?:\.\d+)?")

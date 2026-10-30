@@ -6,7 +6,7 @@ import re
 import pytest
 from sqlalchemy import select
 
-from app.core.config import BACKEND_ROOT, Settings
+from app.core.config import BACKEND_ROOT
 from app.core.security import parse_keys
 from app.db.models import AuditLog, Referral
 from app.tests.conftest import REF
@@ -163,7 +163,6 @@ def test_unhandled_error_is_generic_500(client):
 
 
 def test_integrity_violation_maps_to_409(client, db):
-    from app.core.security import Principal
     from app.db.models import Referral as R
     assert True  # DB CHECK constraints are exercised below
     from sqlalchemy.exc import IntegrityError

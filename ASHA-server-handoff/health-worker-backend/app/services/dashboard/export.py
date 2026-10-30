@@ -3,7 +3,7 @@ numbers or question text. The PDF uses the built-in Helvetica font, so it is Eng
 import csv
 import datetime as dt
 import io
-from typing import List, Tuple
+from typing import List, Optional, Tuple
 
 from fpdf import FPDF
 from sqlalchemy.orm import Session
@@ -50,7 +50,7 @@ def _table(db: Session, p: Principal, day: dt.date, kind: str, worker_id, villag
     raise DomainError("summary is available as PDF only", code="BAD_FORMAT", status_code=422)
 
 
-def _pdf(title: str, header: List[str], rows: List[list], summary: dict = None) -> bytes:
+def _pdf(title: str, header: List[str], rows: List[list], summary: Optional[dict] = None) -> bytes:
     pdf = FPDF(orientation="L")
     pdf.set_auto_page_break(True, 12)
     pdf.add_page()

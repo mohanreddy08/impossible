@@ -1,7 +1,7 @@
 import datetime as dt
 from typing import Optional
 
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from app.api.deps import LIMIT, OFFSET

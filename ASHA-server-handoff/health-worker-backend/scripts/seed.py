@@ -72,11 +72,14 @@ def main(argv=None) -> int:
     if lines:
         print("\n=== shown once: store these somewhere safe ===")
         print("\n".join(lines))
-        os.makedirs(os.path.dirname(a.credentials_file), exist_ok=True)
-        fd = os.open(a.credentials_file, os.O_WRONLY | os.O_CREAT | os.O_APPEND, 0o600)
-        with os.fdopen(fd, "a", encoding="utf-8") as f:
-            f.write("# %s (SYNTHETIC demo server)\n%s\n" % (dt.datetime.now().isoformat(timespec="seconds"), "\n".join(lines)))
-        print("(also appended to %s)" % a.credentials_file)
+        try:
+            os.makedirs(os.path.dirname(a.credentials_file), exist_ok=True)
+            fd = os.open(a.credentials_file, os.O_WRONLY | os.O_CREAT | os.O_APPEND, 0o600)
+            with os.fdopen(fd, "a", encoding="utf-8") as f:
+                f.write("# %s (SYNTHETIC demo server)\n%s\n" % (dt.datetime.now().isoformat(timespec="seconds"), "\n".join(lines)))
+            print("(also appended to %s)" % a.credentials_file)
+        except OSError as e:                        # e.g. a read-only volume in a container: the lines above are the only copy
+            print("(could not save them to %s: %s)" % (a.credentials_file, e.strerror))
     db.close()
     return 0
 

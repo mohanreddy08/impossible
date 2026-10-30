@@ -8,7 +8,7 @@ import datetime as dt
 import hashlib
 import os
 from collections import Counter, defaultdict
-from typing import Dict, List, Optional
+from typing import Any, Dict, List, Optional
 
 from sqlalchemy import delete, func, select
 from sqlalchemy.orm import Session
@@ -42,7 +42,8 @@ def categories(members: List[dict], today: dt.date) -> List[str]:
     cats = []
     if any(m.get("pregnant", "").upper() == "Y" for m in members):
         cats.append("ANC")
-    kids = [m for m in members if _date(m.get("dob", "")) and (today - _date(m["dob"])).days < 5 * 365 + 1]
+    dobs = [_date(m.get("dob", "")) for m in members]
+    kids = [d for d in dobs if d is not None and (today - d).days < 5 * 365 + 1]
     if kids:
         cats += ["IMMUNISATION", "NUTRITION"]
     ncd = " ".join(m.get("ncd_condition", "") for m in members)
@@ -114,7 +115,7 @@ def load_block(db: Session, h5_dir: str, today: dt.date) -> Dict[str, int]:
     return {"villages": len(by_village), "ashas": len(ashas), "households": len(households), "members": len(register)}
 
 
-def load_phone_demo(db: Session, dataset_dir: str) -> Dict[str, int]:
+def load_phone_demo(db: Session, dataset_dir: str) -> Dict[str, Any]:
     """The sync datasets the phone app's demo mode uses (same ids and versions). Reuses the existing, tested importer."""
     from app.services.dataset_import.importer import import_datasets
     report = import_datasets(db, dataset_dir)

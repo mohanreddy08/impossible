@@ -27,7 +27,6 @@ from .config import DATA, PROTOCOLS
 from .expand import EXPAND
 from .facts import compiled_source
 from .lexicon import CONCEPTS
-from .normalize import fold_pattern
 from .protocols import load_sections
 from .retrieve import _STOP
 

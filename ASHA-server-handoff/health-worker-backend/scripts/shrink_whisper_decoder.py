@@ -11,7 +11,7 @@ from pathlib import Path
 
 import numpy as np
 import onnx
-from onnx import TensorProto, helper, numpy_helper
+from onnx import helper, numpy_helper
 
 NAME = "textDecoder.token_embedding.weight"
 

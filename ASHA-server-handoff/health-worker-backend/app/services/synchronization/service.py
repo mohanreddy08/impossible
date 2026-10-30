@@ -8,7 +8,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.core.config import Settings
-from app.core.errors import Conflict, DomainError, Forbidden, NotFound
+from app.core.errors import DomainError, Forbidden, NotFound
 from app.core.principal import Principal, hash_installation
 from app.db.base import utcnow
 from app.db.models import Household, Referral, SyncOperation, Visit

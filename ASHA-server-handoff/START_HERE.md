@@ -20,3 +20,6 @@ Quick check on the new computer
     python3 ../h5-pack-data/evaluate.py --submission /tmp/sub --truth ../h5-pack-data/dev_truth.jsonl   # expect 0.9581
 
 No secrets are included (no demo.env, keys, models or databases). All data is synthetic.
+
+Server + supervisor website (added after the hand-off): read `README.md` (3-command local start, tunnel, Render, phone setup),
+`docs/DEMO.md` (3-minute demo) and `docs/SERVER_DESIGN.md` (contract summary, schema, API, test results). Expected now: 594 passed, 1 skipped.

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Capture REAL request/response pairs (from the test database copy) into docs/api_examples.json."""
-import json, os, sqlite3, sys, tempfile
+import json, os, sys, tempfile
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from fastapi.testclient import TestClient
 from app.core.config import BACKEND_ROOT, Settings, get_settings

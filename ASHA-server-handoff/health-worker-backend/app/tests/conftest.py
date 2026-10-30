@@ -15,6 +15,10 @@ from app.main import create_app
 from app.services.dataset_import.importer import import_datasets
 from app.services.protocol_retrieval import cache
 
+# Tests never read a developer's .env (scripts/dev_setup.sh writes one with AUTH_MODE=api_key and real secrets): defaults + explicit overrides only.
+Settings.model_config["env_file"] = None
+get_settings.cache_clear()
+
 PG = os.environ.get("TEST_DB", "sqlite").lower() == "postgres"      # TEST_DB=postgres runs the whole suite on real PostgreSQL
 DATASETS = os.path.abspath(os.path.join(BACKEND_ROOT, "..", "health-worker-datasets"))
 REF = "2026-10-13"

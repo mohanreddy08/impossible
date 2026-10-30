@@ -14,7 +14,7 @@ threshold is ("kitne se upar tez maane") is not a person with a sign and is answ
 from __future__ import annotations
 
 import re
-from typing import List, Optional, Tuple
+from typing import List, Tuple
 
 from .facts import Facts
 from .normalize import fold_pattern

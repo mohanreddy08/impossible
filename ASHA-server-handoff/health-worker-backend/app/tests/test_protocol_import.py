@@ -64,7 +64,7 @@ def test_passages_never_cross_pages_and_respect_size():
 
 
 def test_pdf_import_pages_and_text(db, tmp_path):
-    pdf = FPDF(); 
+    pdf = FPDF() 
     for body in ("1 Alpha heading\n\nFirst page sentence about the register.", "2 Beta heading\n\nSecond page sentence about the cabinet."):
         pdf.add_page(); pdf.set_font("Helvetica", size=12); pdf.multi_cell(0, 8, body)
     f = tmp_path / "t.pdf"; f.write_bytes(bytes(pdf.output()))

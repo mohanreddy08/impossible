@@ -6,6 +6,10 @@ The Flutter app is built later and must keep working with **no server**; this AP
 > The repository's existing `backend/` folder is an unrelated Node storefront, so this project lives in `health-worker-backend/`.
 > Datasets are read from `../health-worker-datasets/` (override with `DATASET_DIR`).
 
+> **Supervisor website and public access (0.3.0):** accounts, per-phone keys, dashboard/admin/ask API and the website are described in
+> [`../docs/SERVER_DESIGN.md`](../docs/SERVER_DESIGN.md); running it and reaching it from phones in [`../README.md`](../README.md).
+> The phone endpoints below are unchanged. `API_KEYS` still works; per-phone keys made on the website are the recommended way.
+
 ## Status and honest limitations
 - **Tests:** see [`docs/VALIDATION_REPORT.md`](docs/VALIDATION_REPORT.md) (generated from real runs). SQLite and PostgreSQL 16.2 are both exercised; counts are listed there.
 - **No official protocol documents yet.** Retrieval and the protocol importer are tested only with clearly labelled **non-medical fixtures** (`fixtures/protocol_fixtures/`, status `TEST_FIXTURE_ONLY`, never approvable).

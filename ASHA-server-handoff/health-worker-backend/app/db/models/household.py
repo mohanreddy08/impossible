@@ -1,7 +1,7 @@
 import datetime as dt
 from typing import Optional
 
-from sqlalchemy import Boolean, CheckConstraint, Date, DateTime, Index, Integer, String
+from sqlalchemy import Boolean, CheckConstraint, Date, DateTime, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base, utcnow

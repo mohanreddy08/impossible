@@ -1,17 +1,17 @@
 import datetime as dt
 from typing import List, Optional, Tuple
 
-from sqlalchemy import func, or_, select
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.core.config import Settings
 from app.core.errors import Conflict, Forbidden, NotFound
 from app.core.principal import Principal, scoped_worker
 from app.db.base import utcnow
-from app.db.models import Household, Visit
+from app.db.models import Household
 from app.repositories import audit
 from app.schemas.domain import HouseholdCreate, HouseholdUpdate
-from app.services._common import check_version, new_id, today
+from app.services._common import check_version, new_id
 
 
 def get(db: Session, p: Principal, household_id: str) -> Household:

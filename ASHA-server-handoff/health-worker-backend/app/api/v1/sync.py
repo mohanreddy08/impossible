@@ -7,7 +7,7 @@ from sqlalchemy.orm import Session
 from app.core.config import Settings, get_settings
 from app.core.errors import DomainError
 from app.core.security import Principal, get_principal
-from app.db.session import get_db
+from app.db.session import get_db, serialized_writes
 from app.schemas.api import SyncPullOut, SyncPushOut, SyncStatusOut
 from app.core.principal import hash_installation
 from app.services.accounts import service as accounts
@@ -19,12 +19,13 @@ router = APIRouter(prefix="/sync", tags=["sync"])
 @router.post("/push", response_model=SyncPushOut, summary="Upload offline operations (idempotent; per-operation acknowledgement)")
 def push(body: service.SyncPushIn, request: Request, db: Session = Depends(get_db), p: Principal = Depends(get_principal),
          s: Settings = Depends(get_settings)):
-    out = service.push(db, p, body, s)
-    try:                                       # per-phone sync status for the website; never affects the sync answer
-        accounts.record_phone_sync(db, p, hash_installation(body.installation_id, s.device_hash_salt), request.headers.get("User-Agent"),
-                                   out["received"], out["acknowledged_count"])
-    except Exception:                          # noqa: BLE001
-        db.rollback()
+    with serialized_writes(db):
+        out = service.push(db, p, body, s)
+        try:                                   # per-phone sync status for the website; never affects the sync answer
+            accounts.record_phone_sync(db, p, hash_installation(body.installation_id, s.device_hash_salt), request.headers.get("User-Agent"),
+                                       out["received"], out["acknowledged_count"])
+        except Exception:                      # noqa: BLE001
+            db.rollback()
     return out
 
 

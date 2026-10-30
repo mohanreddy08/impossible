@@ -79,7 +79,7 @@ def villages(db: Session, p: Principal) -> List[dict]:
     q = select(Household.village_id, func.count()).group_by(Household.village_id)
     if w:
         q = q.where(Household.assigned_worker_id == w)
-    counts = dict(db.execute(q).all())
+    counts: Dict[str, int] = {k: v for k, v in db.execute(q).all()}
     out = []
     for v in db.scalars(select(Village).order_by(Village.source, Village.name)):
         if w and v.village_id not in counts:
@@ -126,9 +126,9 @@ def households(db: Session, p: Principal, day: dt.date, *, village_id=None, work
         due_count[hid] += 1
         min_prio[hid] = min(min_prio.get(hid, 9), r[2])
     if urgency:
-        rows = [(h, pr) for h, pr in rows if urg[h.household_id] == urgency]
+        rows = [r for r in rows if urg[r[0].household_id] == urgency]
     if priority:
-        rows = [(h, pr) for h, pr in rows if min_prio.get(h.household_id) == priority]
+        rows = [r for r in rows if min_prio.get(r[0].household_id) == priority]
     vnames, anames = _names(db)
     total = len(rows)
     page = rows[offset:offset + limit]
@@ -368,7 +368,7 @@ def overview(db: Session, p: Principal, day: dt.date) -> dict:
     hstat = select(Household.record_status, func.count()).where(~Household.household_id.in_(select(Member.household_id).distinct())).group_by(Household.record_status)
     if w:
         hstat = hstat.where(Household.assigned_worker_id == w)
-    synced = dict(db.execute(hstat).all())
+    synced: Dict[str, int] = {k: v for k, v in db.execute(hstat).all()}
     _, total_open = referrals_feed(db, p, open_only=True, limit=1)
     esc, esc_total = escalations(db, p, days=7, limit=10)
     _, esc_open = escalations(db, p, status="OPEN", limit=1)
@@ -390,14 +390,14 @@ def overview(db: Session, p: Principal, day: dt.date) -> dict:
 def asha_summaries(db: Session, p: Principal, day: dt.date) -> List[dict]:
     rows = vis.rows_for(db, day)
     asha_of = vis._load(db, day)["asha_of"]
-    by = defaultdict(Counter)
+    by: Dict[Any, Counter] = defaultdict(Counter)
     for r in rows:
         by[asha_of.get(r[0])]["p%d" % r[2]] += 1
-    hh = dict(db.execute(select(Household.assigned_worker_id, func.count()).group_by(Household.assigned_worker_id)).all())
-    ppl = dict(db.execute(select(Household.assigned_worker_id, func.count()).join(Member, Member.household_id == Household.household_id).group_by(Household.assigned_worker_id)).all())
-    refs = dict(db.execute(select(Household.assigned_worker_id, func.count()).join(Referral, Referral.household_id == Household.household_id)
-                           .where(Referral.record_state == "ACTIVE", Referral.referral_status != "ATTENDANCE_CONFIRMED").group_by(Household.assigned_worker_id)).all())
-    last = {}
+    hh: Dict[str, int] = {k: v for k, v in db.execute(select(Household.assigned_worker_id, func.count()).group_by(Household.assigned_worker_id)).all()}
+    ppl: Dict[str, int] = {k: v for k, v in db.execute(select(Household.assigned_worker_id, func.count()).join(Member, Member.household_id == Household.household_id).group_by(Household.assigned_worker_id)).all()}
+    refs: Dict[str, int] = {k: v for k, v in db.execute(select(Household.assigned_worker_id, func.count()).join(Referral, Referral.household_id == Household.household_id)
+                           .where(Referral.record_state == "ACTIVE", Referral.referral_status != "ATTENDANCE_CONFIRMED").group_by(Household.assigned_worker_id)).all()}
+    last: Dict[str, dt.datetime] = {}
     for k in db.scalars(select(PhoneKey).where(PhoneKey.revoked_at.is_(None))):
         if k.last_sync_at and (k.worker_id not in last or k.last_sync_at > last[k.worker_id]):
             last[k.worker_id] = k.last_sync_at
@@ -416,7 +416,7 @@ def village_summaries(db: Session, p: Principal, day: dt.date) -> List[dict]:
         q = q.where(Household.assigned_worker_id == w)
     hs = list(db.scalars(q))
     urg = _urgency_map(db, day, hs)
-    by = defaultdict(Counter)
+    by: Dict[Any, Counter] = defaultdict(Counter)
     for h in hs:
         by[h.village_id][urg[h.household_id]] += 1
     out = []

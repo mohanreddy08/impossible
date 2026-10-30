@@ -2,15 +2,13 @@
 """Question -> answer. Order matters: (1) danger signs, (2) scope, (3) retrieval + quoting. Nothing here calls a model."""
 from __future__ import annotations
 
-import re
 import time
 from typing import Dict, List
 
 from .config import PROTOCOLS
 from .escalation import Decision, decide
 from .facts import Facts
-from .normalize import normalize
-from .protocols import Section, load_sections
+from .protocols import load_sections
 from .retrieve import Index
 from .scope import refusal_reason
 

@@ -6,7 +6,7 @@ import hashlib
 import json
 import time
 from collections import deque
-from typing import Deque, Dict
+from typing import Deque, Dict, Optional
 
 from app.core.config import get_settings
 
@@ -36,7 +36,7 @@ class SlidingWindow:
         for k in [k for k, d in self.hits.items() if not d or now - d[-1] > WINDOW]:
             self.hits.pop(k, None)
 
-    def count(self, key: str, now: float = None) -> int:
+    def count(self, key: str, now: Optional[float] = None) -> int:
         now = now if now is not None else time.monotonic()
         d = self.hits.get(key)
         if not d:
@@ -45,7 +45,7 @@ class SlidingWindow:
             d.popleft()
         return len(d)
 
-    def add(self, key: str, now: float = None) -> int:
+    def add(self, key: str, now: Optional[float] = None) -> int:
         now = now if now is not None else time.monotonic()
         self._prune(now)
         d = self.hits.setdefault(key, deque())
@@ -54,7 +54,7 @@ class SlidingWindow:
         d.append(now)
         return len(d)
 
-    def retry_after(self, key: str, now: float = None) -> int:
+    def retry_after(self, key: str, now: Optional[float] = None) -> int:
         now = now if now is not None else time.monotonic()
         d = self.hits.get(key)
         return max(1, int(WINDOW - (now - d[0])) + 1) if d else 1

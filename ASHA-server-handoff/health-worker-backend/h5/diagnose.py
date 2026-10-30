@@ -12,7 +12,6 @@ import re
 import sys
 from pathlib import Path
 
-from .config import DATA
 
 
 def norm(t: str) -> str:

@@ -1,0 +1,38 @@
+# Render Blueprint: always-on HTTPS server + managed PostgreSQL. Render dashboard > New > Blueprint > pick this repo.
+# The phone app's Server address is then https://<service-name>.onrender.com (shown on the service page).
+# Free plans sleep after inactivity and the free database expires: use a paid instance for a real pilot.
+services:
+  - type: web
+    name: asha-server
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: starter
+    region: singapore
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: asha-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEVICE_HASH_SALT
+        generateValue: true
+      - key: ADMIN_PASSWORD
+        sync: false            # you type it in the Render dashboard when creating the Blueprint
+      - key: APP_ENV
+        value: production
+      - key: DOCS_ENABLED
+        value: "false"
+      - key: DEMO_TODAY
+        value: "2026-10-26"
+      - key: WEB_CONCURRENCY
+        value: "2"
+databases:
+  - name: asha-db
+    databaseName: asha
+    user: asha
+    plan: basic-256mb
+    region: singapore
+    postgresVersion: "16"

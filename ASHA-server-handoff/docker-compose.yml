@@ -1,0 +1,43 @@
+# One-command local start with PostgreSQL:   cp .env.example .env   (edit the three secrets)   then   docker compose up --build
+# Website: http://127.0.0.1:8000  (bound to this computer only; use scripts/start_public.sh to reach it from phones on other networks)
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: asha
+      POSTGRES_USER: asha
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U asha -d asha"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  app:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+psycopg2://asha:${POSTGRES_PASSWORD}@db:5432/asha
+      SECRET_KEY: ${SECRET_KEY:?set SECRET_KEY in .env}
+      DEVICE_HASH_SALT: ${DEVICE_HASH_SALT:?set DEVICE_HASH_SALT in .env}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
+      DEMO_PASSWORD: ${DEMO_PASSWORD:-}
+      APP_ENV: ${APP_ENV:-production}
+      DOCS_ENABLED: ${DOCS_ENABLED:-false}
+      DEMO_TODAY: ${DEMO_TODAY:-2026-10-26}
+      PUBLIC_URL: ${PUBLIC_URL:-}
+      WEB_CONCURRENCY: ${WEB_CONCURRENCY:-2}
+      FORWARDED_ALLOW_IPS: "127.0.0.1"
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - ./run:/app/run          # public_url.txt from the tunnel script (same file the script writes) + seeded credentials
+    restart: unless-stopped
+
+volumes:
+  pgdata:

@@ -1,0 +1,74 @@
+# Same as ASHA-server-handoff/.github/workflows/ci.yml, for this repository where the server lives in a sub-folder.
+name: asha-server-ci
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+defaults:
+  run:
+    working-directory: ASHA-server-handoff/health-worker-backend
+env:
+  H5_DATA: ${{ github.workspace }}/ASHA-server-handoff/h5-pack-data
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11", cache: pip, cache-dependency-path: ASHA-server-handoff/health-worker-backend/requirements*.txt }
+      - run: pip install -r requirements-dev.txt
+      - run: ruff check .
+      - run: mypy
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11", cache: pip, cache-dependency-path: ASHA-server-handoff/health-worker-backend/requirements*.txt }
+      - run: pip install -r requirements-dev.txt
+      - name: pytest (SQLite; includes auth, roles, sync idempotency, h5 /ask parity on 240 golden questions)
+        run: python -m pytest -o addopts="" -q -p no:cacheprovider
+      - name: h5 dev score (expect 0.9581)
+        run: |
+          python -m h5.run --split dev --out "$RUNNER_TEMP/sub"
+          python ../h5-pack-data/evaluate.py --submission "$RUNNER_TEMP/sub" --truth ../h5-pack-data/dev_truth.jsonl | tee "$RUNNER_TEMP/score.txt"
+          grep -q "PRIMARY SCORE *0.9581" "$RUNNER_TEMP/score.txt"
+
+  test-postgres:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11", cache: pip, cache-dependency-path: ASHA-server-handoff/health-worker-backend/requirements*.txt }
+      - run: pip install -r requirements-pgtest.txt -r requirements-postgres.txt
+      - name: migrations, drift and sync on real PostgreSQL 16
+        run: TEST_DB=postgres python -m pytest -o addopts="" -q app/tests/test_database.py app/tests/test_migrations.py app/tests/test_sync.py
+
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11", cache: pip, cache-dependency-path: ASHA-server-handoff/health-worker-backend/requirements*.txt }
+      - uses: actions/setup-node@v4
+        with: { node-version: "22" }
+      - run: python -m venv .venv && .venv/bin/pip install -r requirements.txt
+      - name: install Playwright + Chromium
+        working-directory: ASHA-server-handoff/health-worker-web
+        run: npm install --no-audit --no-fund && npx playwright install --with-deps chromium
+      - name: browser tests (login, visit list, map tap-to-open, Ask, escalation feed)
+        working-directory: ASHA-server-handoff
+        run: scripts/e2e.sh
+
+  docker:
+    runs-on: ubuntu-latest
+    defaults: { run: { working-directory: ASHA-server-handoff } }
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t asha-server:ci .

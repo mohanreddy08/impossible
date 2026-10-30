@@ -5,7 +5,7 @@ model size on disk, resident memory of the model process, embedding latency, ret
 
   OLLAMA=127.0.0.1:11500 .venv/bin/python scripts/benchmark_footprint.py [--llm]
 """
-import json, os, statistics as st, subprocess, sys, time, urllib.request
+import json, os, statistics as st, sys, time, urllib.request
 
 OLL = "http://" + os.environ.get("OLLAMA", "127.0.0.1:11500")
 EMB, LLM = os.environ.get("EMBED_MODEL", "bge-m3"), os.environ.get("LLM_MODEL", "qwen3:8b")

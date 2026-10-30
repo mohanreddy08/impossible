@@ -1,0 +1,25 @@
+[tool.ruff]
+target-version = "py311"
+line-length = 180                    # the codebase uses long single-line expressions; this keeps the check meaningful without churn
+extend-exclude = [".venv", "alembic/versions"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "W6", "B006", "B008"]
+# E701/E702/E731: the existing code deliberately uses one-line `if x: y`, `a; b` and small lambdas; FastAPI's Depends() defaults are B008
+ignore = ["E701", "E702", "E731", "E401", "E741", "B008"]   # + E401 (`import a, b`) and E741 (`l` as a name) used in older scripts
+
+[tool.ruff.lint.per-file-ignores]
+"app/api/v1/health_qa.py" = ["F403", "F401"]
+"app/tests/*" = ["E402"]
+"scripts/*" = ["E402"]
+"h5/*" = ["F841"]                    # the engine is kept byte-for-byte in step with its Dart port; harmless unused locals stay
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+follow_imports = "silent"
+check_untyped_defs = false
+warn_unused_ignores = false
+# Type-checked: the website/accounts layer added in 0.3.0 and the core it builds on. The h5 engine and older services are covered by tests.
+files = ["app/core", "app/services/accounts", "app/services/dashboard", "app/services/ask", "app/services/block", "app/schemas/dashboard.py",
+         "app/api/v1/auth.py", "app/api/v1/admin.py", "app/api/v1/dashboard.py", "app/api/v1/ask.py", "app/web", "app/db"]

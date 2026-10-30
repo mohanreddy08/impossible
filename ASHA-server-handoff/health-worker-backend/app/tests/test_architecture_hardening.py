@@ -15,9 +15,8 @@ from sqlalchemy.orm import Session
 
 from app.core.config import BACKEND_ROOT
 from app.core.principal import Principal
-from app.db.models import Household, Referral, ReportRecord, SyncOperation, Visit
-from app.schemas.domain import ReferralOut, referral_label
-from app.tests.conftest import REF
+from app.db.models import Household, Referral, SyncOperation, Visit
+from app.schemas.domain import referral_label
 
 ADMIN = Principal("admin", None, "t")
 KEYS = "worker|WRK-SYN-001|wk-one-key;worker|WRK-SYN-002|wk-two-key;admin||admin-key;hospital||hosp-key"
