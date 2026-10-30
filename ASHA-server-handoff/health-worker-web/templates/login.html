@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}{{ t('login.title') }}{% endblock %}
+{% block main %}
+<section class="card narrow">
+  <h1>{{ t('login.title') }}</h1>
+  {% if error %}<p class="alert alert-err" role="alert"><span aria-hidden="true">✖</span> {{ t(error) }}</p>{% endif %}
+  <form method="post" action="/login" class="stack">
+    <input type="hidden" name="next" value="{{ next }}">
+    <label for="username">{{ t('login.username') }}</label>
+    <input id="username" name="username" autocomplete="username" required maxlength="64" autofocus>
+    <label for="password">{{ t('login.password') }}</label>
+    <input id="password" name="password" type="password" autocomplete="current-password" required maxlength="256">
+    <button type="submit" class="btn">{{ t('login.submit') }}</button>
+  </form>
+  <p class="muted small">{{ t('login.help') }}</p>
+</section>
+{% endblock %}

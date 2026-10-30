@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% from "_macros.html" import badge, status, outcome %}
+{% block title %}{{ t('ov.title') }}{% endblock %}
+{% block main %}
+<h1>{{ t('ov.title') }} <span class="muted small">{{ t('demo.date') }} {{ o.date }}</span></h1>
+<ul class="tiles" aria-label="{{ t('ov.title') }}">
+  <li class="tile u-due"><span class="n">{{ o.due_today }}</span><span class="l"><span aria-hidden="true">■</span> {{ t('ov.due_today') }}</span></li>
+  <li class="tile u-urgent"><span class="n">{{ o.overdue }}</span><span class="l"><span aria-hidden="true">▲</span> {{ t('ov.overdue') }}</span></li>
+  <li class="tile u-this_week"><span class="n">{{ o.upcoming }}</span><span class="l"><span aria-hidden="true">◆</span> {{ t('ov.upcoming') }}</span></li>
+  <li class="tile"><span class="n">{{ o.open_referrals }}</span><span class="l"><span aria-hidden="true">↗</span> <a href="/referrals">{{ t('ov.open_referrals') }}</a></span></li>
+  <li class="tile"><span class="n">{{ o.households }}</span><span class="l">{{ t('ov.households') }} · {{ o.people }} {{ t('ov.people') }}</span></li>
+</ul>
+<p class="muted small">{{ t('ov.items_note') }} {{ t('ov.synced') }}: {{ t('status.overdue') }} {{ o.synced_records.OVERDUE }}, {{ t('status.due_today') }} {{ o.synced_records.DUE_TODAY }}, {{ t('status.due_this_week') }} {{ o.synced_records.UPCOMING }}.</p>
+
+<div class="grid2">
+<section class="card">
+  <h2>{{ t('ov.p1_today') }} <span class="muted small">({{ o.priority1|length }})</span></h2>
+  {% if o.priority1 %}
+  <div class="tablewrap"><table>
+    <thead><tr><th scope="col">{{ t('col.name') }}</th><th scope="col">{{ t('col.item') }}</th><th scope="col">{{ t('col.status') }}</th><th scope="col">{{ t('col.house') }}</th><th scope="col">{{ t('col.asha') }}</th></tr></thead>
+    <tbody>
+    {% for i in o.priority1 %}
+      <tr><td><a href="/households/{{ i.household_id }}">{{ i.name }}</a> <span class="muted">{{ i.age }}</span></td><td>{{ i.due_item }}</td><td>{{ status(i.status, t) }}</td><td>{{ i.house_no or i.household_id }} · {{ i.village_name }}</td><td>{{ i.asha_name }}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table></div>
+  {% else %}<p>{{ t('ov.none') }}</p>{% endif %}
+</section>
+
+<section class="card">
+  <h2>{{ t('ov.esc_7d') }} <span class="muted small">({{ o.escalations_7d_total }})</span></h2>
+  {% if o.escalations_7d %}
+  <ul class="plain">
+  {% for e in o.escalations_7d %}
+    <li>{{ outcome('ESCALATED') }} {{ e.at|ist }} · {{ e.cited_section_ids|join(', ') }} · {{ e.actor }} · <strong>{{ e.status or 'OPEN' }}</strong>{% if e.handled_by %} ({{ e.handled_by }}){% endif %}</li>
+  {% endfor %}
+  </ul>
+  <p><a href="/referrals">{{ t('nav.referrals') }} →</a></p>
+  {% else %}<p>{{ t('ov.none') }}</p>{% endif %}
+
+  <h2>{{ t('ov.stale') }} <span class="muted small">({{ o.phones_stale|length }} / {{ o.phones_total }})</span></h2>
+  {% if o.phones_stale %}
+  <ul class="plain">
+  {% for ph in o.phones_stale %}
+    <li><span class="badge u-due"><span aria-hidden="true">⏱</span> {{ t('adm.stale') }}</span> {{ ph.label }} · {{ ph.asha_name }} · {{ t('col.last_sync') }}: {{ ph.last_sync_at|ist if ph.last_sync_at else t('adm.never') }}</li>
+  {% endfor %}
+  </ul>
+  {% else %}<p>{{ t('ov.none') }}</p>{% endif %}
+</section>
+</div>
+{% endblock %}

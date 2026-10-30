@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% from "_macros.html" import badge, status %}
+{% block title %}{{ h.house_no or h.household_id }}{% endblock %}
+{% block head %}<script src="/static/js/household.js" defer></script>{% if h.has_map %}<script src="/static/js/map.js" defer></script>{% endif %}{% endblock %}
+{% block main %}
+<h1>{{ t('col.house') }} {{ h.house_no or h.household_id }} {{ badge(h.urgency, t) }}</h1>
+<p class="muted">{{ h.head_name or t('hh.new_family') }} · {{ h.village_name }} · {{ t('col.asha') }}: {{ h.asha_name }} ({{ h.worker_id }}) · {{ h.household_id }} · {{ h.members_count }} {{ t('col.members')|lower }}</p>
+<div class="grid2">
+<section class="card">
+  <h2>{{ t('hh.due') }} <span class="muted small">({{ t('demo.date') }} {{ h.as_of }})</span></h2>
+  {% if h.due_items %}
+  <ul class="chips">
+  {% for d in h.due_items %}<li class="chip u-{{ d.urgency|lower }}"><span aria-hidden="true">{{ urgency_icon[d.urgency] }}</span> <strong>{{ d.due_item }}</strong> · {{ d.name }} · {{ status(d.status, t) }} · {{ d.due_date }} · P{{ d.priority }}</li>{% endfor %}
+  </ul>
+  {% else %}<p>{{ badge('NONE', t) }}</p>{% endif %}
+
+  <h2>{{ t('hh.phone') }}</h2>
+  {% if h.has_phone %}
+  <p><span id="phone" class="mono">{{ h.phone_masked }}</span>
+     <button class="btn ghost" id="reveal" data-household="{{ h.household_id }}">{{ t('hh.reveal') }}</button></p>
+  <p class="muted small">{{ t('hh.reveal_note') }}</p>
+  {% else %}<p>{{ t('hh.none') }}</p>{% endif %}
+</section>
+{% if h.has_map and h.position %}
+<section class="card">
+  <h2>{{ t('hh.minimap') }}</h2>
+  <p class="alert alert-warn small"><span aria-hidden="true">⚠</span> {{ t('map.banner') }}</p>
+  <div class="mapbox mini" id="map" data-village="{{ h.village_id }}" data-focus="{{ h.household_id }}" data-mini="1" data-loading="{{ t('map.loading') }}" data-error="{{ t('common.error') }}"
+       data-l-urgent="{{ t('urgency.URGENT') }}" data-l-due="{{ t('urgency.DUE') }}" data-l-this_week="{{ t('urgency.THIS_WEEK') }}" data-l-none="{{ t('urgency.NONE') }}"></div>
+</section>
+{% endif %}
+</div>
+<section class="card">
+  <h2>{{ t('hh.members') }}</h2>
+  {% if h.members %}
+  <div class="tablewrap"><table>
+    <thead><tr><th scope="col">{{ t('col.name') }}</th><th scope="col">{{ t('col.relation') }}</th><th scope="col">{{ t('col.age') }}</th><th scope="col">{{ t('col.status') }}</th></tr></thead>
+    <tbody>{% for m in h.members %}<tr><td>{{ m.name }}</td><td>{{ m.relation or '' }}</td><td>{{ m.age }} {{ m.sex or '' }}</td><td>{% if m.pregnant %}<span class="tag">{{ t('hh.pregnant') }}</span>{% endif %}{% if m.ncd %} <span class="tag">{{ m.ncd }}</span>{% endif %}</td></tr>{% endfor %}</tbody>
+  </table></div>
+  {% else %}<p>{{ t('hh.none') }}</p>{% endif %}
+</section>
+<section class="card">
+  <h2>{{ t('hh.history') }}</h2>
+  <h3>{{ t('hh.synced_visits') }}</h3>
+  {% if h.visits %}
+  <div class="tablewrap"><table><thead><tr><th scope="col">{{ t('col.due') }}</th><th scope="col">{{ t('col.status') }}</th><th scope="col">{{ t('col.item') }}</th><th scope="col">{{ t('col.asha') }}</th></tr></thead>
+  <tbody>{% for v in h.visits %}<tr><td>{{ v.actual_visit_date or v.scheduled_date }}</td><td>{{ v.visit_status }}</td><td>{{ v.visit_reason }}</td><td>{{ v.worker_id }}</td></tr>{% endfor %}</tbody></table></div>
+  {% else %}<p>{{ t('hh.none') }}</p>{% endif %}
+  <h3>{{ t('hh.register') }}</h3>
+  {% if h.register_history %}
+  <ul class="plain cols">{% for e in h.register_history %}<li><span class="mono">{{ e.date }}</span> {{ e.what }} · {{ e.name }}</li>{% endfor %}</ul>
+  {% else %}<p>{{ t('hh.none') }}</p>{% endif %}
+</section>
+<section class="card">
+  <h2>{{ t('hh.referrals') }}</h2>
+  {% if h.referrals %}
+  <ul class="plain">{% for r in h.referrals %}<li>{{ r.referral_id }} · {{ r.service_category }} · {{ r.status_label }} ({{ r.referral_created_date }})</li>{% endfor %}</ul>
+  {% else %}<p>{{ t('hh.none') }}</p>{% endif %}
+</section>
+{% endblock %}

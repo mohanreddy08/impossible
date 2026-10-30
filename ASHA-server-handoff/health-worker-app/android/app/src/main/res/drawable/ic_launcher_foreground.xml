@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ASHA mark: a white shield with a teal medical cross. Drawn inside the adaptive-icon safe zone (centre 66 of 108). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,27 L75,35 L75,55 C75,68 66,77 54,82 C42,77 33,68 33,55 L33,35 Z" />
+    <path
+        android:fillColor="#1F7679"
+        android:pathData="M50,42 H58 V50 H66 V58 H58 V66 H50 V58 H42 V50 H50 Z" />
+</vector>

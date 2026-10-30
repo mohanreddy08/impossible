@@ -1,0 +1,3 @@
+-r requirements-dev.txt
+# Real PostgreSQL 16 for tests (self-contained binaries, no system install). Run: TEST_DB=postgres pytest
+pgserver==0.1.4

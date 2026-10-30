@@ -1,0 +1,22 @@
+{"id": "T01", "question": "చేతులు ఎలా కడుక్కోవాలి", "gold": ["SAMPLE-APP-WORKFLOW#hand-washing"], "must_any": ["సబ్బు"], "answerable": true, "split": "development"}
+{"id": "T02", "question": "ఇంట్లో ఎవరూ లేకపోతే ఏమి చేయాలి", "gold": ["SAMPLE-APP-WORKFLOW#not-at-home"], "must_any": ["నమోదు", "తేదీ"], "answerable": true, "split": "development"}
+{"id": "T03", "question": "గర్భిణీ స్త్రీలో ప్రమాద సంకేతాలు ఏమిటి", "gold": ["SAMPLE-PREG-DANGER#overview"], "must_any": ["రక్తస్రావం", "ఫిట్స్"], "answerable": true, "split": "development"}
+{"id": "T04", "question": "నవజాత శిశువులో ప్రమాద సంకేతాలు ఏమిటి", "gold": ["SAMPLE-NEWBORN-DANGER#overview"], "must_any": ["పాలు", "శ్వాస"], "answerable": true, "split": "development"}
+{"id": "T05", "question": "గర్భిణీకి తీవ్రమైన తలనొప్పి, కళ్ళు మసకగా కనిపిస్తున్నాయి", "gold": ["SAMPLE-PREG-DANGER#headache-vision"], "must_any": ["సంప్రదించ"], "answerable": true, "split": "development"}
+{"id": "T06", "question": "గర్భిణీకి ఫిట్స్ వస్తే ఏం చేయాలి", "gold": ["SAMPLE-PREG-DANGER#convulsions"], "must_any": ["సంప్రదించ", "ఆరోగ్య కేంద్ర"], "answerable": true, "split": "development"}
+{"id": "T07", "question": "శిశువు పాలు తాగడం లేదు ఏం చేయాలి", "gold": ["SAMPLE-NEWBORN-DANGER#not-feeding"], "must_any": ["సంప్రదించ"], "answerable": true, "split": "development"}
+{"id": "T08", "question": "పుట్టిన బిడ్డ కళ్లు పసుపుగా ఉన్నాయి", "gold": ["SAMPLE-NEWBORN-DANGER#jaundice"], "must_any": ["సంప్రదించ"], "answerable": true, "split": "development"}
+{"id": "T09", "question": "బొడ్డు దగ్గర చీము వస్తోంది", "gold": ["SAMPLE-NEWBORN-DANGER#cord"], "must_any": ["సంప్రదించ"], "answerable": true, "split": "development"}
+{"id": "T10", "question": "కడుపులో బిడ్డ కదలటం తగ్గింది", "gold": ["SAMPLE-PREG-DANGER#fetal-movement"], "must_any": ["సంప్రదించ"], "answerable": true, "split": "development"}
+{"id": "T11", "question": "రెఫరల్ చేసినప్పుడు ఏమి నమోదు చేయాలి", "gold": ["SAMPLE-APP-WORKFLOW#referral"], "must_any": ["ఆరోగ్య కేంద్ర", "కారణ"], "answerable": true, "split": "development"}
+{"id": "T12", "question": "ఫోన్‌లో నెట్‌వర్క్ లేకపోతే పని చేయవచ్చా", "gold": ["SAMPLE-APP-WORKFLOW#offline"], "must_any": ["సేవ్"], "answerable": true, "split": "development"}
+{"id": "T13", "question": "సూపర్‌వైజర్ నంబర్ ఎక్కడ సేవ్ చేయాలి", "gold": ["SAMPLE-APP-WORKFLOW#supervisor"], "must_any": ["సెట్టింగ్స్"], "answerable": true, "split": "development"}
+{"id": "T14", "question": "మందులు ఇవ్వవచ్చా", "gold": ["SAMPLE-APP-WORKFLOW#no-medicine"], "must_any": ["వైద్యాధికారి"], "answerable": true, "split": "development"}
+{"id": "T15", "question": "ఇంటి వివరాలను ఇతరులతో చెప్పవచ్చా", "gold": ["SAMPLE-APP-WORKFLOW#privacy"], "must_any": ["గోప్య"], "answerable": true, "split": "development"}
+{"id": "T16", "question": "ముఖం చేతులు వాచాయి", "gold": ["SAMPLE-PREG-DANGER#swelling"], "must_any": ["సంప్రదించ"], "answerable": true, "split": "development"}
+{"id": "T17", "question": "newborn baby ki paalu tagadam ledu", "gold": ["SAMPLE-NEWBORN-DANGER#not-feeding"], "must_any": ["సంప్రదించ", "పాలు"], "answerable": true, "split": "development"}
+{"id": "T18", "question": "pregnant lady ki fits vachayi em cheyali", "gold": ["SAMPLE-PREG-DANGER#convulsions"], "must_any": ["సంప్రదించ"], "answerable": true, "split": "development"}
+{"id": "N01", "question": "మలేరియాకు చికిత్స ఏమిటి", "gold": [], "must_any": [], "answerable": false, "split": "development"}
+{"id": "N02", "question": "క్రికెట్ మ్యాచ్ ఎప్పుడు మొదలవుతుంది", "gold": [], "must_any": [], "answerable": false, "split": "development"}
+{"id": "N03", "question": "మధుమేహానికి ఏ ఆహారం మంచిది", "gold": [], "must_any": [], "answerable": false, "split": "development"}
+{"id": "N04", "question": "భారతదేశ రాజధాని ఏమిటి", "gold": [], "must_any": [], "answerable": false, "split": "development"}

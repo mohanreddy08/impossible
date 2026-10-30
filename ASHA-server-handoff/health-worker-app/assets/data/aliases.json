@@ -1,0 +1,256 @@
+{
+ "version": 1,
+ "note": "Query expansion list. If the question contains any term of a group, ALL terms of that group are added before searching, so English, Telugu and Telugu typed in English letters meet. A group marked generic (who it is about, not what is wrong) is not enough on its own to count a passage as on-topic. Edit freely; run python asha-data/build_data.py after.",
+ "groups": [
+  {
+   "id": "bleeding",
+   "terms": [
+    "bleeding",
+    "bleed",
+    "blood",
+    "రక్తస్రావం",
+    "రక్తం",
+    "rakta sravam",
+    "raktasravam",
+    "rakta",
+    "blooding"
+   ]
+  },
+  {
+   "id": "pregnant",
+   "terms": [
+    "pregnant",
+    "pregnancy",
+    "garbhini",
+    "garbhini ki",
+    "గర్భిణీ",
+    "గర్భిణి",
+    "గర్భధారణ",
+    "garbham",
+    "గర్భం"
+   ],
+   "generic": true
+  },
+  {
+   "id": "newborn",
+   "terms": [
+    "newborn",
+    "baby",
+    "infant",
+    "navajata",
+    "నవజాత",
+    "శిశువు",
+    "పసిబిడ్డ",
+    "pasi bidda",
+    "pasibidda",
+    "sisuvu",
+    "శిశువుకు"
+   ],
+   "generic": true
+  },
+  {
+   "id": "fits",
+   "terms": [
+    "fits",
+    "fit",
+    "convulsion",
+    "convulsions",
+    "seizure",
+    "ఫిట్స్",
+    "మూర్ఛ",
+    "pitts",
+    "pits",
+    "murcha"
+   ]
+  },
+  {
+   "id": "headache",
+   "terms": [
+    "headache",
+    "head pain",
+    "head ache",
+    "తలనొప్పి",
+    "talanoppi",
+    "thalanoppi"
+   ]
+  },
+  {
+   "id": "vision",
+   "terms": [
+    "blurred",
+    "blurry",
+    "blur",
+    "vision",
+    "చూపు",
+    "మసక",
+    "మసకగా",
+    "మసకబారడం",
+    "chupu",
+    "masaka"
+   ]
+  },
+  {
+   "id": "abdominal",
+   "terms": [
+    "belly pain",
+    "abdominal pain",
+    "stomach pain",
+    "tummy pain",
+    "కడుపు నొప్పి",
+    "kadupu noppi",
+    "kadupulo noppi"
+   ]
+  },
+  {
+   "id": "movement",
+   "terms": [
+    "movement",
+    "moving",
+    "moves",
+    "కదలిక",
+    "కదలికలు",
+    "కదలడం",
+    "kadalika",
+    "kadalatledu"
+   ]
+  },
+  {
+   "id": "fever",
+   "terms": [
+    "fever",
+    "jwaram",
+    "జ్వరం"
+   ]
+  },
+  {
+   "id": "cold",
+   "terms": [
+    "cold",
+    "challa",
+    "చల్లగా",
+    "చల్ల"
+   ]
+  },
+  {
+   "id": "breathing",
+   "terms": [
+    "breathing",
+    "breath",
+    "shwasa",
+    "swasa",
+    "శ్వాస",
+    "ఊపిరి",
+    "oopiri"
+   ]
+  },
+  {
+   "id": "feeding",
+   "terms": [
+    "feeding",
+    "feed",
+    "suck",
+    "milk",
+    "paalu",
+    "palu",
+    "పాలు",
+    "తాగడం",
+    "తాగకపోవడం",
+    "tagadam",
+    "tagatledu",
+    "taagatledu"
+   ]
+  },
+  {
+   "id": "yellow",
+   "terms": [
+    "yellow",
+    "jaundice",
+    "pasupu",
+    "పసుపు",
+    "పసుపుగా",
+    "పసుపు రంగు"
+   ]
+  },
+  {
+   "id": "cord",
+   "terms": [
+    "cord",
+    "umbilical",
+    "bondu",
+    "బొడ్డు",
+    "pus",
+    "chimu",
+    "చీము"
+   ]
+  },
+  {
+   "id": "sleepy",
+   "terms": [
+    "sleepy",
+    "limp",
+    "drowsy",
+    "nidramattu",
+    "నిద్రమత్తు",
+    "సొమ్మసిల్లి"
+   ]
+  },
+  {
+   "id": "leak",
+   "terms": [
+    "leak",
+    "leaking",
+    "water",
+    "fluid",
+    "ద్రవం",
+    "కారడం",
+    "karadam"
+   ]
+  },
+  {
+   "id": "swelling",
+   "terms": [
+    "swelling",
+    "swollen",
+    "vapu",
+    "వాపు",
+    "వాచడం"
+   ]
+  },
+  {
+   "id": "faint",
+   "terms": [
+    "faint",
+    "fainting",
+    "unconscious",
+    "స్పృహ",
+    "spruha"
+   ]
+  },
+  {
+   "id": "visit-home",
+   "terms": [
+    "nobody",
+    "home",
+    "house",
+    "inti",
+    "ఇంట్లో",
+    "evaru",
+    "ఎవరూ",
+    "lekapote",
+    "లేకపోతే"
+   ],
+   "generic": true
+  },
+  {
+   "id": "danger-signs",
+   "terms": [
+    "danger",
+    "danger signs",
+    "ప్రమాద",
+    "ప్రమాద సంకేతాలు",
+    "pramada"
+   ],
+   "generic": true
+  }
+ ]
+}

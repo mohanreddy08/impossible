@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% from "_macros.html" import outcome %}
+{% block title %}{{ t('ref.title') }}{% endblock %}
+{% block head %}<script src="/static/js/referrals.js" defer></script>{% endblock %}
+{% block main %}
+<h1>{{ t('ref.title') }}</h1>
+<section class="card" aria-labelledby="esc-h">
+  <h2 id="esc-h">{{ t('ref.esc') }} <span class="muted small">({{ etotal }})</span></h2>
+  <p class="muted small">{{ t('ref.esc_note') }}</p>
+  {% if esc %}
+  <div class="tablewrap"><table id="esc-table">
+    <thead><tr><th scope="col">{{ t('col.when') }}</th><th scope="col">{{ t('col.outcome') }}</th><th scope="col">{{ t('col.sections') }}</th><th scope="col">{{ t('col.rules') }}</th><th scope="col">{{ t('col.status') }}</th><th scope="col">{{ t('col.handled') }}</th><th scope="col">{{ t('col.actions') }}</th></tr></thead>
+    <tbody>
+    {% for e in esc %}
+    <tr id="esc-{{ e.id }}"><td>{{ e.at|ist }}<br><span class="muted small">{{ e.actor }} · {{ e.channel }}</span></td><td>{{ outcome('ESCALATED') }}</td><td>{{ e.cited_section_ids|join(', ') }}</td><td class="small">{{ e.rule_ids|join(', ') }}</td>
+      <td class="esc-status"><strong>{{ e.status or 'OPEN' }}</strong>{% if e.note_code %}<br><span class="small">{{ e.note_code }}</span>{% endif %}</td>
+      <td class="esc-handled">{{ e.handled_by or '—' }}{% if e.handled_at %}<br><span class="muted small">{{ e.handled_at|ist }}</span>{% endif %}</td>
+      <td>{% if principal.role != 'worker' and e.status != 'CLOSED' %}
+        <label class="sr-only" for="note-{{ e.id }}">{{ t('ref.note') }}</label>
+        <select id="note-{{ e.id }}" class="esc-note"><option value="">{{ t('ref.note') }}…</option>{% for n in notes %}<option>{{ n }}</option>{% endfor %}</select>
+        {% if e.status != 'ACKNOWLEDGED' %}<button class="btn ghost esc-act" data-id="{{ e.id }}" data-status="ACKNOWLEDGED">{{ t('ref.ack') }}</button>{% endif %}
+        <button class="btn ghost esc-act" data-id="{{ e.id }}" data-status="CLOSED">{{ t('ref.close') }}</button>
+      {% endif %}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table></div>
+  {% else %}<p>{{ t('ov.none') }}</p>{% endif %}
+</section>
+
+<section class="card" aria-labelledby="ref-h">
+  <h2 id="ref-h">{{ t('ref.refs') }} <span class="muted small">({{ rtotal }})</span></h2>
+  <p>{% if open_only %}<a href="/referrals?all=1">{{ t('ref.show_all') }}</a>{% else %}<a href="/referrals">{{ t('ref.open_only') }}</a>{% endif %}</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th scope="col">{{ t('col.household') }}</th><th scope="col">{{ t('col.service') }}</th><th scope="col">{{ t('col.created') }}</th><th scope="col">{{ t('col.status') }}</th><th scope="col">{{ t('col.handled') }}</th><th scope="col">{{ t('col.actions') }}</th></tr></thead>
+    <tbody>
+    {% for r in refs %}
+    <tr id="ref-{{ r.referral_id }}"><td><a href="/households/{{ r.household_id }}">{{ r.household_id }}</a><br><span class="muted small">{{ r.village_name or r.village_id }} · {{ r.referral_id }}</span></td>
+      <td>{{ r.service_category }}<br><span class="muted small">{{ r.facility_id }}</span></td><td>{{ r.referral_created_date }}{% if r.planned_visit_date %}<br><span class="small">{{ t('col.planned') }}: {{ r.planned_visit_date }}</span>{% endif %}</td>
+      <td class="ref-status"><span class="badge {{ 'o-answered' if r.referral_status == 'ATTENDANCE_CONFIRMED' else 'u-due' if r.record_state == 'ACTIVE' else '' }}">{{ r.referral_status }}</span><br><span class="small">{{ r.status_label }}</span></td>
+      <td>{{ r.handled_by or '—' }}{% if r.handled_at %}<br><span class="muted small">{{ r.handled_at|ist }}</span>{% endif %}</td>
+      <td>{% if r.record_state == 'ACTIVE' and r.referral_status != 'ATTENDANCE_CONFIRMED' %}
+        <form class="ref-form stack-inline" data-id="{{ r.referral_id }}" data-version="{{ r.version }}">
+          {% if r.referral_status == 'RECOMMENDED' %}
+            <label for="pd-{{ r.referral_id }}" class="small">{{ t('ref.planned_date') }}</label>
+            <input id="pd-{{ r.referral_id }}" type="date" name="planned_visit_date" min="{{ r.referral_created_date }}" required>
+            <button class="btn ghost" name="action" value="plan">{{ t('ref.plan') }}</button>
+          {% elif principal.role != 'worker' %}
+            <label for="rid-{{ r.referral_id }}" class="small">{{ t('ref.record_id') }}</label>
+            <input id="rid-{{ r.referral_id }}" name="attendance_record_id" maxlength="32" pattern="[A-Za-z0-9_-]+" required>
+            <label for="cd-{{ r.referral_id }}" class="small">{{ t('ref.confirm_date') }}</label>
+            <input id="cd-{{ r.referral_id }}" type="date" name="attendance_confirmation_date" min="{{ r.planned_visit_date }}" max="{{ today }}" required>
+            <button class="btn ghost" name="action" value="confirm">{{ t('ref.confirm') }}</button>
+          {% endif %}
+        </form>
+      {% endif %}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table></div>
+</section>
+{% endblock %}

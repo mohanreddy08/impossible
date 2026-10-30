@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% from "_macros.html" import badge %}
+{% block title %}{{ t('hh.title') }}{% endblock %}
+{% block main %}
+<h1>{{ t('hh.title') }} <span class="muted small">({{ total }})</span></h1>
+<form method="get" action="/households" class="filters">
+  <label for="q">{{ t('hh.search') }}</label><input id="q" name="q" value="{{ f.q or '' }}" maxlength="40">
+  <label for="village_id">{{ t('col.village') }}</label>
+  <select id="village_id" name="village_id"><option value="">{{ t('hh.all') }}</option>
+    {% for v in villages %}<option value="{{ v.village_id }}"{% if v.village_id == f.village_id %} selected{% endif %}>{{ v.name }}</option>{% endfor %}</select>
+  {% if principal.role != 'worker' %}
+  <label for="worker_id">{{ t('col.asha') }}</label>
+  <select id="worker_id" name="worker_id"><option value="">{{ t('hh.all') }}</option>
+    {% for a in ashas %}<option value="{{ a.worker_id }}"{% if a.worker_id == f.worker_id %} selected{% endif %}>{{ a.name }}</option>{% endfor %}</select>
+  {% endif %}
+  <label for="urgency">{{ t('col.urgency') }}</label>
+  <select id="urgency" name="urgency"><option value="">{{ t('hh.all') }}</option>
+    {% for u in ['URGENT', 'DUE', 'THIS_WEEK', 'NONE'] %}<option value="{{ u }}"{% if u == f.urgency %} selected{% endif %}>{{ t('urgency.' ~ u) }}</option>{% endfor %}</select>
+  <button class="btn" type="submit">{{ t('hh.filter') }}</button>
+</form>
+<div class="tablewrap"><table class="rows-link">
+  <thead><tr><th scope="col">{{ t('col.house') }}</th><th scope="col">{{ t('col.head') }}</th><th scope="col">{{ t('col.village') }}</th><th scope="col">{{ t('col.asha') }}</th><th scope="col">{{ t('col.members') }}</th><th scope="col">{{ t('col.urgency') }}</th><th scope="col">{{ t('hh.due') }}</th></tr></thead>
+  <tbody>
+  {% for h in items %}
+  <tr data-href="/households/{{ h.household_id }}"><td><a href="/households/{{ h.household_id }}">{{ h.house_no or h.household_id }}</a>{% if h.from_phone %} <span class="tag">{{ t('hh.new_family') }}</span>{% endif %}</td>
+    <td>{{ h.head_name or '—' }}</td><td>{{ h.village_name }}</td><td>{{ h.asha_name }}</td><td>{{ h.members }}</td><td>{{ badge(h.urgency, t) }}</td><td>{{ h.due_items }}</td></tr>
+  {% endfor %}
+  </tbody>
+</table></div>
+{% set q = 'q=' ~ (f.q or '')|urlencode ~ '&village_id=' ~ (f.village_id or '') ~ '&worker_id=' ~ (f.worker_id or '') ~ '&urgency=' ~ (f.urgency or '') %}
+<nav class="pager" aria-label="pages">
+  {% if page > 0 %}<a class="btn ghost" href="/households?{{ q }}&page={{ page - 1 }}">← {{ t('hh.prev') }}</a>{% endif %}
+  <span>{{ page * 50 + 1 if total else 0 }}–{{ [page * 50 + 50, total]|min }} {{ t('hh.of') }} {{ total }}</span>
+  {% if (page + 1) * 50 < total %}<a class="btn ghost" href="/households?{{ q }}&page={{ page + 1 }}">{{ t('hh.next') }} →</a>{% endif %}
+</nav>
+{% endblock %}

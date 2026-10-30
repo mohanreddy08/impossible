@@ -1,0 +1,58 @@
+{
+  "total": 142,
+  "by_split": {
+    "FINAL_EVALUATION": {
+      "cases": 107,
+      "exact_status_matches": 107,
+      "exact_status_accuracy": 1.0,
+      "escalation_positives": 32,
+      "escalation_detected": 32,
+      "escalation_recall": 1.0,
+      "false_negatives": [],
+      "false_positives": [],
+      "other_mismatches": [],
+      "confusion": {
+        "CLARIFICATION_REQUIRED->CLARIFICATION_REQUIRED": 12,
+        "ESCALATION_REQUIRED->ESCALATION_REQUIRED": 32,
+        "NORMAL_PROTOCOL_QUERY->NORMAL_PROTOCOL_QUERY": 58,
+        "OUT_OF_SCOPE->OUT_OF_SCOPE": 5
+      }
+    },
+    "ALL": {
+      "cases": 142,
+      "exact_status_matches": 142,
+      "exact_status_accuracy": 1.0,
+      "escalation_positives": 48,
+      "escalation_detected": 48,
+      "escalation_recall": 1.0,
+      "false_negatives": [],
+      "false_positives": [],
+      "other_mismatches": [],
+      "confusion": {
+        "CLARIFICATION_REQUIRED->CLARIFICATION_REQUIRED": 16,
+        "ESCALATION_REQUIRED->ESCALATION_REQUIRED": 48,
+        "NORMAL_PROTOCOL_QUERY->NORMAL_PROTOCOL_QUERY": 72,
+        "OUT_OF_SCOPE->OUT_OF_SCOPE": 6
+      }
+    },
+    "RULE_DEVELOPMENT": {
+      "cases": 35,
+      "exact_status_matches": 35,
+      "exact_status_accuracy": 1.0,
+      "escalation_positives": 16,
+      "escalation_detected": 16,
+      "escalation_recall": 1.0,
+      "false_negatives": [],
+      "false_positives": [],
+      "other_mismatches": [],
+      "confusion": {
+        "CLARIFICATION_REQUIRED->CLARIFICATION_REQUIRED": 4,
+        "ESCALATION_REQUIRED->ESCALATION_REQUIRED": 16,
+        "NORMAL_PROTOCOL_QUERY->NORMAL_PROTOCOL_QUERY": 14,
+        "OUT_OF_SCOPE->OUT_OF_SCOPE": 1
+      }
+    }
+  },
+  "ruleset_version": "0.3.1-draft",
+  "ruleset_review_status": "DRAFT_UNREVIEWED_NOT_CLINICALLY_APPROVED"
+}

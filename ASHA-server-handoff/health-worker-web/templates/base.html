@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}{{ t('app.name') }}{% endblock %} · {{ t('app.name') }}</title>
+<link rel="stylesheet" href="/static/css/app.css">
+<script src="/static/js/app.js" defer></script>
+{% block head %}{% endblock %}
+</head>
+<body>
+<a class="skip" href="#main">{{ t('skip') }}</a>
+<div class="banner" role="note"><span aria-hidden="true">⚠</span> <strong>{{ t('banner.synthetic') }}</strong> {{ t('banner.assist') }}</div>
+<header class="top">
+  <div class="brand"><a href="/">{{ t('app.name') }}</a> <span class="muted">{{ t('app.block') }}</span></div>
+  {% if user %}
+  <details class="navwrap" id="navwrap">
+    <summary>{{ t('nav.menu') }}</summary>
+    <nav aria-label="{{ t('nav.menu') }}">
+      <ul>
+        {% set links = [('/', 'nav.overview'), ('/visits', 'nav.visits'), ('/map', 'nav.map'), ('/households', 'nav.households'), ('/referrals', 'nav.referrals'), ('/ask', 'nav.ask'), ('/reports', 'nav.reports')] %}
+        {% if user.role == 'admin' %}{% set links = links + [('/admin', 'nav.admin')] %}{% endif %}
+        {% set links = links + [('/settings', 'nav.settings')] %}
+        {% for href, key in links %}
+        <li><a href="{{ href }}"{% if path == href or (href != '/' and path.startswith(href)) %} aria-current="page"{% endif %}>{{ t(key) }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </details>
+  {% endif %}
+  <div class="who">
+    <span class="lang" aria-label="{{ t('lang.label') }}"><a href="/lang/en?next={{ path|urlencode }}" lang="en"{% if lang == 'en' %} aria-current="true"{% endif %}>English</a> · <a href="/lang/te?next={{ path|urlencode }}" lang="te"{% if lang == 'te' %} aria-current="true"{% endif %}>తెలుగు</a></span>
+    {% if user %}
+    <span class="muted">{{ user.display_name }} ({{ user.role }}{% if user.worker_id %}, {{ user.worker_id }}{% endif %})</span>
+    <form method="post" action="/logout" class="inline"><button type="submit" class="link">{{ t('nav.signout') }}</button></form>
+    {% endif %}
+  </div>
+</header>
+<main id="main" tabindex="-1">
+{% block main %}{% endblock %}
+</main>
+<footer class="foot">
+  <p><span aria-hidden="true">⚕</span> {{ t('banner.assist') }} {{ t('banner.synthetic') }}{% if demo_today %} · {{ t('demo.date') }}: <strong>{{ demo_today }}</strong>{% endif %}</p>
+</footer>
+<div id="live" class="sr-only" aria-live="polite"></div>
+</body>
+</html>

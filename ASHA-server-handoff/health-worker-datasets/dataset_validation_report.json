@@ -1,0 +1,216 @@
+{
+  "dataset": "frontline_health_worker_companion_synthetic",
+  "synthetic_data_declaration": "ALL RECORDS ARE SYNTHETIC. Not clinical advice, not real protocols, not real patients/facilities.",
+  "reference_date": "2026-10-13",
+  "record_counts": {
+    "health_questions": 200,
+    "danger_sign_tests": 142,
+    "protocol_passages": 0,
+    "households": 500,
+    "visits": 2032,
+    "referrals": 268,
+    "hospital_report_tests": 55,
+    "offline_sync_tests": 52,
+    "retrieval_evaluation": 0
+  },
+  "summary": {
+    "passed": 31,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "check": "unique_ids_Q",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "unique_ids_S",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "unique_ids_H",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "unique_ids_V",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "unique_ids_R",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "unique_ids_G",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "unique_ids_Y",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "fk_visit_household",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "fk_referral_household",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "fk_referral_visit",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "fk_visit_referral",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "fk_hospital_test_referrals",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "referral_household_matches_visit",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "visit_date_consistency",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "household_register_matches_visits",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "referral_status_vs_attendance_and_visit",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "confirmed_only_with_attendance_record",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "hospital_report_counts_match_referrals",
+      "status": "PASS",
+      "violations": 0,
+      "detail": "recomputed independently from referral_records.csv"
+    },
+    {
+      "check": "hospital_report_scenario_coverage",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "sync_no_data_loss_expected",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "sync_required_fields",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "language_labels_match_script_Q",
+      "status": "PASS",
+      "violations": 0,
+      "detail": "script check only; Telugu transliteration plausibility needs a human reader"
+    },
+    {
+      "check": "language_labels_match_script_S",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "question_language_distribution",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "question_text_unique",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "safety_dev_final_text_disjoint",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "no_fabricated_citations_Q",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "no_invented_rule_ids_S",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "synthetic_label_all_records",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    },
+    {
+      "check": "no_pii_patterns_in_structured_files",
+      "status": "PASS",
+      "violations": 0,
+      "detail": "phone/Aadhaar-like numbers, e-mails, URLs"
+    },
+    {
+      "check": "record_counts_meet_requirements",
+      "status": "PASS",
+      "violations": 0,
+      "detail": ""
+    }
+  ],
+  "errors": [],
+  "blocked_or_incomplete": [
+    "protocol_passages.jsonl: 0 records. No official protocol corpus was supplied; passages, versions, authorities and page numbers were not invented.",
+    "retrieval_evaluation.jsonl: 0 records. Labels require real passage IDs (depends on protocol_passages.jsonl).",
+    "health_questions_200.jsonl: expected_answer/document/section/page/evidence are null; every row is REQUIRES_SOURCE_VERIFICATION.",
+    "danger_sign_tests.jsonl: expected_rule_id is null; expected_safety_status is a preliminary label that needs clinical review before use.",
+    "Supported-answer citation check is vacuous (0 supported answers exist) - it does NOT show answers are verified."
+  ]
+}

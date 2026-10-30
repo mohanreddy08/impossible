@@ -1,0 +1,415 @@
+{
+  "ruleset_id": "danger-sign-lexicon",
+  "version": "0.3.1-draft",
+  "review_status": "DRAFT_UNREVIEWED_NOT_CLINICALLY_APPROVED",
+  "clinically_validated": false,
+  "provenance": "Symptom-phrase lexicon written for software testing against the SYNTHETIC danger_sign_tests vocabulary. It is NOT derived from an approved clinical protocol, contains no clinical thresholds, and must be replaced/approved by a qualified clinical reviewer before any real use. v0.2.0-draft adds draft patterns for pregnancy and newborn danger signs (headache with blurred vision, reduced baby movement, yellow skin/eyes, cord infection, very sleepy/limp, very cold body, newborn fever, leaking fluid, sudden swelling, severe belly pain in pregnancy) and Telugu / Telugu-typed-in-English variants. Written by a developer from commonly published danger-sign wording, NOT reviewed by a clinician.",
+  "short_message_max_tokens": 2,
+  "messages": {
+    "ESCALATION_REQUIRED": "Possible danger sign detected. Follow your approved escalation protocol and contact the supervising medical officer. [PLACEHOLDER TEXT - pending clinical approval]",
+    "CLARIFICATION_REQUIRED": "Please clarify: who is affected, which symptom, and whether it is happening now. [PLACEHOLDER TEXT - pending clinical approval]",
+    "OUT_OF_SCOPE": "This app cannot give medicine doses or prescriptions. Please refer the patient to a medical officer. [PLACEHOLDER TEXT - pending clinical approval]"
+  },
+  "cues": {
+    "clause_split": "[,;:.!?\\n]|\\bbut\\b|\\bhowever\\b|\\bkani\\b|\\bkaani\\b|కానీ|కాని",
+    "negation_tokens": [
+      "no",
+      "not",
+      "without",
+      "never",
+      "none",
+      "denies",
+      "isn't",
+      "hasn't",
+      "doesn't",
+      "didn't",
+      "don't",
+      "dont",
+      "లేదు",
+      "లేవు",
+      "లేకుండా",
+      "లేదండి",
+      "రావట్లేదు",
+      "ledu",
+      "ledhu",
+      "levu",
+      "ravatledu",
+      "lekunda"
+    ],
+    "negation_after_tokens": [
+      "లేదు",
+      "లేవు",
+      "లేకుండా",
+      "లేదండి",
+      "రావట్లేదు",
+      "ledu",
+      "ledhu",
+      "levu",
+      "ravatledu",
+      "lekunda"
+    ],
+    "negation_window_before": 3,
+    "negation_window_after": 2,
+    "history_phrases": [
+      "last month",
+      "last year",
+      "last week",
+      "earlier",
+      "previously",
+      "used to",
+      "in the past",
+      " ago",
+      "గత నెల",
+      "గత సంవత్సరం",
+      "గతంలో",
+      "ఉండేది",
+      "gata nela",
+      "gata samvatsaram",
+      "gatamlo",
+      "undedi"
+    ],
+    "current_phrases": [
+      "now",
+      "right now",
+      "currently",
+      "today",
+      "this morning",
+      "since morning",
+      "ఇప్పుడు",
+      "ippudu",
+      "ఇప్పుడే",
+      "ippude"
+    ],
+    "hypothetical_phrases": [
+      "what should i do if",
+      "what to do if",
+      "what if",
+      "ఒకవేళ",
+      "ఒక వేళ",
+      "okavela"
+    ]
+  },
+  "rules": [
+    {
+      "rule_id": "DSR-BLEEDING-SEVERE",
+      "label": "Heavy bleeding, or any bleeding in pregnancy or after delivery",
+      "patterns": [
+        "(?:heav\\w*|ekk?uva\\w*|ఎక్కువ|విపరీత|తీవ్ర|హెవీ|profuse\\w*|severe\\w*|teevr\\w*|vipareet\\w*|excessive\\w*).{0,30}(?:bl[ei]+d\\w*|rakt\\w*|రక్త\\s?[శస]్రావ|రక్తం|బ్లీడ)",
+        "(?:bl[ei]+d\\w*|rakt\\w*|రక్త\\s?[శస]్రావ|రక్తం|బ్లీడ).{0,30}(?:heav\\w*|ekk?uva\\w*|ఎక్కువ|విపరీత|తీవ్ర|హెవీ|profuse\\w*|severe\\w*|excessive\\w*)",
+        "(?:గర్భ\\S*|pregnan\\w*|garbh\\w*|expecting|trimester|త్రైమాసిక\\S*|\\d+\\s*(?:st|nd|rd|th)?\\s*months?|[౦-౯0-9]+\\s*(?:వ\\s*)?నెల\\S*|eighth|ninth|seventh)(?:(?!\\bnot\\b|\\bno\\b|\\bnever\\b|\\bwithout\\b|\\bnor\\b|n't|\\bdont\\b|లేదు|లేవు|లేకుండా|\\bledu\\b|\\blevu\\b).){0,80}(?:bl[ei]+d\\w*|rakt\\w*|రక్త\\S*|బ్లీడ\\S*|h(?:a)?emorrhag\\w*)",
+        "(?:bl[ei]+d\\w*|rakt\\w*|రక్త\\S*|బ్లీడ\\S*|h(?:a)?emorrhag\\w*)(?:(?!\\bnot\\b|\\bno\\b|\\bnever\\b|\\bwithout\\b|\\bnor\\b|n't|\\bdont\\b|లేదు|లేవు|లేకుండా|\\bledu\\b|\\blevu\\b).){0,80}(?:గర్భ\\S*|pregnan\\w*|garbh\\w*|expecting|trimester|త్రైమాసిక\\S*|\\d+\\s*(?:st|nd|rd|th)?\\s*months?|[౦-౯0-9]+\\s*(?:వ\\s*)?నెల\\S*|eighth|ninth|seventh)",
+        "(?:(?:after|post)\\s*[- ]?(?:delivery|birth|childbirth|labou?r|partum)|ప్రసవం\\S*|డెలివరీ\\S*|కాన్పు\\S*|delivery|prasav\\w*)(?:(?!\\bnot\\b|\\bno\\b|\\bnever\\b|\\bwithout\\b|\\bnor\\b|n't|\\bdont\\b|లేదు|లేవు|లేకుండా|\\bledu\\b|\\blevu\\b).){0,80}(?:bl[ei]+d\\w*|rakt\\w*|రక్త\\S*|బ్లీడ\\S*|h(?:a)?emorrhag\\w*)",
+        "(?:bl[ei]+d\\w*|rakt\\w*|రక్త\\S*|బ్లీడ\\S*|h(?:a)?emorrhag\\w*)(?:(?!\\bnot\\b|\\bno\\b|\\bnever\\b|\\bwithout\\b|\\bnor\\b|n't|\\bdont\\b|లేదు|లేవు|లేకుండా|\\bledu\\b|\\blevu\\b).){0,80}(?:(?:after|post)\\s*[- ]?(?:delivery|birth|childbirth|labou?r|partum)|ప్రసవం\\S*|డెలివరీ\\S*|కాన్పు\\S*|delivery|prasav\\w*)",
+        "(?:pregnan\\w*|garbh\\w*|గర్భ\\S*|delivery|prasav\\w*).{0,60}blood\\s+(?:vast\\w*|vach\\w*|pot\\w*|aav\\w*|loss|flow\\w*|coming|comes)",
+        "blood\\s+(?:vast\\w*|vach\\w*|pot\\w*|aav\\w*|loss|flow\\w*|coming|comes).{0,60}(?:pregnan\\w*|garbh\\w*|గర్భ\\S*|delivery)"
+      ],
+      "mentions": [
+        "bl[ei]+d\\w*",
+        "rakt\\w*",
+        "రక్త\\s?స్రావ",
+        "బ్లీడ"
+      ]
+    },
+    {
+      "rule_id": "DSR-FITS",
+      "label": "Fits / convulsions",
+      "patterns": [
+        "\\bfi+t+s+u?\\b",
+        "\\b(?:a|having|had|got) fit\\b",
+        "\\bfit\\b(?= (?:sir|madam))",
+        "convuls\\w*",
+        "seizur\\w*",
+        "ఫిట్స్",
+        "పిట్స్",
+        "\\bpi+t+s+u?\\b",
+        "మూర్ఛ\\w*",
+        "murcha\\w*",
+        "మూర్చ\\w*",
+        "ఫిట్లు"
+      ],
+      "mentions": []
+    },
+    {
+      "rule_id": "DSR-BREATHING",
+      "label": "Difficulty breathing",
+      "patterns": [
+        "breath\\w*\\W+(?:\\w+\\W+){0,2}?(?:difficult\\w*|problem\\w*|trouble|distress)",
+        "(?:difficult\\w*|trouble|problem\\w*|struggl\\w*)\\W+(?:\\w+\\W+){0,2}?breath\\w*",
+        "\\b(?:not|stopped) breathing\\b",
+        "shwasa\\W+(?:\\w+\\W+){0,2}?(?:ibbandi|teesukovadam)\\w*",
+        "swasa\\W+\\w*ibbandi",
+        "శ్వాస\\s+(?:\\S+\\s+){0,2}?ఇబ్బంది",
+        "ఊపిరి\\s+(?:\\S+\\s+){0,2}?ఆడ",
+        "breath\\w*\\W+(?:\\w+\\W+){0,5}?difficult\\w*",
+        "(?:fast|rapid|quick)\\W+(?:\\w+\\W+){0,3}?breath\\w*",
+        "breath\\w*\\W+(?:\\w+\\W+){0,3}?(?:fast|rapid)\\b",
+        "shwasa\\W+(?:\\w+\\W+){0,4}?(?:kashtam|ibbandi)\\w*",
+        "(?:suffer\\w*|gasp\\w*|choking|chok\\w*)\\W+(?:\\w+\\W+){0,3}?breath\\w*",
+        "breath\\w*\\W+(?:\\w+\\W+){0,3}?(?:hard|heavy|heavily|labou?red|gasp\\w*|noisy|grunt\\w*)",
+        "(?:hard|heavy|heavily)\\W+(?:\\w+\\W+){0,2}?(?:to\\W+)?breath\\w*",
+        "\\b(?:can(?:not|'?t)|unable to|cannot)\\W+breath\\w*",
+        "short(?:ness)?\\W+of\\W+breath",
+        "gasping",
+        "[శస]్?వాస\\S*\\s+(?:\\S+\\s+){0,3}?(?:ఇబ్బంది|కష్ట)\\S*",
+        "(?:ఇబ్బంది|కష్ట)\\S*\\s+(?:\\S+\\s+){0,2}?[శస]్?వాస",
+        "[ఊఉ]పిరి\\S*\\s+(?:\\S+\\s+){0,3}?(?:ఆడ|ఇబ్బంది|కష్ట|తీసుకోలే)\\S*",
+        "[ఊఉ]పిరాడ\\S*(?:\\s+(?:లేదు|లేవు|లేదండి))?",
+        "(?:వేగంగా|త్వరత్వరగా|గబగబా)\\s+(?:\\S+\\s+){0,2}?(?:[శస]్?వాస|[ఊఉ]పిరి)",
+        "[శస]్?వాస\\S*\\s+(?:\\S+\\s+){0,3}?(?:వేగంగా|త్వరత్వరగా|గబగబా)",
+        "[ఊఉ]పిరి\\S*\\s+(?:\\S+\\s+){0,3}?(?:ఆడ|తీసుకో)\\S*\\s+(?:లేదు|లేవు|లేదండి)",
+        "[శస]్?వాస\\S*\\s+(?:\\S+\\s+){0,3}?(?:ఆడ|తీసుకో)\\S*\\s+(?:లేదు|లేవు|లేదండి)",
+        "(?:shwasa|swasa|sw?aasa|ooputi|oopiri|ఊపిరి|శ్వాస)\\S*\\s+(?:\\S+\\s+){0,4}\\S*(?:koleka|leka\\b|lekapo\\w*|kashta\\w*|kasta\\w*)|(?:ఊపిరి|శ్వాస)\\S*\\s+(?:\\S+\\s+){0,4}(?:ఆడ\\S*|కష్ట\\S*)"
+      ],
+      "mentions": [
+        "breath\\w*",
+        "shwasa",
+        "శ్వాస",
+        "[శస]్?వాస\\S*",
+        "[ఊఉ]పిరి\\S*"
+      ]
+    },
+    {
+      "rule_id": "DSR-UNCONSCIOUS",
+      "label": "Loss of consciousness / unresponsive",
+      "patterns": [
+        "faint\\w*",
+        "unconscious\\w*",
+        "collaps\\w*",
+        "not respond\\w*",
+        "unresponsive",
+        "passed out",
+        "స్పృహ\\s*తప్పి",
+        "స్పృహ\\s*తప్పింది",
+        "స్పృహ\\s*తప్పడం",
+        "స్పృహ\\s*లేదు",
+        "spruha\\s*tapp(?:i|adam|indi)\\b",
+        "spruha\\s*(?:ledu|lekap)",
+        "సృహ\\s*(?:తప్పి|లేదు|లేక|తప్పడం)\\w*",
+        "స్పృహ\\s*(?:లేక|కోల్పో)\\w*",
+        "స్పృహ(?:లో)?\\s*లే\\S*",
+        "(?:sprut?ha|spruha)\\s*(?:lo\\s*)?(?:ledu|lekapo\\w*|tappi\\w*)"
+      ],
+      "mentions": []
+    },
+    {
+      "rule_id": "DSR-FEVER-HIGH",
+      "label": "High fever",
+      "patterns": [
+        "(?:high|very high|severe|teevr|తీవ్ర|అధిక)\\S*\\s+(?:fever|jwaram|జ్వరం)",
+        "(?:fever|jwaram|జ్వరం)\\s+(?:is\\s+)?high",
+        "(?:జ్వర\\S*)\\s+(?:\\S+\\s+){0,3}(?:తీవ్ర|ఎక్కువ|అధిక|విపరీత)\\S*",
+        "(?:fever|jwaram)\\s+(?:\\w+\\s+){0,3}(?:very high|severe\\w*|too much|ekk?uva\\w*|teevr\\w*)"
+      ],
+      "mentions": [
+        "fever",
+        "jwaram",
+        "జ్వర"
+      ]
+    },
+    {
+      "rule_id": "DSR-NOT-FEEDING",
+      "label": "Not feeding",
+      "patterns": [
+        "not\\s+fe+d\\w*",
+        "(?:refus\\w*|unable)\\s+(?:to\\s+)?(?:feed|suck|breastfe\\w*)",
+        "(?:milk|paalu|palu|పాలు)\\s+(?:(?:kuda|కూడా|also)\\s+)?(?:tag?atle\\w*|taagatle\\w*|తాగట్లే|తాగడం\\s*లేదు|taagakap\\w*|తాగకప)",
+        "not\\s+suck\\w*",
+        "(?:milk|paalu|palu|పాలు)\\s+(?:(?:kuda|కూడా|also)\\s+)?(?:tag?adam|taagadam|taagalem\\w*|pillatle\\w*|peelchatle\\w*)\\s*(?:ledu|levu)?",
+        "(?:పాలు)\\s*(?:తాగ\\w*|పీల్చ\\w*|తాగడం|పీల్చడం)\\s*(?:లేదు|లేవు)",
+        "suck\\w*\\s+(?:ledu|levu)",
+        "(?:milk|paalu|palu|పాలు)\\s+(?:(?:kuda|కూడా|also)\\s+)?[తద]ా?గ\\S*\\s*(?:లేదు|లేవు|ట్లే\\S*|ట్ల\\S*|కపోవ\\S*)",
+        "(?:పాలు)\\s*(?:తాగ|దాగ|త్రాగ)\\S*\\s*(?:లేదు|లేవు|ట్లే\\S*)",
+        "not\\s+(?:drink\\w*|tak\\w*|accept\\w*|lactat\\w*)\\s+(?:\\w+\\s+){0,2}(?:milk|feed\\w*)",
+        "(?:milk|paalu|palu|పాలు)\\s+(?:(?:kuda|కూడా)\\s+)?(?:pattat\\w*|pattadam\\w*|pattaled\\w*)"
+      ],
+      "mentions": []
+    },
+    {
+      "rule_id": "DSR-HEADACHE-VISION",
+      "label": "Severe headache with blurred vision",
+      "patterns": [
+        "head\\s?ache\\W+(?:\\w+\\W+){0,8}?(?:blur\\w*|vision|dim)",
+        "(?:blur\\w*|vision)\\W+(?:\\w+\\W+){0,8}?head\\s?(?:ache|pain)",
+        "head\\s+pain\\W+(?:\\w+\\W+){0,8}?(?:blur\\w*|vision)",
+        "తలనొప్పి.{0,50}(?:మసక|చూపు)",
+        "(?:మసక|చూపు).{0,50}తలనొప్పి",
+        "(?:talanoppi|thalanoppi).{0,50}(?:chupu|masaka|blur\\w*)",
+        "(?:chupu|masaka|blur\\w*).{0,50}(?:talanoppi|thalanoppi)",
+        "(?:గర్భ\\w*|pregnan\\w*|garbh\\w*).{0,40}(?:తీవ్ర\\w*|severe|bad)\\W+(?:\\w+\\W+){0,2}?(?:తలనొప్పి|head\\s?ache)",
+        "(?:తీవ్ర\\w*|severe|bad)\\W+(?:\\w+\\W+){0,2}?(?:తలనొప్పి|head\\s?ache).{0,40}(?:గర్భ\\w*|pregnan\\w*)",
+        "(?:blurred|blurry|blurring)\\s+vision",
+        "vision\\W+(?:\\w+\\W+){0,2}?blur\\w*",
+        "చూపు\\s*(?:\\w+\\s+){0,2}?మసక\\w*",
+        "chupu\\W+(?:\\w+\\W+){0,2}?masaka\\w*",
+        "(?:tala|thala)\\s*noppi\\W+(?:\\w+\\W+){0,6}?(?:kall?u|kalla|mabb\\w*|mas\\w*|blur\\w*)",
+        "తల\\s*నొప్పి\\S*\\W+(?:\\S+\\W+){0,6}?(?:మసక\\S*|మబ్బు\\S*|కనిపించ\\S*)"
+      ],
+      "mentions": []
+    },
+    {
+      "rule_id": "DSR-FETAL-MOVEMENT",
+      "label": "Baby in the womb moves much less",
+      "patterns": [
+        "(?:baby|womb|foetus|fetus)\\W+(?:\\w+\\W+){0,6}?(?:not|no\\s+longer|hardly|barely|stopped|stops)\\s+(?:\\w+\\s+){0,2}?mov\\w*",
+        "(?:less|reduced|decreased|no|stopped)\\s+(?:baby\\s+|fetal\\s+|foetal\\s+)?movement\\w*",
+        "\\bmov\\w*\\W+(?:\\w+\\W+){0,3}?(?:stopped|reduced|decreased|less)",
+        "కదలిక\\w*.{0,25}(?:తగ్గ\\w*|ఆగ\\w*|లేవు|లేదు)",
+        "కదల\\w*\\s*(?:డం\\s*)?(?:లేదు|లేవు)",
+        "కదలికలు\\s*(?:బాగా\\s*)?తగ్గ\\w*",
+        "(?:bidda|baby)\\W+(?:\\w+\\W+){0,4}?kadal\\w*\\W+(?:\\w+\\W+){0,3}?(?:ledu|levu|taggindi|taggayi|aagipoyindi|aagipoyayi)",
+        "kadalika\\w*\\W+(?:\\w+\\W+){0,3}?(?:taggindi|taggayi|ledu|levu|aagipoyindi)",
+        "కడుపులో\\s+(?:\\S+\\s+){0,3}కద\\S*\\s*(?:లేదు|లేవు|ట్ల\\S*|తగ్గ\\S*)",
+        "(?:kadupu\\w*|womb)\\W+(?:\\w+\\W+){0,4}?(?:kadal\\w*|move\\w*)\\s*(?:ledu|levu|tagg\\w*|atle\\w*|trle\\w*)"
+      ],
+      "mentions": []
+    },
+    {
+      "rule_id": "DSR-YELLOW-SKIN-EYES",
+      "label": "Yellow skin or eyes",
+      "patterns": [
+        "jaundice\\w*",
+        "yellow\\w*\\W+(?:\\w+\\W+){0,3}?(?:eyes?|skin|body)",
+        "(?:eyes?|skin|body)\\W+(?:\\w+\\W+){0,3}?yellow\\w*",
+        "(?:కళ్ళు|కళ్లు|కళ్ళ|చర్మం|శరీరం).{0,25}పసుప\\w*",
+        "పసుప\\w*.{0,25}(?:కళ్ళు|కళ్లు|చర్మం)",
+        "(?:kallu|kalla|chermam|skin|body|sareeram)\\W+(?:\\w+\\W+){0,3}?pasup\\w*",
+        "pasup\\w*\\W+(?:\\w+\\W+){0,3}?(?:kallu|skin|chermam)",
+        "(?:newborn|baby|infant|bidda|biddaku|పాప|బిడ్డ|బాబు)\\W+(?:\\w+\\W+){0,3}?yellow\\w*",
+        "(?:ఒళ్[లళ]ు?|శరీర\\S*|చర్మం|కళ్ళు|కళ్లు|ఒళ్ళు)\\s+(?:\\S+\\s+){0,2}(?:పచ్చ|పసుపు)\\S*",
+        "(?:పచ్చ|పసుపు)\\S*\\s+(?:\\S+\\s+){0,2}(?:ఒళ్లు|ఒళ్ళు|చర్మం|కళ్ళు|కళ్లు)"
+      ],
+      "mentions": []
+    },
+    {
+      "rule_id": "DSR-CORD-INFECTION",
+      "label": "Red, swollen or pus-filled cord stump",
+      "patterns": [
+        "(?:cord|umbilic\\w*|belly\\s*button|navel)\\W+(?:\\w+\\W+){0,6}?(?:pus|red|swollen|infect\\w*|discharge|smell\\w*)",
+        "(?:pus|infect\\w*)\\W+(?:\\w+\\W+){0,6}?(?:cord|umbilic\\w*|belly\\s*button|navel)",
+        "బొడ్డు.{0,35}(?:చీము|ఎర్ర\\w*|వాప\\w*|వాచ\\w*|ఇన్ఫెక్షన్)",
+        "(?:చీము|ఎర్ర\\w*).{0,35}బొడ్డు",
+        "bondu\\W+(?:\\w+\\W+){0,5}?(?:chimu|erra\\w*|vapu|vaach\\w*|infection)",
+        "chimu\\W+(?:\\w+\\W+){0,5}?bondu"
+      ],
+      "mentions": []
+    },
+    {
+      "rule_id": "DSR-VERY-SLEEPY-LIMP",
+      "label": "Very sleepy, limp or hard to wake",
+      "patterns": [
+        "\\blimp\\b",
+        "\\bfloppy\\b",
+        "(?:very|too|extremely|so)\\s+(?:\\w+\\s+){0,1}?(?:sleepy|drowsy)",
+        "hard\\s+to\\s+(?:wake|rouse)\\w*",
+        "(?:not|hardly|barely)\\s+waking(?:\\s+up)?",
+        "unable\\s+to\\s+(?:wake|rouse)\\w*",
+        "cannot\\s+be\\s+woken",
+        "hardly\\s+waking",
+        "నిద్రమత్తు\\w*",
+        "సొమ్మసిల్ల\\w*",
+        "లేపి\\w*\\s*లేవ\\w*",
+        "లేపడం\\s*కష్ట\\w*",
+        "nidramattu\\w*",
+        "lepina\\w*\\s+lev\\w*",
+        "నిద్ర\\S*\\s+(?:\\S+\\s+){0,3}(?:లేవ\\S*|మేల్కొ\\S*|లేవట్ల\\S*)"
+      ],
+      "mentions": []
+    },
+    {
+      "rule_id": "DSR-VERY-COLD-BODY",
+      "label": "Body very cold, or fever in a newborn",
+      "patterns": [
+        "(?:body|skin|baby|infant|newborn)\\W+(?:\\w+\\W+){0,4}?(?:very\\s+|too\\s+|so\\s+)?(?:cold|chill\\w*)",
+        "(?:very|too|so)\\s+cold\\W+(?:\\w+\\W+){0,3}?(?:body|skin|touch)",
+        "శరీరం\\s*(?:చాలా\\s*)?చల్ల\\w*",
+        "చల్లగా\\s*(?:ఉంది|ఉన్నది|అయింది|ఉన్నారు)",
+        "(?:body|sareeram)\\W+(?:\\w+\\W+){0,4}?challa\\w*",
+        "challa\\s*ga\\s*(?:undi|unnadi|ayyindi)",
+        "(?:newborn|new\\s+born|infant|navajata|నవజాత)\\W+(?:\\w+\\W+){0,6}?(?:fever|jwaram|జ్వరం)"
+      ],
+      "mentions": []
+    },
+    {
+      "rule_id": "DSR-LEAKING-FLUID",
+      "label": "Fluid leaking before labour",
+      "patterns": [
+        "(?:pregnan\\w*|garbh\\w*|expecting|గర్భ\\w*)\\W+(?:\\w+\\W+){0,8}?(?:water|fluid|ద్రవం|నీళ్ళు|నీళ్లు|neellu)\\W+(?:\\w+\\W+){0,3}?(?:leak\\w*|break\\w*|broke|coming\\s+out|kar\\w*|కార\\w*)",
+        "(?:water|fluid)\\W+(?:\\w+\\W+){0,3}?(?:leak\\w*|break\\w*|broke|coming\\s+out)\\W+(?:\\w+\\W+){0,8}?(?:pregnan\\w*|garbh\\w*|expecting|గర్భ\\w*)",
+        "(?:ద్రవం|నీళ్ళు|నీళ్లు)\\s*(?:కార\\w*|పోతున్న\\w*)",
+        "neellu\\s+(?:kar\\w*|poth\\w*)"
+      ],
+      "mentions": []
+    },
+    {
+      "rule_id": "DSR-SUDDEN-SWELLING",
+      "label": "Sudden swelling of face or hands",
+      "patterns": [
+        "(?:swell\\w*|swollen|puffy)\\W+(?:\\w+\\W+){0,4}?(?:face|hands?)",
+        "(?:face|hands?)\\W+(?:\\w+\\W+){0,4}?(?:swell\\w*|swollen|puffy)",
+        "(?:ముఖం|మొహం|చేతులు).{0,25}(?:వాప\\w*|వాచ\\w*)",
+        "(?:వాప\\w*|వాచ\\w*).{0,25}(?:ముఖం|మొహం|చేతులు)",
+        "(?:mukham|mogam|chetulu)\\W+(?:\\w+\\W+){0,3}?(?:vapu|vaach\\w*|vachayi)"
+      ],
+      "mentions": []
+    },
+    {
+      "rule_id": "DSR-SEVERE-BELLY-PAIN-PREG",
+      "label": "Severe belly pain in pregnancy",
+      "patterns": [
+        "(?:pregnan\\w*|garbh\\w*|expecting|గర్భ\\w*).{0,70}(?:(?:severe|bad|terrible|intense|unbearable|very\\s+bad|bhayankaram\\w*|ekkuva)\\W+(?:\\w+\\W+){0,2}?(?:belly|stomach|abdomin\\w*|tummy)\\W+(?:\\w+\\W+){0,2}?pain|(?:belly|stomach|abdomin\\w*|tummy)\\W+(?:\\w+\\W+){0,1}?pain\\W+(?:\\w+\\W+){0,5}?(?:severe|bad|terrible|unbearable|bhayankaram\\w*|ekkuva)|(?:తీవ్ర\\w*|విపరీత\\w*|భయంకర\\w*)\\s*(?:మైన\\s*)?కడుపు\\s*నొప్పి|కడుపులో\\s*(?:తీవ్ర\\w*|విపరీత\\w*|భయంకర\\w*)\\s*(?:మైన\\s*)?నొప్పి|కడుపు\\s*నొప్పి\\s*(?:తీవ్ర\\w*|విపరీత\\w*|భయంకర\\w*)|kadupu\\w*\\s*(?:lo\\s+)?noppi\\W+(?:\\w+\\W+){0,3}?(?:ekkuva|bhayankaram\\w*|teevra\\w*)|(?:ekkuva|bhayankaram\\w*|teevra\\w*)\\W+(?:\\w+\\W+){0,2}?kadupu\\w*\\s*(?:lo\\s+)?noppi)",
+        "(?:(?:severe|bad|terrible|intense|unbearable|very\\s+bad|bhayankaram\\w*|ekkuva)\\W+(?:\\w+\\W+){0,2}?(?:belly|stomach|abdomin\\w*|tummy)\\W+(?:\\w+\\W+){0,2}?pain|(?:belly|stomach|abdomin\\w*|tummy)\\W+(?:\\w+\\W+){0,1}?pain\\W+(?:\\w+\\W+){0,5}?(?:severe|bad|terrible|unbearable|bhayankaram\\w*|ekkuva)|(?:తీవ్ర\\w*|విపరీత\\w*|భయంకర\\w*)\\s*(?:మైన\\s*)?కడుపు\\s*నొప్పి|కడుపులో\\s*(?:తీవ్ర\\w*|విపరీత\\w*|భయంకర\\w*)\\s*(?:మైన\\s*)?నొప్పి|కడుపు\\s*నొప్పి\\s*(?:తీవ్ర\\w*|విపరీత\\w*|భయంకర\\w*)|kadupu\\w*\\s*(?:lo\\s+)?noppi\\W+(?:\\w+\\W+){0,3}?(?:ekkuva|bhayankaram\\w*|teevra\\w*)|(?:ekkuva|bhayankaram\\w*|teevra\\w*)\\W+(?:\\w+\\W+){0,2}?kadupu\\w*\\s*(?:lo\\s+)?noppi).{0,70}(?:pregnan\\w*|garbh\\w*|expecting|గర్భ\\w*)"
+      ],
+      "mentions": []
+    }
+  ],
+  "ambiguous_patterns": [
+    "not feeling well",
+    "feeling unwell",
+    "\\bunwell\\b",
+    "(?:crying|cries)\\s+(?:a lot|too much|continuous\\w*)",
+    "something (?:is )?wrong",
+    "(?:ఒంట్లో|ఒంటికి)\\s*బాగ",
+    "బాగాలేదు",
+    "ఎక్కువగా\\s+ఏడుస్తోంది",
+    "ఏదో\\s+(?:problem|సమస్య)",
+    "baagaledu",
+    "baga\\s*ledu"
+  ],
+  "out_of_scope_patterns": [
+    "antibiotic\\w*",
+    "amoxi\\w*",
+    "azithro\\w*",
+    "ciproflox\\w*",
+    "paracetamol",
+    "prescrib\\w*",
+    "injection",
+    "\\binj\\b",
+    "(?:what|how much|how many|enta|ఎంత)\\W+(?:\\w+\\W+){0,4}?(?:dose|dosage|mg|ml|syrup)\\b",
+    "(?:dose|dosage)\\s+(?:of|for|enta|ఎంత)",
+    "(?:dose|mg)\\s+(?:ఎంత|enta)",
+    "ఎంత\\s+mg",
+    "యాంటీబయాటిక్",
+    "అమోక్సిసిలిన్",
+    "డోసు",
+    "డోస్\\s+ఎంత",
+    "మందు\\s+రాసి",
+    "ఇంజెక్షన్",
+    "క్యాన్సర్",
+    "\\bcancer\\b",
+    "mandu\\s+raasi",
+    "raasi\\s+ivva",
+    "మాత్ర\\S*\\s+(?:\\S+\\s+){0,2}ఎంత",
+    "ఎంత\\s+(?:\\S+\\s+){0,2}మాత్ర\\S*",
+    "tablet\\w*\\s+(?:enta|how many)",
+    "(?:enta|ఎంత)\\s+(?:\\w+\\s+){0,2}tablet\\w*",
+    "పారా\\S{0,6}మ[ాో]ల్\\S*",
+    "అజిత్రో\\S*",
+    "సిప్రో\\S*",
+    "అమోక్సి\\S*",
+    "అమాక్సి\\S*",
+    "టాబ్లెట్\\S*\\s+(?:\\S+\\s+){0,2}(?:ఎన్ని|ఎంత)",
+    "(?:ఎన్ని|ఎంత)\\s+(?:\\S+\\s+){0,2}టాబ్లెట్\\S*",
+    "మాత్ర(?:లు|ల|ను|కు)?\\s+(?:\\S+\\s+){0,2}ఎన్ని",
+    "ఎన్ని\\s+(?:\\S+\\s+){0,2}మాత్ర(?:లు|ల|ను|కు)?(?:\\s|$)"
+  ]
+}

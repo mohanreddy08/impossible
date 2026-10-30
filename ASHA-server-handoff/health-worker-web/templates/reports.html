@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block title %}{{ t('rep.title') }}{% endblock %}
+{% block main %}
+<h1>{{ t('rep.title') }} <span class="muted small">{{ t('demo.date') }} {{ r.date }}</span></h1>
+{% set colors = {'p1': '#b3261e', 'p2': '#b45309', 'p3': '#1d4ed8'} %}
+<div class="grid2">
+<section class="card">
+  <h2 id="c1">{{ t('rep.by_asha') }}</h2>
+  {% set totals = [] %}{% for a in r.ashas %}{% set _ = totals.append(a.priority1 + a.priority2 + a.priority3) %}{% endfor %}
+  {% set top = ([1] + totals)|max %}
+  <svg class="chart" role="img" aria-labelledby="c1" viewBox="0 0 660 {{ 30 + 34 * r.ashas|length }}" width="100%">
+    {% for a in r.ashas %}{% set y = 10 + loop.index0 * 34 %}
+      <text x="0" y="{{ y + 16 }}" font-size="12" fill="currentColor">{{ a.name[:18] }}</text>
+      {% set w1 = 300 * a.priority1 / top %}{% set w2 = 300 * a.priority2 / top %}{% set w3 = 300 * a.priority3 / top %}
+      <rect x="140" y="{{ y }}" width="{{ w1 }}" height="22" fill="#b3261e"><title>P1 {{ a.priority1 }}</title></rect>
+      <rect x="{{ 140 + w1 }}" y="{{ y }}" width="{{ w2 }}" height="22" fill="#b45309"><title>P2 {{ a.priority2 }}</title></rect>
+      <rect x="{{ 140 + w1 + w2 }}" y="{{ y }}" width="{{ w3 }}" height="22" fill="#1d4ed8"><title>P3 {{ a.priority3 }}</title></rect>
+      <text x="{{ 146 + w1 + w2 + w3 }}" y="{{ y + 16 }}" font-size="12" fill="currentColor">P1 {{ a.priority1 }} · P2 {{ a.priority2 }} · P3 {{ a.priority3 }}</text>
+    {% endfor %}
+  </svg>
+  <p class="small"><span class="badge u-urgent">▲ P1</span> <span class="badge u-due">■ P2</span> <span class="badge u-this_week">◆ P3</span></p>
+</section>
+<section class="card">
+  <h2 id="c2">{{ t('rep.by_village') }}</h2>
+  {% set vt = [] %}{% for v in r.villages %}{% set _ = vt.append(v.households) %}{% endfor %}
+  {% set vtop = ([1] + vt)|max %}
+  <svg class="chart" role="img" aria-labelledby="c2" viewBox="0 0 660 {{ 30 + 34 * r.villages|length }}" width="100%">
+    {% for v in r.villages %}{% set y = 10 + loop.index0 * 34 %}
+      <text x="0" y="{{ y + 16 }}" font-size="12" fill="currentColor">{{ v.name[:18] }}</text>
+      {% set a1 = 300 * v.urgent / vtop %}{% set a2 = 300 * v.due / vtop %}{% set a3 = 300 * v.this_week / vtop %}{% set a4 = 300 * v.nothing_due / vtop %}
+      <rect x="140" y="{{ y }}" width="{{ a1 }}" height="22" fill="#b3261e"><title>{{ t('urgency.URGENT') }} {{ v.urgent }}</title></rect>
+      <rect x="{{ 140 + a1 }}" y="{{ y }}" width="{{ a2 }}" height="22" fill="#b45309"><title>{{ t('urgency.DUE') }} {{ v.due }}</title></rect>
+      <rect x="{{ 140 + a1 + a2 }}" y="{{ y }}" width="{{ a3 }}" height="22" fill="#1d4ed8"><title>{{ t('urgency.THIS_WEEK') }} {{ v.this_week }}</title></rect>
+      <rect x="{{ 140 + a1 + a2 + a3 }}" y="{{ y }}" width="{{ a4 }}" height="22" fill="#15803d"><title>{{ t('urgency.NONE') }} {{ v.nothing_due }}</title></rect>
+      <text x="{{ 146 + a1 + a2 + a3 + a4 }}" y="{{ y + 16 }}" font-size="11" fill="currentColor">{{ v.urgent }}/{{ v.due }}/{{ v.this_week }}/{{ v.nothing_due }}</text>
+    {% endfor %}
+  </svg>
+  <p class="small"><span class="badge u-urgent">▲ {{ t('urgency.URGENT') }}</span> <span class="badge u-due">■ {{ t('urgency.DUE') }}</span> <span class="badge u-this_week">◆ {{ t('urgency.THIS_WEEK') }}</span> <span class="badge u-none">● {{ t('urgency.NONE') }}</span></p>
+</section>
+<section class="card">
+  <h2 id="c3">{{ t('rep.qa') }}</h2>
+  {% set qt = [] %}{% for d in r.qa_by_day %}{% set _ = qt.append(d.ANSWERED + d.REFUSED + d.ESCALATED) %}{% endfor %}
+  {% set qtop = ([1] + qt)|max %}
+  <svg class="chart" role="img" aria-labelledby="c3" viewBox="0 0 520 200" width="100%">
+    {% for d in r.qa_by_day %}{% set x = 10 + loop.index0 * 36 %}
+      {% set h1 = 150 * d.ANSWERED / qtop %}{% set h2 = 150 * d.REFUSED / qtop %}{% set h3 = 150 * d.ESCALATED / qtop %}
+      <rect x="{{ x }}" y="{{ 170 - h1 }}" width="26" height="{{ h1 }}" fill="#15803d"><title>{{ d.day }} answered {{ d.ANSWERED }}</title></rect>
+      <rect x="{{ x }}" y="{{ 170 - h1 - h2 }}" width="26" height="{{ h2 }}" fill="#57534e"><title>{{ d.day }} refused {{ d.REFUSED }}</title></rect>
+      <rect x="{{ x }}" y="{{ 170 - h1 - h2 - h3 }}" width="26" height="{{ h3 }}" fill="#b3261e"><title>{{ d.day }} escalated {{ d.ESCALATED }}</title></rect>
+      <text x="{{ x }}" y="188" font-size="10" fill="currentColor">{{ d.day[8:] }}</text>
+    {% endfor %}
+  </svg>
+  <p class="small"><span class="badge o-answered">✓ Answered</span> <span class="badge o-refused">⊘ Refused</span> <span class="badge o-escalated">▲ Escalated</span></p>
+</section>
+<section class="card">
+  <h2>{{ t('rep.referrals') }}</h2>
+  <div class="tablewrap"><table><thead><tr><th scope="col">{{ t('col.status') }}</th><th scope="col">State</th><th scope="col">#</th></tr></thead>
+  <tbody>{% for x in r.referrals|sort(attribute='count', reverse=True) %}<tr><td>{{ x.referral_status }}</td><td>{{ x.record_state }}</td><td>{{ x.count }}</td></tr>{% endfor %}</tbody></table></div>
+  <h2>{{ t('rep.kinds') }}</h2>
+  <ul class="plain cols">{% for k in r.due_items_by_kind %}<li>{{ k.kind }}: <strong>{{ k.count }}</strong></li>{% endfor %}</ul>
+</section>
+</div>
+{% if principal.role != 'worker' %}
+<section class="card">
+  <h2>{{ t('rep.export') }}</h2>
+  <p class="muted small">{{ t('rep.export_note') }}</p>
+  <ul class="plain exports">
+    <li>{{ t('rep.visit_list') }} ({{ t('hh.all') }}): <a href="/api/v1/dashboard/reports/export?kind=visit-list&format=csv" download>{{ t('rep.csv') }}</a> · <a href="/api/v1/dashboard/reports/export?kind=visit-list&format=pdf" download>{{ t('rep.pdf') }}</a></li>
+    {% for a in ashas %}<li>{{ t('rep.visit_list') }} · {{ a.name }}: <a href="/api/v1/dashboard/reports/export?kind=visit-list&format=csv&worker_id={{ a.worker_id }}" download>{{ t('rep.csv') }}</a> · <a href="/api/v1/dashboard/reports/export?kind=visit-list&format=pdf&worker_id={{ a.worker_id }}" download>{{ t('rep.pdf') }}</a></li>{% endfor %}
+    <li>{{ t('rep.households') }}: <a href="/api/v1/dashboard/reports/export?kind=households&format=csv" download>{{ t('rep.csv') }}</a> · <a href="/api/v1/dashboard/reports/export?kind=households&format=pdf" download>{{ t('rep.pdf') }}</a></li>
+    <li>{{ t('ref.refs') }}: <a href="/api/v1/dashboard/reports/export?kind=referrals&format=csv" download>{{ t('rep.csv') }}</a> · <a href="/api/v1/dashboard/reports/export?kind=referrals&format=pdf" download>{{ t('rep.pdf') }}</a></li>
+    <li>{{ t('rep.qa_audit') }}: <a href="/api/v1/dashboard/reports/export?kind=qa-audit&format=csv" download>{{ t('rep.csv') }}</a></li>
+    <li>{{ t('rep.summary') }}: <a href="/api/v1/dashboard/reports/export?kind=summary&format=pdf" download>{{ t('rep.pdf') }}</a></li>
+  </ul>
+</section>
+{% endif %}
+{% endblock %}

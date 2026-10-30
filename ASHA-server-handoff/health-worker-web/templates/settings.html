@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}{{ t('set.title') }}{% endblock %}
+{% block head %}<script src="/static/js/settings.js" defer></script>{% endblock %}
+{% block main %}
+<h1>{{ t('set.title') }}</h1>
+<div class="grid2">
+<section class="card" id="public" data-l-ok="{{ t('set.reachable') }}" data-l-bad="{{ t('set.unreachable') }}" data-l-unknown="{{ t('set.unknown') }}">
+  <h2>{{ t('set.public') }}</h2>
+  {% if public_url %}<p class="big mono" id="pub-url">{{ public_url }}</p>{% else %}<p class="alert alert-warn" id="pub-url">{{ url_source }}</p>{% endif %}
+  <p class="small">{{ t('set.source') }}: <span id="pub-source">{{ url_source }}</span></p>
+  <p id="pub-status" role="status"><span class="badge"><span aria-hidden="true">?</span> {{ t('set.unknown') }}</span></p>
+  <button class="btn ghost" id="check">{{ t('set.check') }}</button>
+  <p class="small muted">{{ t('set.changes') }}</p>
+  {% if qr %}<h3>{{ t('set.qr') }}</h3><div class="qr" id="qr">{{ qr|safe }}</div>{% endif %}
+</section>
+<section class="card">
+  <h2>{{ t('set.language') }}</h2>
+  <p><a class="btn ghost" href="/lang/en?next=/settings" lang="en">English</a> <a class="btn ghost" href="/lang/te?next=/settings" lang="te">తెలుగు</a></p>
+  {% if user.role == 'admin' %}
+  <form id="settings-form" class="stack">
+    <label for="retention_days">{{ t('set.retention') }}</label>
+    <input id="retention_days" name="retention_days" type="number" min="7" max="3650" value="{{ retention }}" required>
+    <label for="public_url">{{ t('set.override') }}</label>
+    <input id="public_url" name="public_url" type="url" placeholder="https://…" value="{{ stored_url }}" pattern="https://.*">
+    <p class="small muted">{{ t('set.override_help') }}</p>
+    <label for="default_language">{{ t('set.language') }} (default)</label>
+    <select id="default_language" name="default_language"><option value="en">English</option><option value="te">తెలుగు</option></select>
+    <button class="btn" type="submit">{{ t('set.save') }}</button>
+    <p id="settings-msg" role="status"></p>
+  </form>
+  {% else %}<p>{{ t('set.retention') }}: {{ retention }}</p>{% endif %}
+</section>
+</div>
+{% endblock %}

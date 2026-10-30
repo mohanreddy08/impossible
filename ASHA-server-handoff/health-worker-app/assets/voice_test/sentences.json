@@ -1,0 +1,25 @@
+{
+  "_readme": "Voice Test sentences (Telugu). Edit this file, or put an edited copy on the phone as voice_test_sentences.json in the app's external files folder (see docs/VOICE_TEST.md): the phone copy wins, no rebuild needed. expect = ESCALATION (rule = the danger rule id that must fire), ANSWER (section = text that must be in the top passage's section title), or OUT_OF_SCOPE.",
+  "sentences": [
+    {"id": "d01", "category": "danger sign", "text": "గర్భిణీకి ఫిట్స్ వచ్చాయి", "expect": "ESCALATION", "rule": "DSR-FITS"},
+    {"id": "d02", "category": "danger sign", "text": "గర్భిణీ స్త్రీకి చాలా రక్తస్రావం అవుతోంది", "expect": "ESCALATION", "rule": "DSR-BLEEDING-SEVERE"},
+    {"id": "d03", "category": "danger sign", "text": "పుట్టిన బిడ్డ పాలు తాగడం లేదు", "expect": "ESCALATION", "rule": "DSR-NOT-FEEDING"},
+    {"id": "d04", "category": "danger sign", "text": "పాపకు ఊపిరి తీసుకోవడం చాలా కష్టంగా ఉంది", "expect": "ESCALATION", "rule": "DSR-BREATHING"},
+    {"id": "d05", "category": "number + drug name", "text": "ఆమెకు 104 డిగ్రీల తీవ్రమైన జ్వరం ఉంది పారాసెటమాల్ ఇవ్వచ్చా", "expect": "ESCALATION", "rule": "DSR-FEVER-HIGH"},
+    {"id": "d06", "category": "danger sign", "text": "గర్భిణీకి తలనొప్పిగా ఉంది కళ్ళు మసకగా కనిపిస్తున్నాయి", "expect": "ESCALATION", "rule": "DSR-HEADACHE-VISION"},
+    {"id": "d07", "category": "danger sign", "text": "కడుపులో బిడ్డ కదలడం లేదు", "expect": "ESCALATION", "rule": "DSR-FETAL-MOVEMENT"},
+    {"id": "d08", "category": "danger sign", "text": "పుట్టిన బిడ్డ కళ్ళు పసుపు రంగులో ఉన్నాయి", "expect": "ESCALATION", "rule": "DSR-YELLOW-SKIN-EYES"},
+    {"id": "d09", "category": "danger sign", "text": "ఆమె స్పృహ తప్పి పడిపోయింది", "expect": "ESCALATION", "rule": "DSR-UNCONSCIOUS"},
+    {"id": "d10", "category": "danger sign", "text": "బిడ్డ బొడ్డు దగ్గర చీము కారుతోంది", "expect": "ESCALATION", "rule": "DSR-CORD-INFECTION"},
+    {"id": "q01", "category": "protocol question", "text": "చేతులు సబ్బుతో ఎప్పుడు కడుక్కోవాలి", "expect": "ANSWER", "section": "Hygiene"},
+    {"id": "q02", "category": "protocol question", "text": "ఇంట్లో ఎవరూ లేకపోతే ఏం చేయాలి", "expect": "ANSWER", "section": "When nobody is at home"},
+    {"id": "q03", "category": "protocol question", "text": "నెట్‌వర్క్ లేకపోతే రికార్డులు ఎలా భద్రపరచాలి", "expect": "ANSWER", "section": "Working without network"},
+    {"id": "q04", "category": "protocol question", "text": "సూపర్‌వైజర్ ఫోన్ నంబర్ ఎక్కడ సేవ్ చేయాలి", "expect": "ANSWER", "section": "Supervisor contact"},
+    {"id": "q05", "category": "protocol question", "text": "తదుపరి గర్భిణీ సంరక్షణ సందర్శన తేదీ ఎలా తెలుస్తుంది", "expect": "ANSWER", "section": "Antenatal care visits"},
+    {"id": "q06", "category": "protocol question", "text": "టీకా ఫాలో-అప్ ఉన్న ఇళ్లు ఎక్కడ చూడాలి", "expect": "ANSWER", "section": "Immunisation follow-up"},
+    {"id": "q07", "category": "protocol question", "text": "ఇంటి వివరాలను గోప్యంగా ఎలా ఉంచాలి", "expect": "ANSWER", "section": "Privacy"},
+    {"id": "q08", "category": "protocol question", "text": "రిఫరల్ చేసినప్పుడు ఏమి నమోదు చేయాలి", "expect": "ANSWER", "section": "Hospital referrals"},
+    {"id": "o01", "category": "English drug name", "text": "పారాసెటమాల్ టాబ్లెట్ ఎన్ని ఇవ్వాలి", "expect": "OUT_OF_SCOPE"},
+    {"id": "o02", "category": "English drug name", "text": "అమోక్సిసిలిన్ డోసు ఎంత ఇవ్వాలి", "expect": "OUT_OF_SCOPE"}
+  ]
+}

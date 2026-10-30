@@ -1,0 +1,39 @@
+# secrets and local configuration: never commit
+.env
+.env.*
+*.env
+*.key
+*.jks
+*.keystore
+key.properties
+local.properties
+*.pem
+
+# local databases
+*.db
+*.db-*
+*.sqlite*
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Flutter / Android / iOS build output and caches
+build/
+.dart_tool/
+.gradle/
+.idea/
+*.iml
+Pods/
+.flutter-plugins*
+
+.DS_Store
+
+# tunnel / runtime state and one-time credentials
+run/
+node_modules/
+test-results/
+playwright-report/

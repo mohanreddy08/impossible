@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}{{ t('ask.title') }}{% endblock %}
+{% block head %}<script src="/static/js/ask.js" defer></script>{% endblock %}
+{% block main %}
+<h1>{{ t('ask.title') }}</h1>
+<p class="alert alert-info"><span aria-hidden="true">⚕</span> <strong>{{ t('banner.assist') }}</strong> {{ t('ask.privacy') }}</p>
+<form id="ask-form" class="card stack" data-l-refer="{{ t('ask.refer') }}" data-l-refer-note="{{ t('ask.refer_note') }}" data-l-refused="{{ t('ask.refused') }}"
+      data-l-refused-note="{{ t('ask.refused_note') }}" data-l-answer="{{ t('ask.answer') }}" data-l-cited="{{ t('ask.cited') }}" data-l-error="{{ t('common.error') }}"
+      data-l-assist="{{ t('banner.assist') }}">
+  <label for="question">{{ t('ask.label') }}</label>
+  <textarea id="question" name="question" rows="3" maxlength="2000" required></textarea>
+  <div><button class="btn" type="submit" id="ask-btn">{{ t('ask.submit') }}</button></div>
+  <details><summary>{{ t('ask.examples') }}</summary>
+    <ul class="plain examples">
+      <li><button type="button" class="link ex">8 mahine ki pregnant hai, subah se khoon aa raha hai</button></li>
+      <li><button type="button" class="link ex">Hb 8.6 in a pregnant woman, no complaints. What does the protocol say?</button></li>
+      <li><button type="button" class="link ex">When is the MR-1 vaccine given?</button></li>
+      <li><button type="button" class="link ex">Can you tell if the baby is a boy or a girl from the scan?</button></li>
+    </ul>
+  </details>
+</form>
+<section id="ask-result" aria-live="polite"></section>
+{% endblock %}

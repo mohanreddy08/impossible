@@ -1,0 +1,83 @@
+{"t":"bleeding in third trimester","e":"ESC"}
+{"t":"if bleeding in third trimester she must be referred","e":"ESC"}
+{"t":"pregnant woman has vaginal bleeding","e":"ESC"}
+{"t":"garbhini ki rakta sravam avtundi","e":"ESC"}
+{"t":"garbhini ki blood vastundi","e":"ESC"}
+{"t":"గర్భిణీకి బ్లీడింగ్ అవుతోంది","e":"ESC"}
+{"t":"ఏడో నెల గర్భవతికి రక్తం పోతోంది","e":"ESC"}
+{"t":"delivery ayyaka bleeding ekkuva ga undi","e":"ESC"}
+{"t":"కాన్పు తర్వాత రక్తస్రావం ఆగట్లేదు","e":"ESC"}
+{"t":"heavy bleeding after childbirth","e":"ESC"}
+{"t":"she is not bleeding","e":"OK"}
+{"t":"గర్భిణీకి రక్తస్రావం లేదు","e":"OK"}
+{"t":"ఆమెకు గర్భం, రక్తస్రావం లేదు","e":"OK"}
+{"t":"baby not feeding","e":"ESC"}
+{"t":"baby is not drinking milk","e":"ESC"}
+{"t":"baby refuses to feed","e":"ESC"}
+{"t":"పాప పాలు తాగట్లేదు","e":"ESC"}
+{"t":"పాప పాలు దాగట్లేదు","e":"ESC"}
+{"t":"బిడ్డ పాలు తాగడం లేదు","e":"ESC"}
+{"t":"బాబు పాలు తాగట్లేదండి","e":"ESC"}
+{"t":"papa paalu tagatledu","e":"ESC"}
+{"t":"paapa paalu taagatledu sir","e":"ESC"}
+{"t":"baby paalu pattatledu","e":"ESC"}
+{"t":"పాప పాలు తాగుతోంది","e":"OK"}
+{"t":"baby is feeding well","e":"OK"}
+{"t":"newborn has fits","e":"ESC"}
+{"t":"baby is having convulsions","e":"ESC"}
+{"t":"బిడ్డకు ఫిట్స్ వస్తున్నాయి","e":"ESC"}
+{"t":"బాబుకి మూర్ఛ వచ్చింది","e":"ESC"}
+{"t":"pillaadiki fits vachayi","e":"ESC"}
+{"t":"no fits","e":"OK"}
+{"t":"child is breathing fast and with difficulty","e":"ESC"}
+{"t":"baby has difficulty in breathing","e":"ESC"}
+{"t":"పాపకు ఊపిరి ఆడట్లేదు","e":"ESC"}
+{"t":"బిడ్డకు శ్వాస తీసుకోవడం కష్టంగా ఉంది","e":"ESC"}
+{"t":"పిల్లాడికి ఊపిరి తీసుకోవడంలో ఇబ్బంది","e":"ESC"}
+{"t":"shwasa theesukoleka pothunnadu","e":"ESC"}
+{"t":"the patient fainted suddenly","e":"ESC"}
+{"t":"she is unconscious","e":"ESC"}
+{"t":"ఆమె స్పృహ తప్పి పడిపోయింది","e":"ESC"}
+{"t":"బాబు స్పృహలో లేడు","e":"ESC"}
+{"t":"baby is not responding","e":"ESC"}
+{"t":"child has very high fever","e":"ESC"}
+{"t":"newborn has fever","e":"ESC"}
+{"t":"పిల్లాడికి తీవ్రమైన జ్వరం","e":"ESC"}
+{"t":"పిల్లాడికి జ్వరం చాలా ఎక్కువగా ఉంది","e":"ESC"}
+{"t":"బిడ్డకు జ్వరం తీవ్రంగా ఉంది","e":"ESC"}
+{"t":"chinna pillaki jwaram chala ekkuva ga undi","e":"ESC"}
+{"t":"no fever","e":"OK"}
+{"t":"pregnant woman has severe headache and blurred vision","e":"ESC"}
+{"t":"గర్భిణీకి తీవ్రమైన తలనొప్పి కళ్ళు మసకగా కనిపిస్తున్నాయి","e":"ESC"}
+{"t":"garbhini ki tala noppi ekkuva kallu mabbu","e":"ESC"}
+{"t":"baby in the womb is not moving","e":"ESC"}
+{"t":"baby movements have reduced in pregnancy","e":"ESC"}
+{"t":"కడుపులో బిడ్డ కదలట్లేదు","e":"ESC"}
+{"t":"కడుపులో బిడ్డ కదలిక తగ్గింది","e":"ESC"}
+{"t":"the newborn looks yellow","e":"ESC"}
+{"t":"baby eyes and skin are yellow","e":"ESC"}
+{"t":"బిడ్డ కళ్ళు పసుపు రంగులో ఉన్నాయి","e":"ESC"}
+{"t":"బిడ్డ ఒళ్లు పచ్చగా ఉంది","e":"ESC"}
+{"t":"cord stump is red and has pus","e":"ESC"}
+{"t":"బొడ్డు చుట్టూ ఎర్రగా చీము కారుతోంది","e":"ESC"}
+{"t":"baby is very sleepy and limp","e":"ESC"}
+{"t":"baby is hard to wake","e":"ESC"}
+{"t":"బిడ్డ చాలా నిద్రపోతోంది లేవట్లేదు","e":"ESC"}
+{"t":"baby's body is very cold","e":"ESC"}
+{"t":"బిడ్డ ఒళ్ళు చల్లగా ఉంది","e":"ESC"}
+{"t":"water is leaking in pregnant woman","e":"ESC"}
+{"t":"గర్భిణీకి నీళ్లు కారుతున్నాయి","e":"ESC"}
+{"t":"face and hands suddenly swollen in pregnancy","e":"ESC"}
+{"t":"గర్భిణీకి ముఖం చేతులు వాచిపోయాయి","e":"ESC"}
+{"t":"pregnant woman has severe abdominal pain","e":"ESC"}
+{"t":"గర్భిణీకి కడుపులో తీవ్రమైన నొప్పి","e":"ESC"}
+{"t":"garbhini ki kadupu noppi chala ekkuva","e":"ESC"}
+{"t":"what is the dose of paracetamol for a child","e":"OOS"}
+{"t":"which antibiotic should I give","e":"OOS"}
+{"t":"ఏ మాత్ర ఎంత వేయాలి","e":"OOS"}
+{"t":"how do I wash my hands properly","e":"OK"}
+{"t":"what should I do if nobody is at home","e":"OK"}
+{"t":"ఇంట్లో ఎవరూ లేకపోతే ఏం చేయాలి","e":"OK"}
+{"t": "పారాసెటమాల్ టాబ్లెట్ ఎన్ని ఇవ్వాలి", "e": "OOS"}
+{"t": "అజిత్రోమైసిన్ ఎన్ని మాత్రలు వేయాలి", "e": "OOS"}
+{"t": "బాబుకు ఎన్ని టాబ్లెట్లు ఇవ్వాలి", "e": "OOS"}

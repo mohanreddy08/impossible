@@ -1,0 +1,841 @@
+{
+ "@@locale": "en",
+ "appName": "ASHA",
+ "navHome": "Home",
+ "navVisits": "Visits",
+ "navAsk": "Ask",
+ "navHouseholds": "Households",
+ "navMore": "More",
+ "loading": "Loading…",
+ "retry": "Try again",
+ "cancel": "Cancel",
+ "save": "Save",
+ "close": "Close",
+ "confirm": "Confirm",
+ "discard": "Discard",
+ "yes": "Yes",
+ "no": "No",
+ "today": "Today",
+ "optional": "optional",
+ "required": "required",
+ "search": "Search",
+ "all": "All",
+ "clear": "Clear",
+ "loadMore": "Show more",
+ "noResults": "Nothing found",
+ "back": "Back",
+ "chooseDate": "Choose date",
+ "notSet": "Not set",
+ "none": "None",
+ "statusOnline": "Online",
+ "statusOffline": "Offline",
+ "statusServerUnreachable": "Server not reachable",
+ "syncPendingCount": "{n} waiting to sync",
+ "@syncPendingCount": {
+  "placeholders": {
+   "n": {
+    "type": "int"
+   }
+  }
+ },
+ "allSynced": "All changes synced",
+ "lastSynced": "Last synced {date}",
+ "@lastSynced": {
+  "placeholders": {
+   "date": {
+    "type": "String"
+   }
+  }
+ },
+ "neverSynced": "Never synced",
+ "demoBadge": "Demo data (synthetic)",
+ "greetMorning": "Good morning",
+ "greetAfternoon": "Good afternoon",
+ "greetEvening": "Good evening",
+ "homeQuestion": "What's on your list today?",
+ "nextVisit": "Next visit",
+ "dueToday": "Due today",
+ "overdue": "Overdue",
+ "upcoming": "Upcoming",
+ "pendingReferrals": "Open referrals",
+ "priorityTitle": "Attend first",
+ "prioritySubtitle": "Households ranked by urgency",
+ "priorityUrgent": "Urgent",
+ "prioritySoon": "Soon",
+ "priorityRoutine": "Routine",
+ "priorityWhyOverdue": "Visit overdue by {days} days",
+ "@priorityWhyOverdue": {
+  "placeholders": {
+   "days": {
+    "type": "int"
+   }
+  }
+ },
+ "priorityWhyToday": "Visit due today",
+ "priorityWhyReferral": "Open referral, waiting {days} days",
+ "@priorityWhyReferral": {
+  "placeholders": {
+   "days": {
+    "type": "int"
+   }
+  }
+ },
+ "priorityWhyMissed": "{n} missed visits in the last 90 days",
+ "@priorityWhyMissed": {
+  "placeholders": {
+   "n": {
+    "type": "int"
+   }
+  }
+ },
+ "priorityWhyType": "{category} follow-up",
+ "@priorityWhyType": {
+  "placeholders": {
+   "category": {
+    "type": "String"
+   }
+  }
+ },
+ "priorityNote": "The order uses due dates, open referrals, missed visits and visit type. It is a prototype rule, not a clinical risk score, and needs clinical review.",
+ "priorityEmpty": "Nothing is waiting: no overdue visits or open referrals.",
+ "prioritySeeAll": "See full list",
+ "recordsTitle": "From your records on this phone",
+ "recordsFooter": "Taken from the household register on this phone, so it works offline. This is not medical advice.",
+ "recordsOverdue": "{n} households have an overdue visit.",
+ "@recordsOverdue": {
+  "placeholders": {
+   "n": {
+    "type": "int"
+   }
+  }
+ },
+ "recordsDueToday": "{n} households have a visit due today.",
+ "@recordsDueToday": {
+  "placeholders": {
+   "n": {
+    "type": "int"
+   }
+  }
+ },
+ "recordsReferrals": "{n} households have an open referral.",
+ "@recordsReferrals": {
+  "placeholders": {
+   "n": {
+    "type": "int"
+   }
+  }
+ },
+ "recordsPriority": "{n} households are waiting. Most urgent first:",
+ "@recordsPriority": {
+  "placeholders": {
+   "n": {
+    "type": "int"
+   }
+  }
+ },
+ "recordsNone": "None right now.",
+ "recordsHouseholdMissing": "No household with ID {id} is on this phone.",
+ "@recordsHouseholdMissing": {
+  "placeholders": {
+   "id": {
+    "type": "String"
+   }
+  }
+ },
+ "recordsHouseholdInfo": "Status: {status}. Next visit: {next}. Last visit: {last}.",
+ "@recordsHouseholdInfo": {
+  "placeholders": {
+   "status": {
+    "type": "String"
+   },
+   "next": {
+    "type": "String"
+   },
+   "last": {
+    "type": "String"
+   }
+  }
+ },
+ "clarifyAddTitle": "Tap what applies, or type more:",
+ "clarifyChipNow": "Happening right now",
+ "clarifyChipSevere": "It is severe",
+ "clarifyChipPregnant": "Pregnant woman",
+ "clarifyChipChild": "Baby or child",
+ "alertOneTitle": "Urgent: household {id}",
+ "@alertOneTitle": {
+  "placeholders": {
+   "id": {
+    "type": "String"
+   }
+  }
+ },
+ "alertOneBody": "Open the app and look at Attend first.",
+ "alertManyTitle": "Urgent: {n} households need attention",
+ "@alertManyTitle": {
+  "placeholders": {
+   "n": {
+    "type": "int"
+   }
+  }
+ },
+ "alertManyBody": "Open the app and look at Attend first to see who to visit first.",
+ "aiAssistTitle": "Online AI help (optional)",
+ "aiAssistHelp": "Off by default. When off, the Ask page explains from the approved protocol on this phone only, so you get the same result with or without internet. When on and online, your question and the closest approved passages are sent to your server's AI, which writes the explanation; if it does not answer in 10 seconds the phone explains it itself.",
+ "alertsTitle": "Urgent alerts",
+ "alertsHelp": "Get a notification when a household becomes urgent in the Attend first list. This is worked out on the phone, so it works without internet. The urgency rule is a prototype, not a clinical risk score.",
+ "alertsPermissionDenied": "Notifications are blocked for this app. Allow them in the phone's settings to get urgent alerts.",
+ "safetyMsgEscalation": "Possible danger sign detected. Follow your approved escalation protocol and contact the supervising medical officer. [PLACEHOLDER TEXT - pending clinical approval]",
+ "safetyMsgClarification": "Please clarify: who is affected, which symptom, and whether it is happening now. [PLACEHOLDER TEXT - pending clinical approval]",
+ "ruleBleeding": "Heavy bleeding",
+ "ruleFits": "Fits / convulsions",
+ "ruleBreathing": "Difficulty breathing",
+ "ruleUnconscious": "Loss of consciousness / unresponsive",
+ "ruleFever": "High fever",
+ "ruleNotFeeding": "Not feeding",
+ "ruleAmbiguous": "Unclear description of being unwell",
+ "ruleOutOfScope": "Medicine or dose request",
+ "ruleOther": "Safety rule matched",
+ "reasonMatched": "{label}: a matching phrase was found",
+ "@reasonMatched": {
+  "placeholders": {
+   "label": {
+    "type": "String"
+   }
+  }
+ },
+ "reasonNeedsContext": "{label}: mentioned without enough detail (how severe, who, when)",
+ "@reasonNeedsContext": {
+  "placeholders": {
+   "label": {
+    "type": "String"
+   }
+  }
+ },
+ "reasonShortMessage": "The message is too short to be sure, so more detail is requested",
+ "safetyRulesLabel": "Safety rules",
+ "notValidatedShort": "not clinically validated",
+ "tblHouseholds": "Households",
+ "tblVisits": "Visits",
+ "tblReferrals": "Referrals",
+ "tblProtocolPassages": "Protocol passages",
+ "tblSyncOutbox": "Waiting to send",
+ "shareSubject": "Referral summary",
+ "splashTagline": "Your health worker companion",
+ "obChooseLanguage": "Choose your language",
+ "obChooseLanguageHint": "You can change this later in Settings.",
+ "obContinue": "Continue",
+ "obSkip": "Skip",
+ "obNext": "Next",
+ "obGetStarted": "Get started",
+ "obStep": "Step {n} of {total}",
+ "@obStep": {
+  "placeholders": {
+   "n": {
+    "type": "int"
+   },
+   "total": {
+    "type": "int"
+   }
+  }
+ },
+ "ob1Title": "Your day in one place",
+ "ob1Body": "See today's visits, record what happened, and use the Attend first list to know who needs you most.",
+ "ob2Title": "Works without internet",
+ "ob2Body": "Your list, visits and safety checks are kept on this phone. When the connection returns, your work is sent to the server automatically.",
+ "ob3Title": "Safety comes first",
+ "ob3Body": "ASHA warns you about possible danger signs. It does not replace a doctor or your approved protocols. The safety rules are still a draft and not clinically validated.",
+ "ob4Title": "Two things ASHA may ask for",
+ "ob4Mic": "Microphone: only while you tap Speak, to turn your voice into text. Audio is not saved.",
+ "ob4Notif": "Notifications: to tell you when a household becomes urgent. This works without internet.",
+ "ob4Server": "To sync your work, add your server address in Settings when you are ready.",
+ "visitTimeLabel": "Date and time of visit",
+ "visitTimeAuto": "Recorded automatically when you opened this visit. It cannot be changed.",
+ "visitTimeLocal": "Saved with the visit and sent to the server when you are online.",
+ "errTimeFuture": "That time has not happened yet today. Choose the time you actually went.",
+ "errTimeInvalid": "Choose a valid time.",
+ "aiPrivacy": "When you are online, your question and the closest approved passages are also sent to your server's AI to write the explanation. Nothing is saved.",
+ "escalationSampleHeading": "Sample text (not approved guidance)",
+ "addFamily": "Add a new family",
+ "addFamilyTitle": "New family",
+ "villageLabel2": "Village ID",
+ "villageHint": "For example VIL-SYN-01",
+ "villagePick": "Villages on this phone",
+ "membersLabel": "Number of family members",
+ "membersDecrease": "Fewer members",
+ "membersIncrease": "More members",
+ "followupsLabel": "What follow-ups may this family need?",
+ "followupsHint": "Pick all that apply. You can add more later.",
+ "addFamilySave": "Add this family",
+ "addFamilyNote": "Saved on this phone now. It is sent to the server when you are online. The family gets an ID that you can use to schedule a first visit.",
+ "addFamilyDone": "Family added: {id}. Schedule a first visit below.",
+ "@addFamilyDone": {
+  "placeholders": {
+   "id": {
+    "type": "String"
+   }
+  }
+ },
+ "errVillageInvalid": "Enter the village ID: letters, numbers, dash or underscore, 2 to 32 characters.",
+ "errMembersInvalid": "Members must be between 1 and 60.",
+ "errCategoriesEmpty": "Pick at least one follow-up type.",
+ "errWorkerUnknown": "This phone does not know which health worker you are yet. Sync once (or load the demo data), then add the family.",
+ "quickActions": "Quick actions",
+ "askQuestion": "Ask a question",
+ "openPlanner": "Today's visits",
+ "reportsAction": "Reports",
+ "syncCentreAction": "Sync centre",
+ "referralsAction": "Referrals",
+ "noVisitsToday": "No visits due today",
+ "emptyHomeTitle": "No household data on this phone yet",
+ "emptyHomeBody": "Connect to the server in Settings and sync, or load the synthetic demo data to try the app.",
+ "householdsCount": "{n} households on this phone",
+ "@householdsCount": {
+  "placeholders": {
+   "n": {
+    "type": "int"
+   }
+  }
+ },
+ "plannerTitle": "Visit planner",
+ "bucketOverdue": "Overdue",
+ "bucketToday": "Today",
+ "bucketUpcoming": "Upcoming",
+ "priorityExplainer": "Ordered by due date: most overdue first. No risk score is used.",
+ "reasonOverdue": "{category} follow-up was due {days} days ago",
+ "@reasonOverdue": {
+  "placeholders": {
+   "category": {
+    "type": "String"
+   },
+   "days": {
+    "type": "int"
+   }
+  }
+ },
+ "reasonToday": "{category} follow-up is due today",
+ "@reasonToday": {
+  "placeholders": {
+   "category": {
+    "type": "String"
+   }
+  }
+ },
+ "reasonUpcoming": "{category} follow-up is due in {days} days",
+ "@reasonUpcoming": {
+  "placeholders": {
+   "category": {
+    "type": "String"
+   },
+   "days": {
+    "type": "int"
+   }
+  }
+ },
+ "lastVisitOn": "Last visit: {date}",
+ "@lastVisitOn": {
+  "placeholders": {
+   "date": {
+    "type": "String"
+   }
+  }
+ },
+ "lastVisitNone": "No completed visit on record",
+ "openReferralNote": "This household also has an open referral",
+ "recordOutcome": "Record visit",
+ "visitDetails": "Visit details",
+ "outcomeLabel": "What happened?",
+ "outcomeCompleted": "Visit done",
+ "outcomeMissed": "Could not visit (not at home, etc.)",
+ "outcomeCancelled": "Cancel this visit",
+ "visitDate": "Date of visit",
+ "followupNeeded": "Another visit is needed",
+ "nextVisitDate": "Date of next visit",
+ "recommendReferral": "Recommend a hospital referral",
+ "facilityLabel": "Facility",
+ "serviceLabel": "Service",
+ "noFacilitiesKnown": "No facility list is available on this phone yet, so a referral cannot be recorded here.",
+ "referralNeedsDone": "A referral can only be recorded for a visit that was done.",
+ "savedOffline": "Saved on this phone. It will be sent when you are online.",
+ "errActualRequired": "Choose the date the visit happened.",
+ "errFuture": "The visit date cannot be in the future.",
+ "errNextRequired": "Choose the date of the next visit.",
+ "errNextNotAfter": "The next visit must be after this visit.",
+ "errInconsistent": "Remove the next visit date, or say another visit is needed.",
+ "errAlreadyFinal": "This visit has already been recorded.",
+ "errPlannedBefore": "The planned date cannot be before the referral was made.",
+ "errInPast": "Choose today or a later date.",
+ "errNeedFacility": "Choose a facility.",
+ "errGeneric": "Please check this entry.",
+ "householdsTitle": "Households",
+ "searchHouseholds": "Search by household ID",
+ "filterStatus": "Status",
+ "filterCategory": "Follow-up type",
+ "filterVillage": "Village",
+ "statusUPCOMING": "Upcoming",
+ "statusDUE_TODAY": "Due today",
+ "statusOVERDUE": "Overdue",
+ "statusCOMPLETED": "Recently visited",
+ "statusNO_VISIT_DUE": "No visit due",
+ "members": "{n} members",
+ "@members": {
+  "placeholders": {
+   "n": {
+    "type": "int"
+   }
+  }
+ },
+ "villageLabel": "Village",
+ "nextVisitLabel": "Next visit",
+ "lastVisitLabel": "Last visit",
+ "eligibleFollowups": "Follow-up types",
+ "visitHistory": "Visit history",
+ "noHistory": "No visits recorded",
+ "scheduleVisit": "Schedule a visit",
+ "householdReferrals": "Referrals",
+ "unsyncedBadge": "Not synced yet",
+ "visitStatusPLANNED": "Planned",
+ "visitStatusCOMPLETED": "Done",
+ "visitStatusMISSED": "Missed",
+ "visitStatusRESCHEDULED": "Rescheduled",
+ "visitStatusCANCELLED": "Cancelled",
+ "catANC": "Antenatal care",
+ "catIMMUNISATION": "Immunisation",
+ "catNUTRITION": "Nutrition",
+ "catHYPERTENSION": "Blood pressure",
+ "catDIABETES": "Diabetes",
+ "catROUTINE": "Routine visit",
+ "catGENERAL": "General",
+ "referralsTitle": "Referrals",
+ "refFilterAll": "All",
+ "refFilterOpen": "Open",
+ "refFilterRecommended": "Recommended",
+ "refFilterPlanned": "Planned",
+ "refFilterConfirmed": "Attendance confirmed",
+ "refFilterClosed": "Closed",
+ "phaseRecommended": "Recommended — not yet planned",
+ "phasePlanned": "Planned — attendance NOT confirmed",
+ "phaseConfirmed": "Hospital attendance confirmed (hospital record)",
+ "phaseCancelled": "Referral cancelled",
+ "phaseInvalid": "Record marked invalid",
+ "phaseDuplicate": "Duplicate record (not counted)",
+ "attendanceNote": "Attendance is only shown as confirmed when the hospital has a record of the visit. Recommending or planning a referral does not mean the person went.",
+ "stepRecommended": "Recommended",
+ "stepPlanned": "Planned",
+ "stepAttended": "Attendance confirmed by hospital",
+ "stepDone": "done",
+ "stepWaiting": "not yet",
+ "setPlannedDate": "Set planned date",
+ "changePlannedDate": "Change planned date",
+ "cancelReferral": "Cancel referral",
+ "cancelReferralConfirm": "Cancel this referral? This is sent to the server when you are online.",
+ "plannedOn": "Planned for {date}",
+ "@plannedOn": {
+  "placeholders": {
+   "date": {
+    "type": "String"
+   }
+  }
+ },
+ "createdOn": "Referral made {date}",
+ "@createdOn": {
+  "placeholders": {
+   "date": {
+    "type": "String"
+   }
+  }
+ },
+ "attendanceRecordLabel": "Hospital record",
+ "confirmedOn": "Confirmed on {date}",
+ "@confirmedOn": {
+  "placeholders": {
+   "date": {
+    "type": "String"
+   }
+  }
+ },
+ "askTitle": "Ask a health question",
+ "askHint": "Type in Telugu, English or both",
+ "askButton": "Check",
+ "askNeedsText": "Type a question first.",
+ "askTooLong": "The question is too long. Please shorten it.",
+ "askChecking": "Checking…",
+ "askPrivacy": "Your question is not saved on this phone.",
+ "askSafetyOnDevice": "Safety checks run on this phone, even without internet.",
+ "verifiedTitle": "Verified protocol text",
+ "unverifiedTitle": "Unverified text — not medical guidance",
+ "sourceDocument": "Document",
+ "sourceSection": "Section",
+ "sourcePage": "Page",
+ "sourceVersion": "Version",
+ "sourceStatus": "Source status",
+ "passageHeading": "Supporting passage (exact text)",
+ "answeredOnDevice": "Found in protocol text stored on this phone",
+ "answeredByServer": "Found by the server",
+ "insufficientTitle": "No verified answer available",
+ "insufficientBody": "No approved protocol text matches this question. This is not an answer. Please ask your supervisor or medical officer.",
+ "cannotVerifyTitle": "Cannot be verified offline",
+ "cannotVerifyBody": "There is no approved protocol text on this phone and the server cannot be reached, so no answer can be given. Safety checks found no danger sign in your question, but that is not a medical answer.",
+ "clarifyTitle": "Please tell us more",
+ "outOfScopeTitle": "This app cannot help with this",
+ "outOfScopeBody": "The app does not give medicine doses or prescriptions. Please refer the person to a medical officer.",
+ "escalationTitle": "Possible danger sign",
+ "escalationLead": "Follow your approved escalation steps now.",
+ "escalationPlaceholderNote": "The wording below is placeholder text that has not been approved by a clinician.",
+ "notClinicallyValidated": "Safety rules are not clinically validated yet",
+ "reviewNeeded": "Needs human review",
+ "whyShown": "Why this was shown",
+ "rulesetLabel": "Rules version {v}",
+ "@rulesetLabel": {
+  "placeholders": {
+   "v": {
+    "type": "String"
+   }
+  }
+ },
+ "callSupervisor": "Call supervisor",
+ "escalationGuidanceHeading": "Approved guidance",
+ "escalationNoGuidance": "No approved protocol is loaded on this phone yet, so no treatment advice can be shown. Use your approved escalation steps.",
+ "noContactConfigured": "No supervisor number is set. Add one in Settings.",
+ "reportsTitle": "Reports",
+ "facilityPick": "Facility",
+ "periodLabel": "Period",
+ "period30": "Last 30 days",
+ "period90": "Last 90 days",
+ "period180": "Last 6 months",
+ "reportLocal": "Summary from this phone",
+ "reportServer": "Get report from server",
+ "reportComputedLocal": "Computed on this phone from saved records (works offline)",
+ "reportComputedServer": "Report from the server",
+ "countRecommended": "Recommended",
+ "countPlanned": "Planned",
+ "countConfirmed": "Attendance confirmed (hospital record)",
+ "countTotal": "Total recorded referrals",
+ "byService": "By service",
+ "excludedRecords": "Records not counted",
+ "followUpsDue": "Follow-ups due",
+ "followUpsDone": "Follow-ups completed in period",
+ "freshFRESH": "Data is fresh (synced within 24 hours)",
+ "freshRECENT": "Data is recent (synced within 3 days)",
+ "freshSTALE_OFFLINE": "Data may be out of date (not synced for over 3 days)",
+ "freshNOT_PROVIDED": "This phone has never synced",
+ "privacyNoticeReport": "Aggregate counts only. No household or patient details. These are recorded referrals, not predictions of who will attend. Household visits are not hospital attendance.",
+ "shareCsv": "Share CSV",
+ "sharePdf": "Share PDF",
+ "noFacilities": "No referral records on this phone yet.",
+ "reportOnlineOnly": "PDF and server reports need an internet connection.",
+ "generatedAt": "Generated {date}",
+ "@generatedAt": {
+  "placeholders": {
+   "date": {
+    "type": "String"
+   }
+  }
+ },
+ "syncTitle": "Sync centre",
+ "syncNow": "Sync now",
+ "syncing": "Syncing…",
+ "sectionPending": "Waiting to send",
+ "sectionFailed": "Rejected by server",
+ "sectionConflict": "Needs your decision",
+ "sectionSynced": "Confirmed by server",
+ "retryOp": "Send again",
+ "discardOp": "Discard change",
+ "discardConfirm": "Discard this change? Your saved edit will be undone on this phone. Other changes made at the same time stay queued.",
+ "resolveConflict": "Resolve",
+ "keepServer": "Keep the server's version",
+ "keepMine": "Keep my change",
+ "conflictExplain": "Someone else changed this record before your change reached the server. Nothing was overwritten. Choose which version to keep.",
+ "serverHas": "Server has",
+ "youChanged": "You changed it to",
+ "opNewVisit": "New visit",
+ "opVisitOutcome": "Visit result",
+ "opNewReferral": "New referral",
+ "opReferralUpdate": "Referral change",
+ "opHouseholdUpdate": "Household change",
+ "opNewHousehold": "New household",
+ "attemptsN": "Tried {n} times",
+ "@attemptsN": {
+  "placeholders": {
+   "n": {
+    "type": "int"
+   }
+  }
+ },
+ "nothingPending": "Nothing is waiting to be sent.",
+ "syncResultOk": "Sync finished: {n} changes confirmed by the server.",
+ "@syncResultOk": {
+  "placeholders": {
+   "n": {
+    "type": "int"
+   }
+  }
+ },
+ "syncAuthFailed": "The server did not accept your access key. Check it in Settings. Your data is safe on this phone.",
+ "syncNotConfigured": "No server address is set. Add it in Settings. Your data is safe on this phone.",
+ "syncOffline": "No connection. Your changes are saved on this phone and will be sent later.",
+ "syncServerError": "The server had a problem. Your changes are saved on this phone and will be sent again.",
+ "syncNeedsAttention": "Some changes were not accepted by the server. Nothing was lost: they are listed below.",
+ "voiceLangTelugu": "Telugu",
+ "voiceLangEnglish": "English",
+ "voiceChecking": "Checking voice support…",
+ "voicePackMissing": "This phone has no offline speech pack for {name}, so voice cannot work without internet. You can download the pack in the phone's speech settings (often Settings › Google › Speech › Offline speech recognition). Please type your question for now.",
+ "@voicePackMissing": {
+  "placeholders": {
+   "name": {
+    "type": "String"
+   }
+  }
+ },
+ "voiceNoOfflineEngine": "This phone cannot recognise {name} speech without internet. Please type your question.",
+ "@voiceNoOfflineEngine": {
+  "placeholders": {
+   "name": {
+    "type": "String"
+   }
+  }
+ },
+ "voiceOnlineOption": "If you want, you can allow the phone's online speech service in Settings (Online speech).",
+ "voicePrivacyOnDevice": "Your voice is turned into text on this phone only. Nothing is sent, and this app does not save your voice.",
+ "voicePrivacyOnline": "Your phone's online speech service turned your voice into text, so the audio was sent to that service. This app does not save your voice.",
+ "voiceTranscribing": "Turning your voice into text…",
+ "voicePrivacyAppModel": "Your voice was turned into text on this phone by the app's own Telugu model. Nothing is sent, and this app does not save your voice. Speech recognition can make mistakes: check the words.",
+ "voiceGetTeluguPack": "You can also download the Telugu voice pack once in Settings; after that Telugu voice works with no internet.",
+ "teluguModelTitle": "Telugu voice for this app (offline)",
+ "mapChipAvailable": "Offline map available",
+ "mapChipMissing": "Offline map not downloaded",
+ "houseLocationTitle": "House location",
+ "houseLocationOpen": "Tap to open the bigger map",
+ "houseLocationNone": "No map or position on this phone for this house yet.",
+ "mapDemoNote": "Demo village map. It is made up, not a real place.",
+ "phonesTitle": "Phone numbers",
+ "phone1Label": "Phone 1 (required)",
+ "phone2Label": "Phone 2 (optional)",
+ "phoneNotAdded": "Not added",
+ "phoneEdit": "Edit",
+ "phoneAdd": "Add phone numbers",
+ "phoneErrRequired": "Phone 1 is needed.",
+ "phoneErrInvalid": "Enter a 10-digit mobile number that starts with 6, 7, 8 or 9.",
+ "phoneErrSame": "Phone 2 is the same as Phone 1.",
+ "phoneCall": "Call {number}",
+ "@phoneCall": {
+  "placeholders": {
+   "number": {
+    "type": "String"
+   }
+  }
+ },
+ "phoneCannotCall": "Could not open the phone app.",
+ "phoneLocalOnly": "Saved on this phone only. It is not sent to the server.",
+ "teluguModelHelp": "Download once (about 44 MB, use Wi-Fi). After that, Telugu voice works with no internet and your voice never leaves the phone. It can make mistakes, so always check the words.",
+ "teluguModelDownload": "Download Telugu voice",
+ "teluguModelProgress": "Downloading… {done} of {total} MB",
+ "@teluguModelProgress": {
+  "placeholders": {
+   "done": {
+    "type": "String"
+   },
+   "total": {
+    "type": "int"
+   }
+  }
+ },
+ "teluguModelReady": "Ready. Telugu voice works offline on this phone.",
+ "teluguModelRemove": "Remove (frees about 44 MB)",
+ "teluguModelNeedServer": "Set the server address and key above first: the pack is downloaded from your server.",
+ "teluguModelFailedNet": "Could not download. Check the internet and the server, then try again. What was downloaded is kept, so it continues.",
+ "teluguModelFailedSum": "The downloaded file was damaged, so it was discarded. Please try again.",
+ "teluguModelNotOnServer": "This server has no Telugu voice pack. Ask whoever runs the server to install it.",
+ "altVoiceButton": "Alternative way to get Telugu voice",
+ "altVoiceTitle": "Telugu voice with the Google keyboard",
+ "altVoiceIntro": "Use the voice typing of the Google keyboard (Gboard) to speak Telugu into the question box. Do these steps once.",
+ "altStep1Title": "Open your phone's Settings",
+ "altStep1Body": "Open the Settings app of your phone (the gear icon).",
+ "altStep2Title": "Find the keyboard settings",
+ "altStep2Body": "Go to System, then Languages and input. On some phones this is called General management, or Additional settings, then Language and input.",
+ "altStep3Title": "Choose the Google keyboard",
+ "altStep3Body": "Tap On-screen keyboard (or Keyboards) and open Gboard, the Google keyboard. If you do not see it, install Gboard from the Play Store and set it as your keyboard.",
+ "altStep4Title": "Add Telugu",
+ "altStep4Body": "In Gboard tap Languages, then Add keyboard, search for Telugu, select it and tap Done.",
+ "altStep5Title": "Turn on voice typing",
+ "altStep5Body": "In the Gboard settings open Voice typing, switch on Use voice typing, and make sure Telugu is one of its languages.",
+ "altStep6Title": "Speak in this app",
+ "altStep6Body": "Come back to this app and open Ask. Tap the question box so the keyboard opens. If needed, switch to Telugu with the globe key, then tap the microphone key on the keyboard and speak your question.",
+ "altStep7Title": "Check the words",
+ "altStep7Body": "Look at the Telugu words, fix any mistakes, then press Check.",
+ "altVoiceNote": "Please note: Gboard voice typing is Google's service, not this app's. It usually needs internet, and the audio goes to Google. It works without internet only if Telugu is listed in Gboard's offline languages; on the two phones we tried, Telugu was not offered offline. For Telugu voice with no internet, use Download Telugu voice in Settings.",
+ "altOpenKeyboardSettings": "Open keyboard settings",
+ "altOpenFailed": "Could not open it. Open your phone's Settings yourself and follow the steps.",
+ "explAsking": "Asking the AI server… (up to 10 seconds)",
+ "explTitle": "Explanation",
+ "explFromDevice": "Explained on this phone, using sentences from the approved text below.",
+ "explFromServerText": "From your server: the approved text that answers your question, word for word.",
+ "explFromServer": "Explained by your server's AI from the approved text below.",
+ "explNoteTimeout": "The server did not answer in 10 seconds, so the phone explained it itself.",
+ "explNoteUnreachable": "The server could not be reached, so the phone explained it itself.",
+ "explNoteUnsafe": "The server's text was not shown because it named a medicine or a dose, so the phone explained it itself.",
+ "explNoteRejected": "The server's text was not shown because it did not stay with the approved text (or its language), so the phone explained it itself.",
+ "explDisclaimerDevice": "Taken word for word from the approved text. Not clinically validated: check with your supervisor.",
+ "explDisclaimerServer": "Written by an AI from the approved text. Not clinically verified. Not a diagnosis. Follow your approved protocols.",
+ "sevHighTitle": "High: possible danger sign",
+ "sevHighAction": "Act now: call your supervisor or take the person to the nearest health facility.",
+ "sevMediumTitle": "Medium: more details needed",
+ "sevMediumAction": "Tap what applies below, or type more, then check again.",
+ "sevLowTitle": "Low: no danger sign found in what you wrote",
+ "sevLowAction": "For information. Read the explanation and the approved text below.",
+ "voiceResultNote": "This text came from your voice and may contain mistakes. If it is not what you said, fix the words and press Check again.",
+ "onlineSpeechTitle": "Online speech (optional)",
+ "onlineSpeechHelp": "Off by default. When off, voice works only for languages this phone can recognise offline, and your voice never leaves the phone. When on, and only if a language has no offline pack and you are online, your phone's speech service receives the audio to turn it into text.",
+ "speechCapsLabel": "Offline speech on this phone",
+ "speechCapsLine": "English: {en} · Telugu: {te}",
+ "@speechCapsLine": {
+  "placeholders": {
+   "en": {
+    "type": "String"
+   },
+   "te": {
+    "type": "String"
+   }
+  }
+ },
+ "speechYes": "installed",
+ "speechNo": "not installed",
+ "speechUnknown": "cannot check on this phone",
+ "voiceSpeak": "Speak",
+ "voiceStop": "Stop",
+ "voiceListening": "Listening… speak now",
+ "voiceLangLabel": "Speak in",
+ "voiceCheckText": "Check the words below, fix any mistakes, then press Check.",
+ "voicePrivacy": "Your phone's speech service turns your voice into text and may use the internet. This app does not save your voice.",
+ "voicePermissionDenied": "Microphone permission is off. Allow the microphone for this app in your phone settings, or type your question.",
+ "voiceUnavailable": "Voice input is not available on this phone. Please type your question.",
+ "voiceLanguageMissing": "This phone has no speech support for the chosen language. Install it in the phone's Google speech settings, or type your question.",
+ "voiceNoSpeech": "I did not hear anything. Tap Speak and try again.",
+ "voiceOfflineLanguage": "You are offline and this phone has no offline speech pack for this language. Connect to the internet to speak, or type your question - typing and safety checks work offline.",
+ "voiceNetwork": "Voice needs a connection on this phone right now. Please type your question.",
+ "voiceOther": "Voice input stopped. Please try again or type.",
+ "noServerForAnswer": "There is no approved protocol text on this phone and no server address is set in Settings, so no answer can be given. Safety checks found no danger sign in your question, but that is not a medical answer.",
+ "homeMore": "More",
+ "syncNeverSentWarning": "A change is only 'synced' after the server confirms it.",
+ "settingsTitle": "Settings",
+ "languageLabel": "Language",
+ "langEnglish": "English",
+ "langTelugu": "తెలుగు",
+ "serverSection": "Server",
+ "serverUrl": "Server address",
+ "serverUrlHint": "https://your-server.example",
+ "apiKey": "Access key",
+ "apiKeyHint": "Stored securely on this phone",
+ "apiKeySaved": "Access key saved",
+ "testConnection": "Test connection",
+ "connectionOk": "Server reachable",
+ "connectionFailed": "Could not reach the server",
+ "insecureWarning": "This address uses plain http. Data and your key can be read on the network. Use https for a real server.",
+ "invalidUrl": "Enter a full address starting with http:// or https://",
+ "demoSection": "Demo data",
+ "loadDemo": "Load synthetic demo data",
+ "demoLoadedN": "Loaded {n} households of demo data",
+ "@demoLoadedN": {
+  "placeholders": {
+   "n": {
+    "type": "int"
+   }
+  }
+ },
+ "useDemoDate": "Use the demo date (13 Oct 2026)",
+ "demoExplain": "Synthetic records for trying the app. They are not real people.",
+ "escalationContact": "Supervisor phone number",
+ "escalationContactHelp": "Shown on danger-sign alerts so you can call quickly.",
+ "protocolSection": "Protocol library",
+ "protocolCountN": "{n} approved passages on this phone",
+ "@protocolCountN": {
+  "placeholders": {
+   "n": {
+    "type": "int"
+   }
+  }
+ },
+ "protocolNone": "No approved protocol text is installed yet. Questions cannot be answered from protocols until official documents are approved on the server.",
+ "refreshProtocols": "Download approved protocols",
+ "protocolRefreshed": "{n} passages stored",
+ "@protocolRefreshed": {
+  "placeholders": {
+   "n": {
+    "type": "int"
+   }
+  }
+ },
+ "privacyTitle": "Privacy and local data",
+ "privacyBody": "Household, visit and referral records are stored in a database on this phone. Questions you type are not saved. Notifications never show household details. Data is sent to the server only when you sync. The access key is kept in the phone's secure storage.",
+ "clearData": "Clear all data on this phone",
+ "clearConfirm": "Delete all households, visits, referrals and unsent changes from this phone? Unsent changes will be lost.",
+ "clearDone": "All local data deleted",
+ "aboutTitle": "About and diagnostics",
+ "appVersion": "App version",
+ "dbSchema": "Local database version",
+ "diagnosticsNote": "Diagnostics contain counts and versions only, never health information.",
+ "validationNote": "Not clinically validated. Draft safety rules, synthetic data.",
+ "moreTitle": "More",
+ "errNetwork": "No connection. Try again when you are online.",
+ "errTimeout": "The server took too long to answer.",
+ "errUnauthorized": "The server did not accept your access key. Check Settings.",
+ "errServer": "The server had a problem. Try again later.",
+ "errInvalidResponse": "The server sent an unexpected answer.",
+ "errNotConfigured": "Set the server address in Settings first.",
+ "errForbidden": "You are not allowed to do this.",
+ "errUnknown": "Something went wrong. Try again.",
+ "semBottomNav": "Main navigation",
+ "semStatusChip": "Connection and sync status. Tap to open the sync centre.",
+ "h5MapTitle": "Houses map",
+ "h5MapChip": "Offline map: {n} houses. Tap to open.",
+ "@h5MapChip": {"placeholders": {"n": {"type": "int"}}},
+ "h5AllVillages": "All villages",
+ "h5HousesIn": "{n} houses",
+ "@h5HousesIn": {"placeholders": {"n": {"type": "int"}}},
+ "h5LegendUrgent": "Urgent",
+ "h5LegendDue": "Due",
+ "h5LegendSoon": "This week",
+ "h5LegendNone": "Nothing due",
+ "h5MapMadeUp": "Made-up map. The house positions are not real.",
+ "h5MapAsOf": "Visit list as of {date}",
+ "@h5MapAsOf": {"placeholders": {"date": {"type": "String"}}},
+ "h5HouseNo": "House {no}",
+ "@h5HouseNo": {"placeholders": {"no": {"type": "String"}}},
+ "h5PeopleCount": "{n} people",
+ "@h5PeopleCount": {"placeholders": {"n": {"type": "int"}}},
+ "h5OpenHouse": "Open",
+ "h5DueNow": "To do",
+ "h5NothingDue": "Nothing is due for this house.",
+ "h5PickTitle": "House location",
+ "h5PickHelp": "Tap the map where the house is.",
+ "h5PickUse": "Use this location",
+ "h5PickCardTitle": "House location (optional)",
+ "h5PickOpen": "Choose on the map",
+ "h5PickChange": "Change on the map",
+ "h5PickNone": "No location chosen yet.",
+ "h5PickedAt": "Chosen: {lat}, {lng}",
+ "@h5PickedAt": {"placeholders": {"lat": {"type": "String"}, "lng": {"type": "String"}}},
+ "h5PickClear": "Remove location",
+ "h5PickNoMap": "No map is on this phone.",
+ "h5MemberPregnant": "Pregnant",
+ "h5PriorityN": "Priority {n}",
+ "@h5PriorityN": {"placeholders": {"n": {"type": "int"}}},
+ "h5StatusOverdue": "Overdue",
+ "h5StatusToday": "Due today",
+ "h5StatusWeek": "Due this week",
+ "h5MembersTitle": "People in this house",
+ "h5HouseTitle": "House",
+ "h5VillageLine": "{village}, ASHA {asha}",
+ "@h5VillageLine": {"placeholders": {"village": {"type": "String"}, "asha": {"type": "String"}}},
+ "h5VisitTitle": "Visit list",
+ "h5VisitAsOf": "As of {date}. {n} items.",
+ "@h5VisitAsOf": {"placeholders": {"date": {"type": "String"}, "n": {"type": "int"}}},
+ "h5AllAshas": "All ASHAs",
+ "h5Priority1": "Priority 1: high risk, due now",
+ "h5Priority2": "Priority 2: due now",
+ "h5Priority3": "Priority 3: later this week",
+ "h5VisitEmpty": "Nothing is due.",
+ "h5MoreVisit": "Visit list (block data)",
+ "h5MoreMap": "Houses map",
+ "h5DueOn": "due {date}",
+ "@h5DueOn": {"placeholders": {"date": {"type": "String"}}}
+}

@@ -1,0 +1,689 @@
+{
+ "_readme": "Built by asha-data/build_data.py from asha-data/protocols. Statuses come from each document's header. Do not edit by hand.",
+ "documents": [
+  {
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "version": "sample-0",
+   "status": "TEST_FIXTURE_ONLY",
+   "issuing_authority": "None - illustrative sample written for a demonstration",
+   "titles": {
+    "en": "SAMPLE - how ASHA works in the field (fictional workflow text, not an official document)",
+    "te": "నమూనా - ASHA క్షేత్రంలో ఎలా పని చేస్తుంది (కల్పిత వర్క్‌ఫ్లో పాఠం, అధికారిక పత్రం కాదు)"
+   },
+   "languages": [
+    "en",
+    "te"
+   ]
+  },
+  {
+   "document_id": "SAMPLE-NEWBORN-DANGER",
+   "version": "sample-0",
+   "status": "TEST_FIXTURE_ONLY",
+   "issuing_authority": "None - illustrative sample written for a demonstration",
+   "titles": {
+    "en": "SAMPLE - Danger signs in newborns (illustrative text, not an official document)",
+    "te": "నమూనా - నవజాత శిశువులో ప్రమాద సంకేతాలు (ఉదాహరణ పాఠం, అధికారిక పత్రం కాదు)"
+   },
+   "languages": [
+    "en",
+    "te"
+   ]
+  },
+  {
+   "document_id": "SAMPLE-PREG-DANGER",
+   "version": "sample-0",
+   "status": "TEST_FIXTURE_ONLY",
+   "issuing_authority": "None - illustrative sample written for a demonstration",
+   "titles": {
+    "en": "SAMPLE - Danger signs in pregnancy (illustrative text, not an official document)",
+    "te": "నమూనా - గర్భధారణలో ప్రమాద సంకేతాలు (ఉదాహరణ పాఠం, అధికారిక పత్రం కాదు)"
+   },
+   "languages": [
+    "en",
+    "te"
+   ]
+  }
+ ],
+ "passages": [
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-visit-register-en",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "visit-register",
+   "section_title": "Recording visits",
+   "page_number": 1,
+   "language": "en",
+   "passage_text": "[DEMO SAMPLE] Record every household visit in the register on the same day, with the date and what was done.",
+   "content_hash": "65d1c5d060a2308c"
+  },
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-not-at-home-en",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "not-at-home",
+   "section_title": "When nobody is at home",
+   "page_number": 2,
+   "language": "en",
+   "passage_text": "[DEMO SAMPLE] If nobody is at home, record the visit as not done and plan a new visit date for the same household.",
+   "content_hash": "db5b535e7bd7f61e"
+  },
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-referral-en",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "referral",
+   "section_title": "Hospital referrals",
+   "page_number": 3,
+   "language": "en",
+   "passage_text": "[DEMO SAMPLE] When you recommend a hospital referral, note the facility and the reason, and check at the next visit whether the person went.",
+   "content_hash": "09a441eff7bbaf24"
+  },
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-next-visit-en",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "next-visit",
+   "section_title": "Planning the next visit",
+   "page_number": 4,
+   "language": "en",
+   "passage_text": "[DEMO SAMPLE] Plan the next visit before you leave the household and tell the family when you will return.",
+   "content_hash": "bdf5a73ec10f48b9"
+  },
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-hand-washing-en",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "hand-washing",
+   "section_title": "Hygiene",
+   "page_number": 5,
+   "language": "en",
+   "passage_text": "[DEMO SAMPLE] Wash your hands with soap before and after visiting a household member who is unwell.",
+   "content_hash": "73c782e80e74e67a"
+  },
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-danger-sign-en",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "danger-sign",
+   "section_title": "Danger signs",
+   "page_number": 6,
+   "language": "en",
+   "passage_text": "[DEMO SAMPLE] If you see a danger sign, do not wait for the next visit. Contact the supervising medical officer and follow your approved escalation steps.",
+   "content_hash": "b09d52a4ce8c4389"
+  },
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-privacy-en",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "privacy",
+   "section_title": "Privacy",
+   "page_number": 7,
+   "language": "en",
+   "passage_text": "[DEMO SAMPLE] Keep household information private. Do not share it with people who do not need it.",
+   "content_hash": "a50cea002349e572"
+  },
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-offline-en",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "offline",
+   "section_title": "Working without network",
+   "page_number": 8,
+   "language": "en",
+   "passage_text": "[DEMO SAMPLE] If there is no network, keep working. Your records are saved on the phone and sent when the connection returns.",
+   "content_hash": "417f7190e59c4835"
+  },
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-no-medicine-en",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "no-medicine",
+   "section_title": "Medicines",
+   "page_number": 9,
+   "language": "en",
+   "passage_text": "[DEMO SAMPLE] Do not give medicines or doses based on this app. Refer the person to a medical officer.",
+   "content_hash": "735c6dd194796757"
+  },
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-antenatal-en",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "antenatal",
+   "section_title": "Antenatal care visits",
+   "page_number": 10,
+   "language": "en",
+   "passage_text": "[DEMO SAMPLE] The date of the next antenatal care visit comes from your approved schedule. Check the planner for the date set for the household.",
+   "content_hash": "15d4ab5677e2fa4c"
+  },
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-immunisation-en",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "immunisation",
+   "section_title": "Immunisation follow-up",
+   "page_number": 11,
+   "language": "en",
+   "passage_text": "[DEMO SAMPLE] Check the planner for households with an immunisation follow-up due, and record when it is done.",
+   "content_hash": "adeea95be124550b"
+  },
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-supervisor-en",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "supervisor",
+   "section_title": "Supervisor contact",
+   "page_number": 12,
+   "language": "en",
+   "passage_text": "[DEMO SAMPLE] Save your supervisor's phone number in Settings so the call button works in an emergency.",
+   "content_hash": "2a62985c4275ce12"
+  },
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-app-danger-signs-en",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "app-danger-signs",
+   "section_title": "Danger signs the app looks for",
+   "page_number": 13,
+   "language": "en",
+   "passage_text": "[DEMO SAMPLE] The app looks for these danger signs: heavy bleeding, fits, difficulty breathing, fainting, very high fever and a baby who is not feeding. If you see one, contact the supervising medical officer straight away.",
+   "content_hash": "aacea3e9022c95c7"
+  },
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-visit-register-te",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "visit-register",
+   "section_title": "Recording visits",
+   "page_number": 1,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] ప్రతి ఇంటి సందర్శనను అదే రోజు రిజిస్టర్‌లో తేదీతో పాటు చేసిన పనిని నమోదు చేయండి.",
+   "content_hash": "a88af3fc66bd7f9d"
+  },
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-not-at-home-te",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "not-at-home",
+   "section_title": "When nobody is at home",
+   "page_number": 2,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] ఇంట్లో ఎవరూ లేకపోతే, సందర్శన జరగలేదని నమోదు చేసి, అదే ఇంటికి కొత్త సందర్శన తేదీని ప్లాన్ చేయండి.",
+   "content_hash": "ee7a9dfd2e6af8da"
+  },
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-referral-te",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "referral",
+   "section_title": "Hospital referrals",
+   "page_number": 3,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] ఆసుపత్రికి రెఫరల్ సిఫార్సు చేసినప్పుడు, ఆరోగ్య కేంద్రం మరియు కారణాన్ని నమోదు చేసి, తదుపరి సందర్శనలో ఆ వ్యక్తి వెళ్లారో లేదో తెలుసుకోండి.",
+   "content_hash": "3b0af7325c90ff4c"
+  },
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-next-visit-te",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "next-visit",
+   "section_title": "Planning the next visit",
+   "page_number": 4,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] ఇంటి నుండి బయలుదేరే ముందు తదుపరి సందర్శనను ప్లాన్ చేసి, మీరు ఎప్పుడు తిరిగి వస్తారో కుటుంబానికి చెప్పండి.",
+   "content_hash": "97a1cc795b293b1e"
+  },
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-hand-washing-te",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "hand-washing",
+   "section_title": "Hygiene",
+   "page_number": 5,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] అనారోగ్యంగా ఉన్న కుటుంబ సభ్యుడిని చూసే ముందు మరియు తర్వాత సబ్బుతో చేతులు కడుక్కోండి.",
+   "content_hash": "9a9017da8de936ae"
+  },
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-danger-sign-te",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "danger-sign",
+   "section_title": "Danger signs",
+   "page_number": 6,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] ప్రమాద సంకేతం కనిపిస్తే, తదుపరి సందర్శన వరకు ఆగకండి. సూపర్‌వైజింగ్ వైద్యాధికారిని సంప్రదించి, మీ ఆమోదిత అత్యవసర చర్యలను అనుసరించండి.",
+   "content_hash": "673d58904f6ac0ab"
+  },
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-privacy-te",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "privacy",
+   "section_title": "Privacy",
+   "page_number": 7,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] ఇంటి వివరాలను గోప్యంగా ఉంచండి. అవసరం లేని వారితో పంచుకోకండి.",
+   "content_hash": "aca141844a79c2de"
+  },
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-offline-te",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "offline",
+   "section_title": "Working without network",
+   "page_number": 8,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] నెట్‌వర్క్ లేకపోయినా పని కొనసాగించండి. మీ రికార్డులు ఫోన్‌లో సేవ్ అవుతాయి, కనెక్షన్ వచ్చినప్పుడు పంపబడతాయి.",
+   "content_hash": "11609192f09aa04e"
+  },
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-no-medicine-te",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "no-medicine",
+   "section_title": "Medicines",
+   "page_number": 9,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] ఈ యాప్ ఆధారంగా మందులు లేదా మోతాదులు ఇవ్వకండి. ఆ వ్యక్తిని వైద్యాధికారి వద్దకు పంపండి.",
+   "content_hash": "b4d3d32bc4123e6d"
+  },
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-antenatal-te",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "antenatal",
+   "section_title": "Antenatal care visits",
+   "page_number": 10,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] తదుపరి గర్భిణీ సంరక్షణ సందర్శన తేదీ మీ ఆమోదిత షెడ్యూల్ నుండి వస్తుంది. ఇంటికి నిర్ణయించిన తేదీ కోసం ప్లానర్ చూడండి.",
+   "content_hash": "c8eaa815dd037d58"
+  },
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-immunisation-te",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "immunisation",
+   "section_title": "Immunisation follow-up",
+   "page_number": 11,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] టీకా ఫాలో-అప్ అవసరమైన ఇళ్ల కోసం ప్లానర్ చూడండి, అది పూర్తయినప్పుడు నమోదు చేయండి.",
+   "content_hash": "7a693dbe699d4cd2"
+  },
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-supervisor-te",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "supervisor",
+   "section_title": "Supervisor contact",
+   "page_number": 12,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] అత్యవసర పరిస్థితిలో కాల్ బటన్ పనిచేయడానికి మీ సూపర్‌వైజర్ ఫోన్ నంబర్‌ను సెట్టింగ్స్‌లో సేవ్ చేయండి.",
+   "content_hash": "781b8b96854c0297"
+  },
+  {
+   "passage_id": "SAMPLE-APP-WORKFLOW-app-danger-signs-te",
+   "document_id": "SAMPLE-APP-WORKFLOW",
+   "section_id": "app-danger-signs",
+   "section_title": "Danger signs the app looks for",
+   "page_number": 13,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] ఈ యాప్ ఈ ప్రమాద సంకేతాల కోసం చూస్తుంది: భారీ రక్తస్రావం, ఫిట్స్, శ్వాసలో ఇబ్బంది, స్పృహ తప్పడం, తీవ్రమైన జ్వరం, పాలు తాగని పసిబిడ్డ. ఒకటి కనిపిస్తే వెంటనే సూపర్‌వైజింగ్ వైద్యాధికారిని సంప్రదించండి.",
+   "content_hash": "36cc14bd42cbeabc"
+  },
+  {
+   "passage_id": "SAMPLE-NEWBORN-DANGER-overview-en",
+   "document_id": "SAMPLE-NEWBORN-DANGER",
+   "section_id": "overview",
+   "section_title": "Danger signs in a newborn baby: overview and list",
+   "page_number": 1,
+   "language": "en",
+   "passage_text": "[SAMPLE] Danger signs in a newborn include not feeding well, fast or difficult breathing, fits, fever or a body that feels very cold, yellow skin or eyes, a red swollen or pus-filled cord stump, and being very sleepy or limp. If you see any of these, contact the supervising medical officer straight away.",
+   "content_hash": "0eb72f3a72a4be79"
+  },
+  {
+   "passage_id": "SAMPLE-NEWBORN-DANGER-not-feeding-en",
+   "document_id": "SAMPLE-NEWBORN-DANGER",
+   "section_id": "not-feeding",
+   "section_title": "Not feeding",
+   "page_number": 2,
+   "language": "en",
+   "passage_text": "[SAMPLE] A newborn who is not feeding well, or will not suck, has a danger sign. Contact the supervising medical officer straight away.",
+   "content_hash": "d873c87c8c14c35b"
+  },
+  {
+   "passage_id": "SAMPLE-NEWBORN-DANGER-breathing-en",
+   "document_id": "SAMPLE-NEWBORN-DANGER",
+   "section_id": "breathing",
+   "section_title": "Fast or difficult breathing",
+   "page_number": 3,
+   "language": "en",
+   "passage_text": "[SAMPLE] Fast or difficult breathing in a newborn is a danger sign. Contact the supervising medical officer straight away.",
+   "content_hash": "abdab2418c1d2ab3"
+  },
+  {
+   "passage_id": "SAMPLE-NEWBORN-DANGER-convulsions-en",
+   "document_id": "SAMPLE-NEWBORN-DANGER",
+   "section_id": "convulsions",
+   "section_title": "Fits",
+   "page_number": 4,
+   "language": "en",
+   "passage_text": "[SAMPLE] Fits or convulsions in a newborn are a danger sign. Contact the supervising medical officer straight away.",
+   "content_hash": "39dbf2dad70fc221"
+  },
+  {
+   "passage_id": "SAMPLE-NEWBORN-DANGER-fever-cold-en",
+   "document_id": "SAMPLE-NEWBORN-DANGER",
+   "section_id": "fever-cold",
+   "section_title": "Fever or very cold body",
+   "page_number": 5,
+   "language": "en",
+   "passage_text": "[SAMPLE] Fever in a newborn, or a body that feels very cold, is a danger sign. Contact the supervising medical officer straight away.",
+   "content_hash": "a2a741fe25085755"
+  },
+  {
+   "passage_id": "SAMPLE-NEWBORN-DANGER-jaundice-en",
+   "document_id": "SAMPLE-NEWBORN-DANGER",
+   "section_id": "jaundice",
+   "section_title": "Yellow skin or eyes",
+   "page_number": 6,
+   "language": "en",
+   "passage_text": "[SAMPLE] Yellow colour of the skin or eyes in a newborn is a danger sign. Contact the supervising medical officer.",
+   "content_hash": "3d10faa245c4ef6e"
+  },
+  {
+   "passage_id": "SAMPLE-NEWBORN-DANGER-cord-en",
+   "document_id": "SAMPLE-NEWBORN-DANGER",
+   "section_id": "cord",
+   "section_title": "Cord stump infection",
+   "page_number": 7,
+   "language": "en",
+   "passage_text": "[SAMPLE] A cord stump that is red, swollen or has pus is a danger sign. Contact the supervising medical officer.",
+   "content_hash": "d4b4239400cdb7b0"
+  },
+  {
+   "passage_id": "SAMPLE-NEWBORN-DANGER-sleepy-en",
+   "document_id": "SAMPLE-NEWBORN-DANGER",
+   "section_id": "sleepy",
+   "section_title": "Very sleepy or limp",
+   "page_number": 8,
+   "language": "en",
+   "passage_text": "[SAMPLE] A newborn who is very sleepy, limp or hard to wake has a danger sign. Contact the supervising medical officer straight away.",
+   "content_hash": "f1dc28f37ba7629e"
+  },
+  {
+   "passage_id": "SAMPLE-NEWBORN-DANGER-overview-te",
+   "document_id": "SAMPLE-NEWBORN-DANGER",
+   "section_id": "overview",
+   "section_title": "నవజాత శిశువులో ప్రమాద సంకేతాలు: సారాంశం మరియు జాబితా",
+   "page_number": 1,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] నవజాత శిశువులో ప్రమాద సంకేతాలు: సరిగా పాలు తాగకపోవడం, వేగంగా లేదా కష్టంగా శ్వాస తీసుకోవడం, ఫిట్స్, జ్వరం లేదా శరీరం చాలా చల్లగా ఉండటం, చర్మం లేదా కళ్లు పసుపు రంగులో ఉండటం, బొడ్డు కొన ఎర్రగా వాచి లేదా చీముతో ఉండటం, చాలా నిద్రమత్తుగా లేదా సొమ్మసిల్లినట్లు ఉండటం. వీటిలో ఏది కనిపించినా వెంటనే సూపర్‌వైజింగ్ వైద్యాధికారిని సంప్రదించండి.",
+   "content_hash": "a251ba6e3578c566"
+  },
+  {
+   "passage_id": "SAMPLE-NEWBORN-DANGER-not-feeding-te",
+   "document_id": "SAMPLE-NEWBORN-DANGER",
+   "section_id": "not-feeding",
+   "section_title": "పాలు తాగకపోవడం",
+   "page_number": 2,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] నవజాత శిశువు సరిగా పాలు తాగకపోవడం లేదా పాలు పీల్చకపోవడం ప్రమాద సంకేతం. వెంటనే సూపర్‌వైజింగ్ వైద్యాధికారిని సంప్రదించండి.",
+   "content_hash": "ddcb57ea25397485"
+  },
+  {
+   "passage_id": "SAMPLE-NEWBORN-DANGER-breathing-te",
+   "document_id": "SAMPLE-NEWBORN-DANGER",
+   "section_id": "breathing",
+   "section_title": "వేగంగా లేదా కష్టంగా శ్వాస",
+   "page_number": 3,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] నవజాత శిశువు వేగంగా లేదా కష్టంగా శ్వాస తీసుకోవడం ప్రమాద సంకేతం. వెంటనే సూపర్‌వైజింగ్ వైద్యాధికారిని సంప్రదించండి.",
+   "content_hash": "12b3f9aa8e3989a2"
+  },
+  {
+   "passage_id": "SAMPLE-NEWBORN-DANGER-convulsions-te",
+   "document_id": "SAMPLE-NEWBORN-DANGER",
+   "section_id": "convulsions",
+   "section_title": "ఫిట్స్",
+   "page_number": 4,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] నవజాత శిశువుకు ఫిట్స్ రావడం ప్రమాద సంకేతం. వెంటనే సూపర్‌వైజింగ్ వైద్యాధికారిని సంప్రదించండి.",
+   "content_hash": "12d90937b05c98c6"
+  },
+  {
+   "passage_id": "SAMPLE-NEWBORN-DANGER-fever-cold-te",
+   "document_id": "SAMPLE-NEWBORN-DANGER",
+   "section_id": "fever-cold",
+   "section_title": "జ్వరం లేదా శరీరం చాలా చల్లగా ఉండటం",
+   "page_number": 5,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] నవజాత శిశువుకు జ్వరం ఉండటం లేదా శరీరం చాలా చల్లగా ఉండటం ప్రమాద సంకేతం. వెంటనే సూపర్‌వైజింగ్ వైద్యాధికారిని సంప్రదించండి.",
+   "content_hash": "07df659669b95d92"
+  },
+  {
+   "passage_id": "SAMPLE-NEWBORN-DANGER-jaundice-te",
+   "document_id": "SAMPLE-NEWBORN-DANGER",
+   "section_id": "jaundice",
+   "section_title": "చర్మం లేదా కళ్లు పసుపు రంగు",
+   "page_number": 6,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] నవజాత శిశువు చర్మం లేదా కళ్లు పసుపు రంగులో కనిపించడం ప్రమాద సంకేతం. సూపర్‌వైజింగ్ వైద్యాధికారిని సంప్రదించండి.",
+   "content_hash": "c4a1aa195df573b4"
+  },
+  {
+   "passage_id": "SAMPLE-NEWBORN-DANGER-cord-te",
+   "document_id": "SAMPLE-NEWBORN-DANGER",
+   "section_id": "cord",
+   "section_title": "బొడ్డు కొన ఇన్ఫెక్షన్",
+   "page_number": 7,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] బొడ్డు కొన ఎర్రగా, వాచి లేదా చీముతో ఉండటం ప్రమాద సంకేతం. సూపర్‌వైజింగ్ వైద్యాధికారిని సంప్రదించండి.",
+   "content_hash": "9a66dcd2fc3f0aa2"
+  },
+  {
+   "passage_id": "SAMPLE-NEWBORN-DANGER-sleepy-te",
+   "document_id": "SAMPLE-NEWBORN-DANGER",
+   "section_id": "sleepy",
+   "section_title": "చాలా నిద్రమత్తు",
+   "page_number": 8,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] నవజాత శిశువు చాలా నిద్రమత్తుగా, సొమ్మసిల్లినట్లు లేదా లేపడం కష్టంగా ఉండటం ప్రమాద సంకేతం. వెంటనే సూపర్‌వైజింగ్ వైద్యాధికారిని సంప్రదించండి.",
+   "content_hash": "d3f76ef46e58c7ab"
+  },
+  {
+   "passage_id": "SAMPLE-PREG-DANGER-overview-en",
+   "document_id": "SAMPLE-PREG-DANGER",
+   "section_id": "overview",
+   "section_title": "Danger signs in pregnancy: overview and list",
+   "page_number": 1,
+   "language": "en",
+   "passage_text": "[SAMPLE] Danger signs in pregnancy include heavy bleeding, fits, severe headache with blurred vision, severe belly pain, much less baby movement, high fever, fast or difficult breathing, leaking fluid, sudden swelling of the face and hands, and fainting. If you see any of these, contact the supervising medical officer straight away.",
+   "content_hash": "424147a61cb8a9a4"
+  },
+  {
+   "passage_id": "SAMPLE-PREG-DANGER-bleeding-en",
+   "document_id": "SAMPLE-PREG-DANGER",
+   "section_id": "bleeding",
+   "section_title": "Heavy bleeding",
+   "page_number": 2,
+   "language": "en",
+   "passage_text": "[SAMPLE] Heavy vaginal bleeding during pregnancy is a danger sign. Contact the supervising medical officer straight away and arrange to take her to the nearest health facility.",
+   "content_hash": "81a60140a4e2b46c"
+  },
+  {
+   "passage_id": "SAMPLE-PREG-DANGER-convulsions-en",
+   "document_id": "SAMPLE-PREG-DANGER",
+   "section_id": "convulsions",
+   "section_title": "Fits",
+   "page_number": 3,
+   "language": "en",
+   "passage_text": "[SAMPLE] Fits or convulsions in a pregnant woman are a danger sign. Contact the supervising medical officer straight away and arrange to take her to the nearest health facility.",
+   "content_hash": "fefd28bd8fd1447d"
+  },
+  {
+   "passage_id": "SAMPLE-PREG-DANGER-headache-vision-en",
+   "document_id": "SAMPLE-PREG-DANGER",
+   "section_id": "headache-vision",
+   "section_title": "Severe headache with blurred vision",
+   "page_number": 4,
+   "language": "en",
+   "passage_text": "[SAMPLE] A severe headache together with blurred vision during pregnancy is a danger sign. Contact the supervising medical officer straight away.",
+   "content_hash": "7da8aac684697f3d"
+  },
+  {
+   "passage_id": "SAMPLE-PREG-DANGER-abdominal-pain-en",
+   "document_id": "SAMPLE-PREG-DANGER",
+   "section_id": "abdominal-pain",
+   "section_title": "Severe belly pain",
+   "page_number": 5,
+   "language": "en",
+   "passage_text": "[SAMPLE] Severe pain in the belly during pregnancy is a danger sign. Contact the supervising medical officer straight away.",
+   "content_hash": "9f9578d7f9f5c07e"
+  },
+  {
+   "passage_id": "SAMPLE-PREG-DANGER-fetal-movement-en",
+   "document_id": "SAMPLE-PREG-DANGER",
+   "section_id": "fetal-movement",
+   "section_title": "Less baby movement",
+   "page_number": 6,
+   "language": "en",
+   "passage_text": "[SAMPLE] If the baby in the womb moves much less than before, or stops moving, this is a danger sign. Contact the supervising medical officer straight away.",
+   "content_hash": "29bfe14bc3475576"
+  },
+  {
+   "passage_id": "SAMPLE-PREG-DANGER-fever-en",
+   "document_id": "SAMPLE-PREG-DANGER",
+   "section_id": "fever",
+   "section_title": "High fever",
+   "page_number": 7,
+   "language": "en",
+   "passage_text": "[SAMPLE] High fever during pregnancy is a danger sign. Contact the supervising medical officer straight away.",
+   "content_hash": "9f66ee79c1fae6b5"
+  },
+  {
+   "passage_id": "SAMPLE-PREG-DANGER-breathing-en",
+   "document_id": "SAMPLE-PREG-DANGER",
+   "section_id": "breathing",
+   "section_title": "Fast or difficult breathing",
+   "page_number": 8,
+   "language": "en",
+   "passage_text": "[SAMPLE] Fast or difficult breathing in a pregnant woman is a danger sign. Contact the supervising medical officer straight away.",
+   "content_hash": "b1d34c556c6d847a"
+  },
+  {
+   "passage_id": "SAMPLE-PREG-DANGER-water-leaking-en",
+   "document_id": "SAMPLE-PREG-DANGER",
+   "section_id": "water-leaking",
+   "section_title": "Leaking fluid",
+   "page_number": 9,
+   "language": "en",
+   "passage_text": "[SAMPLE] Fluid leaking from the vagina before labour is expected is a danger sign. Contact the supervising medical officer.",
+   "content_hash": "a6a3339307631994"
+  },
+  {
+   "passage_id": "SAMPLE-PREG-DANGER-swelling-en",
+   "document_id": "SAMPLE-PREG-DANGER",
+   "section_id": "swelling",
+   "section_title": "Sudden swelling",
+   "page_number": 10,
+   "language": "en",
+   "passage_text": "[SAMPLE] Sudden swelling of the face and hands is a danger sign. Contact the supervising medical officer.",
+   "content_hash": "a132e8c1d231d0d4"
+  },
+  {
+   "passage_id": "SAMPLE-PREG-DANGER-fainting-en",
+   "document_id": "SAMPLE-PREG-DANGER",
+   "section_id": "fainting",
+   "section_title": "Fainting",
+   "page_number": 11,
+   "language": "en",
+   "passage_text": "[SAMPLE] A pregnant woman who faints, or cannot be woken, has a danger sign. Contact the supervising medical officer straight away.",
+   "content_hash": "b88c3525e0b5ab47"
+  },
+  {
+   "passage_id": "SAMPLE-PREG-DANGER-overview-te",
+   "document_id": "SAMPLE-PREG-DANGER",
+   "section_id": "overview",
+   "section_title": "గర్భధారణలో ప్రమాద సంకేతాలు: సారాంశం మరియు జాబితా",
+   "page_number": 1,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] గర్భధారణలో ప్రమాద సంకేతాలు: భారీ రక్తస్రావం, ఫిట్స్, తీవ్రమైన తలనొప్పి మరియు చూపు మసకబారడం, తీవ్రమైన కడుపు నొప్పి, కడుపులో బిడ్డ కదలికలు బాగా తగ్గడం, తీవ్రమైన జ్వరం, వేగంగా లేదా కష్టంగా శ్వాస తీసుకోవడం, ద్రవం కారడం, ముఖం మరియు చేతులు అకస్మాత్తుగా వాపు, స్పృహ తప్పడం. వీటిలో ఏది కనిపించినా వెంటనే సూపర్‌వైజింగ్ వైద్యాధికారిని సంప్రదించండి.",
+   "content_hash": "e29c9c24920cd0f4"
+  },
+  {
+   "passage_id": "SAMPLE-PREG-DANGER-bleeding-te",
+   "document_id": "SAMPLE-PREG-DANGER",
+   "section_id": "bleeding",
+   "section_title": "భారీ రక్తస్రావం",
+   "page_number": 2,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] గర్భిణీకి భారీ రక్తస్రావం అవ్వడం ప్రమాద సంకేతం. వెంటనే సూపర్‌వైజింగ్ వైద్యాధికారిని సంప్రదించి, ఆమెను దగ్గరలోని ఆరోగ్య కేంద్రానికి తీసుకెళ్లే ఏర్పాటు చేయండి.",
+   "content_hash": "78c5e12bf93f6a82"
+  },
+  {
+   "passage_id": "SAMPLE-PREG-DANGER-convulsions-te",
+   "document_id": "SAMPLE-PREG-DANGER",
+   "section_id": "convulsions",
+   "section_title": "ఫిట్స్",
+   "page_number": 3,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] గర్భిణీకి ఫిట్స్ (మూర్ఛ) రావడం ప్రమాద సంకేతం. వెంటనే సూపర్‌వైజింగ్ వైద్యాధికారిని సంప్రదించి, దగ్గరలోని ఆరోగ్య కేంద్రానికి తీసుకెళ్లే ఏర్పాటు చేయండి.",
+   "content_hash": "50055d02af850db5"
+  },
+  {
+   "passage_id": "SAMPLE-PREG-DANGER-headache-vision-te",
+   "document_id": "SAMPLE-PREG-DANGER",
+   "section_id": "headache-vision",
+   "section_title": "తీవ్రమైన తలనొప్పి, చూపు మసకబారడం",
+   "page_number": 4,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] గర్భిణీకి తీవ్రమైన తలనొప్పితో పాటు చూపు మసకబారడం ప్రమాద సంకేతం. వెంటనే సూపర్‌వైజింగ్ వైద్యాధికారిని సంప్రదించండి.",
+   "content_hash": "1542a84cd10b57e3"
+  },
+  {
+   "passage_id": "SAMPLE-PREG-DANGER-abdominal-pain-te",
+   "document_id": "SAMPLE-PREG-DANGER",
+   "section_id": "abdominal-pain",
+   "section_title": "తీవ్రమైన కడుపు నొప్పి",
+   "page_number": 5,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] గర్భిణీకి తీవ్రమైన కడుపు నొప్పి ప్రమాద సంకేతం. వెంటనే సూపర్‌వైజింగ్ వైద్యాధికారిని సంప్రదించండి.",
+   "content_hash": "0d172183b233c0b3"
+  },
+  {
+   "passage_id": "SAMPLE-PREG-DANGER-fetal-movement-te",
+   "document_id": "SAMPLE-PREG-DANGER",
+   "section_id": "fetal-movement",
+   "section_title": "బిడ్డ కదలికలు తగ్గడం",
+   "page_number": 6,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] కడుపులో బిడ్డ కదలికలు ఇంతకు ముందు కంటే బాగా తగ్గడం లేదా ఆగిపోవడం ప్రమాద సంకేతం. వెంటనే సూపర్‌వైజింగ్ వైద్యాధికారిని సంప్రదించండి.",
+   "content_hash": "7f67555603f492b7"
+  },
+  {
+   "passage_id": "SAMPLE-PREG-DANGER-fever-te",
+   "document_id": "SAMPLE-PREG-DANGER",
+   "section_id": "fever",
+   "section_title": "తీవ్రమైన జ్వరం",
+   "page_number": 7,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] గర్భిణీకి తీవ్రమైన జ్వరం ప్రమాద సంకేతం. వెంటనే సూపర్‌వైజింగ్ వైద్యాధికారిని సంప్రదించండి.",
+   "content_hash": "bde25b44408a45c8"
+  },
+  {
+   "passage_id": "SAMPLE-PREG-DANGER-breathing-te",
+   "document_id": "SAMPLE-PREG-DANGER",
+   "section_id": "breathing",
+   "section_title": "వేగంగా లేదా కష్టంగా శ్వాస",
+   "page_number": 8,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] గర్భిణీకి వేగంగా లేదా కష్టంగా శ్వాస తీసుకోవడం ప్రమాద సంకేతం. వెంటనే సూపర్‌వైజింగ్ వైద్యాధికారిని సంప్రదించండి.",
+   "content_hash": "ce5c2b4a0bb52a13"
+  },
+  {
+   "passage_id": "SAMPLE-PREG-DANGER-water-leaking-te",
+   "document_id": "SAMPLE-PREG-DANGER",
+   "section_id": "water-leaking",
+   "section_title": "ద్రవం కారడం",
+   "page_number": 9,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] ప్రసవ సమయం రాకముందే యోని నుండి ద్రవం కారడం ప్రమాద సంకేతం. సూపర్‌వైజింగ్ వైద్యాధికారిని సంప్రదించండి.",
+   "content_hash": "8ca65d1dd685310f"
+  },
+  {
+   "passage_id": "SAMPLE-PREG-DANGER-swelling-te",
+   "document_id": "SAMPLE-PREG-DANGER",
+   "section_id": "swelling",
+   "section_title": "అకస్మాత్తుగా వాపు",
+   "page_number": 10,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] ముఖం మరియు చేతులు అకస్మాత్తుగా వాచడం ప్రమాద సంకేతం. సూపర్‌వైజింగ్ వైద్యాధికారిని సంప్రదించండి.",
+   "content_hash": "047b610827cd8566"
+  },
+  {
+   "passage_id": "SAMPLE-PREG-DANGER-fainting-te",
+   "document_id": "SAMPLE-PREG-DANGER",
+   "section_id": "fainting",
+   "section_title": "స్పృహ తప్పడం",
+   "page_number": 11,
+   "language": "te",
+   "passage_text": "[డెమో నమూనా] గర్భిణీ స్పృహ తప్పడం లేదా నిద్రలేపినా లేవకపోవడం ప్రమాద సంకేతం. వెంటనే సూపర్‌వైజింగ్ వైద్యాధికారిని సంప్రదించండి.",
+   "content_hash": "311364b501250922"
+  }
+ ]
+}

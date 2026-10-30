@@ -1,0 +1,109 @@
+{
+  "runs": [
+    {
+      "backend": "sqlite",
+      "total": 427,
+      "passed": 426,
+      "failed": 0,
+      "skipped": 1,
+      "skipped_tests": [
+        "test_database::test_postgres_migrations_upgrade_downgrade_and_no_drift - PostgreSQL not selected (run with TEST_DB=postgres)"
+      ],
+      "duration_seconds": 10.799,
+      "exit_code": 0,
+      "by_file": {
+        "test_architecture_hardening": {
+          "passed": 29
+        },
+        "test_database": {
+          "passed": 11,
+          "skipped": 1
+        },
+        "test_dataset_import": {
+          "passed": 8
+        },
+        "test_health_qa": {
+          "passed": 13
+        },
+        "test_households_visits": {
+          "passed": 12
+        },
+        "test_migrations": {
+          "passed": 2
+        },
+        "test_protocol_import": {
+          "passed": 24
+        },
+        "test_referrals": {
+          "passed": 10
+        },
+        "test_reports": {
+          "passed": 65
+        },
+        "test_retrieval": {
+          "passed": 15
+        },
+        "test_safety": {
+          "passed": 151
+        },
+        "test_security_api": {
+          "passed": 20
+        },
+        "test_sync": {
+          "passed": 66
+        }
+      }
+    },
+    {
+      "backend": "postgresql",
+      "total": 427,
+      "passed": 427,
+      "failed": 0,
+      "skipped": 0,
+      "skipped_tests": [],
+      "duration_seconds": 23.327,
+      "exit_code": 0,
+      "by_file": {
+        "test_architecture_hardening": {
+          "passed": 29
+        },
+        "test_database": {
+          "passed": 12
+        },
+        "test_dataset_import": {
+          "passed": 8
+        },
+        "test_health_qa": {
+          "passed": 13
+        },
+        "test_households_visits": {
+          "passed": 12
+        },
+        "test_migrations": {
+          "passed": 2
+        },
+        "test_protocol_import": {
+          "passed": 24
+        },
+        "test_referrals": {
+          "passed": 10
+        },
+        "test_reports": {
+          "passed": 65
+        },
+        "test_retrieval": {
+          "passed": 15
+        },
+        "test_safety": {
+          "passed": 151
+        },
+        "test_security_api": {
+          "passed": 20
+        },
+        "test_sync": {
+          "passed": 66
+        }
+      }
+    }
+  ]
+}

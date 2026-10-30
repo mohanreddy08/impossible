@@ -1,0 +1,610 @@
+[
+  {
+    "name": "QA: danger sign -> escalation (Telugu)",
+    "request": {
+      "method": "POST",
+      "url": "/api/v1/health-qa/query",
+      "headers": null,
+      "body": {
+        "question": "గర్భిణీకి ఇప్పుడు విపరీతంగా రక్తస్రావం అవుతోంది"
+      }
+    },
+    "status": 200,
+    "response": {
+      "query_id": "d27925e7368144cb",
+      "outcome": "ESCALATION_REQUIRED",
+      "original_question": "గర్భిణీకి ఇప్పుడు విపరీతంగా రక్తస్రావం అవుతోంది",
+      "message": "Possible danger sign detected. Follow your approved escalation protocol and contact the supervising medical officer. [PLACEHOLDER TEXT - pending clinical approval]",
+      "answer_text": null,
+      "citations": [],
+      "safety": {
+        "status": "ESCALATION_REQUIRED",
+        "rule_ids": [
+          "DSR-BLEEDING-SEVERE"
+        ],
+        "reasons": [
+          "Heavy bleeding phrase matched (current)"
+        ],
+        "ruleset_version": "0.1.0-draft",
+        "ruleset_review_status": "DRAFT_UNREVIEWED_NOT_CLINICALLY_APPROVED",
+        "clinically_validated": false,
+        "needs_human_review": false
+      },
+      "retrieval_status": null
+    }
+  },
+  {
+    "name": "QA: no verified evidence -> insufficient evidence",
+    "request": {
+      "method": "POST",
+      "url": "/api/v1/health-qa/query",
+      "headers": null,
+      "body": {
+        "question": "How often should a diabetic person be followed up?"
+      }
+    },
+    "status": 200,
+    "response": {
+      "query_id": "436ec073d2b0418e",
+      "outcome": "INSUFFICIENT_EVIDENCE",
+      "original_question": "How often should a diabetic person be followed up?",
+      "message": "No verified protocol passage was found for this question. Please consult your supervisor or the approved protocol document.",
+      "answer_text": null,
+      "citations": [],
+      "safety": {
+        "status": "NORMAL_PROTOCOL_QUERY",
+        "rule_ids": [],
+        "reasons": [],
+        "ruleset_version": "0.1.0-draft",
+        "ruleset_review_status": "DRAFT_UNREVIEWED_NOT_CLINICALLY_APPROVED",
+        "clinically_validated": false,
+        "needs_human_review": false
+      },
+      "retrieval_status": "NO_RESULT"
+    }
+  },
+  {
+    "name": "QA: dosage request -> refusal",
+    "request": {
+      "method": "POST",
+      "url": "/api/v1/health-qa/query",
+      "headers": null,
+      "body": {
+        "question": "What dose of amoxicillin should I give a child?"
+      }
+    },
+    "status": 200,
+    "response": {
+      "query_id": "bba661a3b34941a7",
+      "outcome": "OUT_OF_SCOPE",
+      "original_question": "What dose of amoxicillin should I give a child?",
+      "message": "This app cannot give medicine doses or prescriptions. Please refer the patient to a medical officer. [PLACEHOLDER TEXT - pending clinical approval]",
+      "answer_text": null,
+      "citations": [],
+      "safety": {
+        "status": "OUT_OF_SCOPE",
+        "rule_ids": [
+          "DSR-OUT-OF-SCOPE"
+        ],
+        "reasons": [
+          "dosage/prescribing/treatment request (current)"
+        ],
+        "ruleset_version": "0.1.0-draft",
+        "ruleset_review_status": "DRAFT_UNREVIEWED_NOT_CLINICALLY_APPROVED",
+        "clinically_validated": false,
+        "needs_human_review": false
+      },
+      "retrieval_status": null
+    }
+  },
+  {
+    "name": "Households: list",
+    "request": {
+      "method": "GET",
+      "url": "/api/v1/households?status=OVERDUE&limit=1",
+      "headers": null,
+      "body": null
+    },
+    "status": 200,
+    "response": {
+      "items": [
+        {
+          "household_id": "HH-SYN-00001",
+          "village_id": "VIL-SYN-01",
+          "assigned_worker_id": "WRK-SYN-001",
+          "household_member_count": 7,
+          "eligible_followup_categories": [
+            "ANC",
+            "ROUTINE"
+          ],
+          "last_visit_date": "2026-08-01",
+          "next_visit_due_date": "2026-09-22",
+          "scheduled_followup_category": "ANC",
+          "record_status": "OVERDUE",
+          "last_updated": "2026-10-13T07:28:00",
+          "version": 1,
+          "synthetic_record": true
+        }
+      ],
+      "total": 92,
+      "limit": 1,
+      "offset": 0
+    }
+  },
+  {
+    "name": "Households: create",
+    "request": {
+      "method": "POST",
+      "url": "/api/v1/households",
+      "headers": null,
+      "body": {
+        "village_id": "VIL-SYN-01",
+        "assigned_worker_id": "WRK-SYN-001",
+        "household_member_count": 4,
+        "eligible_followup_categories": [
+          "ANC",
+          "ROUTINE"
+        ]
+      }
+    },
+    "status": 201,
+    "response": {
+      "household_id": "HH-1C006C1F32",
+      "village_id": "VIL-SYN-01",
+      "assigned_worker_id": "WRK-SYN-001",
+      "household_member_count": 4,
+      "eligible_followup_categories": [
+        "ANC",
+        "ROUTINE"
+      ],
+      "last_visit_date": null,
+      "next_visit_due_date": null,
+      "scheduled_followup_category": null,
+      "record_status": "NO_VISIT_DUE",
+      "last_updated": "2026-10-13T15:09:57",
+      "version": 1,
+      "synthetic_record": true
+    }
+  },
+  {
+    "name": "Follow-ups: overdue with explanation",
+    "request": {
+      "method": "GET",
+      "url": "/api/v1/follow-ups?bucket=OVERDUE&limit=1",
+      "headers": null,
+      "body": null
+    },
+    "status": 200,
+    "response": {
+      "items": [
+        {
+          "visit_id": "VIS-SYN-001561",
+          "household_id": "HH-SYN-00383",
+          "worker_id": "WRK-SYN-003",
+          "category": "ROUTINE",
+          "scheduled_date": "2026-08-29",
+          "bucket": "OVERDUE",
+          "days_overdue": 45,
+          "explanation": "Planned ROUTINE visit scheduled for 2026-08-29 is 45 day(s) overdue as of 2026-10-13. Last completed visit: 2026-08-11."
+        }
+      ],
+      "total": 92,
+      "limit": 1,
+      "offset": 0
+    }
+  },
+  {
+    "name": "Report summary",
+    "request": {
+      "method": "POST",
+      "url": "/api/v1/reports/summary",
+      "headers": null,
+      "body": {
+        "facility_id": "FAC-SYN-01",
+        "period_start": "2026-06-01",
+        "period_end": "2026-10-13",
+        "last_sync_at": "2026-10-13T08:00:00+05:30"
+      }
+    },
+    "status": 200,
+    "response": {
+      "report_id": "RPT-9AEE35BFFB",
+      "facility_id": "FAC-SYN-01",
+      "period_start": "2026-06-01",
+      "period_end": "2026-10-13",
+      "generated_at": "2026-10-13T15:09:57Z",
+      "data_as_of": "2026-10-13T12:22:00Z",
+      "last_sync_at": "2026-10-13T02:30:00Z",
+      "data_freshness_label": "FRESH",
+      "counts": {
+        "recommended": 15,
+        "planned": 13,
+        "attendance_confirmed": 17,
+        "total_included": 45
+      },
+      "counts_by_service_category": {
+        "ANC": 4,
+        "DIABETES": 5,
+        "GENERAL": 31,
+        "HYPERTENSION": 2,
+        "IMMUNISATION": 1,
+        "NUTRITION": 2
+      },
+      "excluded_counts": {
+        "duplicate": 3,
+        "outside_period": 16
+      },
+      "follow_ups": {
+        "due": 16,
+        "completed_in_period": 112
+      },
+      "privacy_notice": "Aggregate counts only. Contains no household or patient identifiers. SYNTHETIC DATA in this environment. Counts are recorded referrals, not predicted hospital arrivals; household visits are not hospital attendance.",
+      "synthetic_data": true,
+      "content_hash": "f62d36c0d04edb2e278c00b21a01c945f3a2dd60b48c36a699dbbdfc97a62e46",
+      "duplicate_of_existing": false,
+      "superseded_by": null
+    }
+  },
+  {
+    "name": "Sync push (create visit, repeated => duplicate)",
+    "request": {
+      "method": "POST",
+      "url": "/api/v1/sync/push",
+      "headers": null,
+      "body": {
+        "installation_id": "install-AAAA1111",
+        "operations": [
+          {
+            "op_id": "op-demo-0001",
+            "entity_type": "visit",
+            "entity_id": "VIS-DEMO-0001",
+            "op_type": "create",
+            "payload": {
+              "household_id": "HH-SYN-00001",
+              "scheduled_date": "2026-11-05",
+              "visit_reason": "ROUTINE"
+            }
+          }
+        ]
+      }
+    },
+    "status": 200,
+    "response": {
+      "received": 1,
+      "acknowledged_count": 1,
+      "results": [
+        {
+          "op_id": "op-demo-0001",
+          "index": null,
+          "status": "ACKNOWLEDGED",
+          "acknowledged": true,
+          "duplicate": false,
+          "server_version": 1,
+          "error_code": null,
+          "error_message": null,
+          "conflict": null,
+          "warnings": []
+        }
+      ],
+      "note": "Only operations with acknowledged=true are safely stored on the server; keep all others pending on the device and retry."
+    }
+  },
+  {
+    "name": "Sync push repeated",
+    "request": {
+      "method": "POST",
+      "url": "/api/v1/sync/push",
+      "headers": null,
+      "body": {
+        "installation_id": "install-AAAA1111",
+        "operations": [
+          {
+            "op_id": "op-demo-0001",
+            "entity_type": "visit",
+            "entity_id": "VIS-DEMO-0001",
+            "op_type": "create",
+            "payload": {
+              "household_id": "HH-SYN-00001",
+              "scheduled_date": "2026-11-05",
+              "visit_reason": "ROUTINE"
+            }
+          }
+        ]
+      }
+    },
+    "status": 200,
+    "response": {
+      "received": 1,
+      "acknowledged_count": 0,
+      "results": [
+        {
+          "op_id": "op-demo-0001",
+          "index": null,
+          "status": "ACKNOWLEDGED",
+          "acknowledged": true,
+          "duplicate": true,
+          "server_version": 1,
+          "error_code": null,
+          "error_message": null,
+          "conflict": null,
+          "warnings": []
+        }
+      ],
+      "note": "Only operations with acknowledged=true are safely stored on the server; keep all others pending on the device and retry."
+    }
+  },
+  {
+    "name": "Referrals: list (note status_label)",
+    "request": {
+      "method": "GET",
+      "url": "/api/v1/referrals?status=PLANNED&limit=1",
+      "headers": null,
+      "body": null
+    },
+    "status": 200,
+    "response": {
+      "items": [
+        {
+          "referral_id": "REF-SYN-000076",
+          "household_id": "HH-SYN-00151",
+          "visit_id": "VIS-SYN-000609",
+          "facility_id": "FAC-SYN-03",
+          "service_category": "GENERAL",
+          "referral_created_date": "2026-10-13",
+          "planned_visit_date": "2026-10-23",
+          "referral_status": "PLANNED",
+          "attendance_confirmed": false,
+          "attendance_confirmation_date": null,
+          "attendance_record_id": null,
+          "record_state": "INVALID",
+          "duplicate_of": null,
+          "last_updated": "2026-10-13T07:04:00",
+          "version": 1,
+          "synthetic_record": true,
+          "status_label": "Referral record invalid"
+        }
+      ],
+      "total": 88,
+      "limit": 1,
+      "offset": 0
+    }
+  },
+  {
+    "name": "Referral: hospital/admin confirms attendance (needs attendance record)",
+    "request": {
+      "method": "PATCH",
+      "url": "/api/v1/referrals/REF-SYN-000013",
+      "headers": null,
+      "body": {
+        "referral_status": "ATTENDANCE_CONFIRMED",
+        "attendance_record_id": "ATT-EXAMPLE-1",
+        "attendance_confirmation_date": "2026-10-13"
+      }
+    },
+    "status": 200,
+    "response": {
+      "referral_id": "REF-SYN-000013",
+      "household_id": "HH-SYN-00033",
+      "visit_id": "VIS-SYN-000124",
+      "facility_id": "FAC-SYN-03",
+      "service_category": "GENERAL",
+      "referral_created_date": "2026-07-26",
+      "planned_visit_date": "2026-07-29",
+      "referral_status": "ATTENDANCE_CONFIRMED",
+      "attendance_confirmed": true,
+      "attendance_confirmation_date": "2026-10-13",
+      "attendance_record_id": "ATT-EXAMPLE-1",
+      "record_state": "ACTIVE",
+      "duplicate_of": null,
+      "last_updated": "2026-10-13T15:09:57",
+      "version": 2,
+      "synthetic_record": true,
+      "status_label": "Hospital attendance confirmed by hospital record"
+    }
+  },
+  {
+    "name": "Sync push: stale update of a protected field => CONFLICT (not applied)",
+    "request": {
+      "method": "POST",
+      "url": "/api/v1/sync/push",
+      "headers": null,
+      "body": {
+        "installation_id": "install-AAAA1111",
+        "operations": [
+          {
+            "op_id": "op-demo-conf1",
+            "entity_type": "referral",
+            "entity_id": "REF-SYN-000013",
+            "op_type": "update",
+            "base_version": 1,
+            "client_updated_at": "2026-10-13T09:00:00+05:30",
+            "payload": {
+              "referral_status": "PLANNED",
+              "planned_visit_date": "2026-10-13"
+            }
+          }
+        ]
+      }
+    },
+    "status": 200,
+    "response": {
+      "received": 1,
+      "acknowledged_count": 0,
+      "results": [
+        {
+          "op_id": "op-demo-conf1",
+          "index": null,
+          "status": "CONFLICT",
+          "acknowledged": false,
+          "duplicate": false,
+          "server_version": null,
+          "error_code": "VERSION_CONFLICT",
+          "error_message": "stale update touches protected fields; not applied",
+          "conflict": {
+            "server_version": 2,
+            "base_version": 1,
+            "fields": [
+              "planned_visit_date",
+              "referral_status"
+            ],
+            "server_values": {
+              "referral_status": "ATTENDANCE_CONFIRMED",
+              "planned_visit_date": "2026-07-29"
+            },
+            "client_values": {
+              "referral_status": "PLANNED",
+              "planned_visit_date": "2026-10-13"
+            },
+            "client_updated_at": "2026-10-13T09:00:00+05:30",
+            "resolution": "NOT_APPLIED_FLAGGED_FOR_REVIEW"
+          },
+          "warnings": []
+        }
+      ],
+      "note": "Only operations with acknowledged=true are safely stored on the server; keep all others pending on the device and retry."
+    }
+  },
+  {
+    "name": "Sync push: rejected + malformed operations",
+    "request": {
+      "method": "POST",
+      "url": "/api/v1/sync/push",
+      "headers": null,
+      "body": {
+        "installation_id": "install-AAAA1111",
+        "operations": [
+          {
+            "op_id": "op-demo-rej01",
+            "entity_type": "visit",
+            "entity_id": "VIS-DEMO-0002",
+            "op_type": "create",
+            "payload": {
+              "household_id": "HH-DOES-NOT-EXIST",
+              "scheduled_date": "2026-11-05"
+            }
+          },
+          {
+            "op_id": "x",
+            "entity_type": "nonsense"
+          }
+        ]
+      }
+    },
+    "status": 200,
+    "response": {
+      "received": 2,
+      "acknowledged_count": 0,
+      "results": [
+        {
+          "op_id": "op-demo-rej01",
+          "index": null,
+          "status": "REJECTED",
+          "acknowledged": false,
+          "duplicate": false,
+          "server_version": null,
+          "error_code": "NOT_FOUND",
+          "error_message": "household not found",
+          "conflict": null,
+          "warnings": []
+        },
+        {
+          "op_id": "x",
+          "index": 1,
+          "status": "REJECTED",
+          "acknowledged": false,
+          "duplicate": false,
+          "server_version": null,
+          "error_code": "MALFORMED_OPERATION",
+          "error_message": "op_id: String should have at least 8 characters; entity_type: String should match pattern '^(household|visit|referral)$'; entity_id: Field required; op_type: Field required; payload: Field required",
+          "conflict": null,
+          "warnings": []
+        }
+      ],
+      "note": "Only operations with acknowledged=true are safely stored on the server; keep all others pending on the device and retry."
+    }
+  },
+  {
+    "name": "Sync status (installation id in header, never in URL)",
+    "request": {
+      "method": "GET",
+      "url": "/api/v1/sync/status",
+      "headers": {
+        "X-Installation-Id": "install-AAAA1111"
+      },
+      "body": null
+    },
+    "status": 200,
+    "response": {
+      "total_operations": 3,
+      "by_status": {
+        "ACKNOWLEDGED": 1,
+        "CONFLICT": 1,
+        "REJECTED": 1
+      },
+      "last_acknowledged_at": "2026-10-13T15:09:57Z",
+      "conflicts": 1,
+      "rejected": 1
+    }
+  },
+  {
+    "name": "Error: not found",
+    "request": {
+      "method": "GET",
+      "url": "/api/v1/households/NOPE",
+      "headers": null,
+      "body": null
+    },
+    "status": 404,
+    "response": {
+      "error": {
+        "code": "NOT_FOUND",
+        "message": "household not found",
+        "details": null
+      }
+    }
+  },
+  {
+    "name": "Error: validation",
+    "request": {
+      "method": "POST",
+      "url": "/api/v1/households",
+      "headers": null,
+      "body": {
+        "village_id": "x"
+      }
+    },
+    "status": 422,
+    "response": {
+      "error": {
+        "code": "VALIDATION_ERROR",
+        "message": "request validation failed",
+        "details": [
+          {
+            "loc": [
+              "body",
+              "village_id"
+            ],
+            "message": "String should match pattern '^[A-Za-z0-9_-]{2,32}$'",
+            "type": "string_pattern_mismatch"
+          },
+          {
+            "loc": [
+              "body",
+              "assigned_worker_id"
+            ],
+            "message": "Field required",
+            "type": "missing"
+          },
+          {
+            "loc": [
+              "body",
+              "household_member_count"
+            ],
+            "message": "Field required",
+            "type": "missing"
+          }
+        ]
+      }
+    }
+  }
+]

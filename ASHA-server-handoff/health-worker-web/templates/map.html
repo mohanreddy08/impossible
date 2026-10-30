@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% from "_macros.html" import badge %}
+{% block title %}{{ t('map.title') }}{% endblock %}
+{% block head %}<script src="/static/js/map.js" defer></script>{% endblock %}
+{% block main %}
+<h1>{{ t('map.title') }}</h1>
+<p class="alert alert-warn" role="note"><span aria-hidden="true">⚠</span> <strong>{{ t('map.banner') }}</strong></p>
+<form method="get" action="/map" class="filters" id="map-form">
+  <label for="village">{{ t('map.village') }}</label>
+  <select id="village" name="village">
+    {% for v in villages %}<option value="{{ v.village_id }}"{% if v.village_id == village %} selected{% endif %}>{{ v.name }} ({{ v.households }})</option>{% endfor %}
+  </select>
+  <button class="btn" type="submit">{{ t('vis.show') }}</button>
+</form>
+<div class="legend" aria-label="{{ t('map.legend') }}">
+  {% for u in ['URGENT', 'DUE', 'THIS_WEEK', 'NONE'] %}{{ badge(u, t) }} <span class="muted small" data-count="{{ u }}"></span> {% endfor %}
+</div>
+<p class="muted small">{{ t('map.tap') }}</p>
+<div class="maplayout">
+  <div class="mapbox" id="map" data-village="{{ village or '' }}" data-loading="{{ t('map.loading') }}" data-error="{{ t('common.error') }}"
+       data-l-urgent="{{ t('urgency.URGENT') }}" data-l-due="{{ t('urgency.DUE') }}" data-l-this_week="{{ t('urgency.THIS_WEEK') }}" data-l-none="{{ t('urgency.NONE') }}"
+       data-l-open="{{ t('map.open') }}" data-l-members="{{ t('hh.members') }}" data-l-dueitems="{{ t('hh.due') }}" data-l-close="{{ t('common.close') }}" data-l-made-up="{{ t('map.banner') }}">
+    <p>{{ t('map.loading') }}</p>
+  </div>
+  <aside class="card panel" id="house-panel" aria-live="polite" hidden></aside>
+</div>
+<details class="card"><summary>{{ t('map.list') }}</summary><ul class="plain cols" id="house-list"></ul></details>
+<section class="card" id="unplaced-wrap" hidden><h2>{{ t('map.unplaced') }}</h2><ul class="plain" id="unplaced"></ul></section>
+{% endblock %}

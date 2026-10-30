@@ -1,0 +1,919 @@
+{
+  "generated_at": "2026-10-13T15:09:58Z",
+  "dataset_dir": "/Users/karthikdavuluri/Downloads/protein-cuts---fresh-raw-chicken-delivery/health-worker-datasets",
+  "synthetic_data_declaration": "Household, visit, referral and test records are synthetic. Clinical answer content is unapproved.",
+  "files": {
+    "health_questions": {
+      "file": "health_questions_200.jsonl",
+      "exists": true,
+      "record_count": 200,
+      "fields": {
+        "question_id": {
+          "types": {
+            "str": 200
+          },
+          "missing": 0,
+          "required": true
+        },
+        "question_text": {
+          "types": {
+            "str": 200
+          },
+          "missing": 0,
+          "required": true
+        },
+        "language_type": {
+          "types": {
+            "str": 200
+          },
+          "missing": 0,
+          "required": true
+        },
+        "topic": {
+          "types": {
+            "str": 200
+          },
+          "missing": 0,
+          "required": true
+        },
+        "intent": {
+          "types": {
+            "str": 200
+          },
+          "missing": 0,
+          "required": true
+        },
+        "expected_safety_status": {
+          "types": {
+            "str": 200
+          },
+          "missing": 0,
+          "required": true
+        },
+        "expected_safety_status_basis": {
+          "types": {
+            "str": 200
+          },
+          "missing": 0,
+          "required": true
+        },
+        "expected_answer": {
+          "types": {},
+          "missing": 200,
+          "required": false
+        },
+        "expected_document_id": {
+          "types": {},
+          "missing": 200,
+          "required": false
+        },
+        "expected_section": {
+          "types": {},
+          "missing": 200,
+          "required": false
+        },
+        "expected_page": {
+          "types": {},
+          "missing": 200,
+          "required": false
+        },
+        "expected_evidence_text": {
+          "types": {},
+          "missing": 200,
+          "required": false
+        },
+        "expected_action": {
+          "types": {
+            "str": 200
+          },
+          "missing": 0,
+          "required": true
+        },
+        "answerable_from_supplied_protocol": {
+          "types": {
+            "bool": 16
+          },
+          "missing": 184,
+          "required": false
+        },
+        "difficulty": {
+          "types": {
+            "str": 200
+          },
+          "missing": 0,
+          "required": true
+        },
+        "notes_for_evaluation": {
+          "types": {
+            "str": 200
+          },
+          "missing": 0,
+          "required": true
+        },
+        "source_verification_status": {
+          "types": {
+            "str": 200
+          },
+          "missing": 0,
+          "required": true
+        },
+        "synthetic_record": {
+          "types": {
+            "bool": 200
+          },
+          "missing": 0,
+          "required": true
+        }
+      },
+      "id_field": "question_id",
+      "duplicate_ids": [],
+      "duplicate_id_count": 0,
+      "missing_id_count": 0
+    },
+    "danger_sign_tests": {
+      "file": "danger_sign_tests.jsonl",
+      "exists": true,
+      "record_count": 142,
+      "fields": {
+        "test_id": {
+          "types": {
+            "str": 142
+          },
+          "missing": 0,
+          "required": true
+        },
+        "input_text": {
+          "types": {
+            "str": 142
+          },
+          "missing": 0,
+          "required": true
+        },
+        "language_type": {
+          "types": {
+            "str": 142
+          },
+          "missing": 0,
+          "required": true
+        },
+        "scenario_type": {
+          "types": {
+            "str": 142
+          },
+          "missing": 0,
+          "required": true
+        },
+        "expected_safety_status": {
+          "types": {
+            "str": 142
+          },
+          "missing": 0,
+          "required": true
+        },
+        "expected_rule_id": {
+          "types": {},
+          "missing": 142,
+          "required": false
+        },
+        "rule_mapping_status": {
+          "types": {
+            "str": 142
+          },
+          "missing": 0,
+          "required": true
+        },
+        "expected_action": {
+          "types": {
+            "str": 142
+          },
+          "missing": 0,
+          "required": true
+        },
+        "negation_present": {
+          "types": {
+            "bool": 142
+          },
+          "missing": 0,
+          "required": true
+        },
+        "temporal_context": {
+          "types": {
+            "str": 142
+          },
+          "missing": 0,
+          "required": true
+        },
+        "ambiguity_level": {
+          "types": {
+            "str": 142
+          },
+          "missing": 0,
+          "required": true
+        },
+        "clinical_review_required": {
+          "types": {
+            "bool": 142
+          },
+          "missing": 0,
+          "required": true
+        },
+        "split": {
+          "types": {
+            "str": 142
+          },
+          "missing": 0,
+          "required": true
+        },
+        "expected_status_basis": {
+          "types": {
+            "str": 142
+          },
+          "missing": 0,
+          "required": true
+        },
+        "synthetic_record": {
+          "types": {
+            "bool": 142
+          },
+          "missing": 0,
+          "required": true
+        }
+      },
+      "id_field": "test_id",
+      "duplicate_ids": [],
+      "duplicate_id_count": 0,
+      "missing_id_count": 0
+    },
+    "protocol_passages": {
+      "file": "protocol_passages.jsonl",
+      "exists": true,
+      "record_count": 0,
+      "fields": {},
+      "id_field": "passage_id",
+      "duplicate_ids": [],
+      "duplicate_id_count": 0,
+      "missing_id_count": 0
+    },
+    "households": {
+      "file": "household_register_500.csv",
+      "exists": true,
+      "record_count": 500,
+      "fields": {
+        "household_id": {
+          "types": {
+            "str": 500
+          },
+          "missing": 0,
+          "required": true
+        },
+        "village_id": {
+          "types": {
+            "str": 500
+          },
+          "missing": 0,
+          "required": true
+        },
+        "assigned_worker_id": {
+          "types": {
+            "str": 500
+          },
+          "missing": 0,
+          "required": true
+        },
+        "household_member_count": {
+          "types": {
+            "str": 500
+          },
+          "missing": 0,
+          "required": true
+        },
+        "eligible_followup_categories": {
+          "types": {
+            "str": 500
+          },
+          "missing": 0,
+          "required": true
+        },
+        "last_visit_date": {
+          "types": {
+            "date_str": 490
+          },
+          "missing": 10,
+          "required": false
+        },
+        "next_visit_due_date": {
+          "types": {
+            "date_str": 291
+          },
+          "missing": 209,
+          "required": false
+        },
+        "scheduled_followup_category": {
+          "types": {
+            "str": 291
+          },
+          "missing": 209,
+          "required": false
+        },
+        "record_status": {
+          "types": {
+            "str": 500
+          },
+          "missing": 0,
+          "required": true
+        },
+        "last_updated_timestamp": {
+          "types": {
+            "datetime_str": 500
+          },
+          "missing": 0,
+          "required": true
+        },
+        "synthetic_record": {
+          "types": {
+            "bool_str": 500
+          },
+          "missing": 0,
+          "required": true
+        }
+      },
+      "id_field": "household_id",
+      "duplicate_ids": [],
+      "duplicate_id_count": 0,
+      "missing_id_count": 0
+    },
+    "visits": {
+      "file": "visit_history.csv",
+      "exists": true,
+      "record_count": 2032,
+      "fields": {
+        "visit_id": {
+          "types": {
+            "str": 2032
+          },
+          "missing": 0,
+          "required": true
+        },
+        "household_id": {
+          "types": {
+            "str": 2032
+          },
+          "missing": 0,
+          "required": true
+        },
+        "worker_id": {
+          "types": {
+            "str": 2032
+          },
+          "missing": 0,
+          "required": true
+        },
+        "scheduled_date": {
+          "types": {
+            "date_str": 2032
+          },
+          "missing": 0,
+          "required": true
+        },
+        "actual_visit_date": {
+          "types": {
+            "date_str": 1224
+          },
+          "missing": 808,
+          "required": false
+        },
+        "visit_status": {
+          "types": {
+            "str": 2032
+          },
+          "missing": 0,
+          "required": true
+        },
+        "visit_reason": {
+          "types": {
+            "str": 2032
+          },
+          "missing": 0,
+          "required": true
+        },
+        "followup_required": {
+          "types": {
+            "bool_str": 1741
+          },
+          "missing": 291,
+          "required": false
+        },
+        "next_followup_date": {
+          "types": {
+            "date_str": 1542
+          },
+          "missing": 490,
+          "required": false
+        },
+        "referral_status": {
+          "types": {
+            "str": 2032
+          },
+          "missing": 0,
+          "required": true
+        },
+        "referral_id": {
+          "types": {
+            "str": 249
+          },
+          "missing": 1783,
+          "required": false
+        },
+        "recorded_timestamp": {
+          "types": {
+            "datetime_str": 2032
+          },
+          "missing": 0,
+          "required": true
+        },
+        "synthetic_record": {
+          "types": {
+            "bool_str": 2032
+          },
+          "missing": 0,
+          "required": true
+        }
+      },
+      "id_field": "visit_id",
+      "duplicate_ids": [],
+      "duplicate_id_count": 0,
+      "missing_id_count": 0
+    },
+    "referrals": {
+      "file": "referral_records.csv",
+      "exists": true,
+      "record_count": 268,
+      "fields": {
+        "referral_id": {
+          "types": {
+            "str": 268
+          },
+          "missing": 0,
+          "required": true
+        },
+        "household_id": {
+          "types": {
+            "str": 268
+          },
+          "missing": 0,
+          "required": true
+        },
+        "visit_id": {
+          "types": {
+            "str": 268
+          },
+          "missing": 0,
+          "required": true
+        },
+        "facility_id": {
+          "types": {
+            "str": 268
+          },
+          "missing": 0,
+          "required": true
+        },
+        "referral_created_date": {
+          "types": {
+            "date_str": 268
+          },
+          "missing": 0,
+          "required": true
+        },
+        "service_category": {
+          "types": {
+            "str": 268
+          },
+          "missing": 0,
+          "required": true
+        },
+        "referral_status": {
+          "types": {
+            "str": 268
+          },
+          "missing": 0,
+          "required": true
+        },
+        "planned_visit_date": {
+          "types": {
+            "date_str": 168
+          },
+          "missing": 100,
+          "required": false
+        },
+        "attendance_confirmed": {
+          "types": {
+            "bool_str": 268
+          },
+          "missing": 0,
+          "required": true
+        },
+        "attendance_confirmation_date": {
+          "types": {
+            "date_str": 80
+          },
+          "missing": 188,
+          "required": false
+        },
+        "attendance_record_id": {
+          "types": {
+            "str": 80
+          },
+          "missing": 188,
+          "required": false
+        },
+        "record_last_updated": {
+          "types": {
+            "datetime_str": 268
+          },
+          "missing": 0,
+          "required": true
+        },
+        "record_state": {
+          "types": {
+            "str": 268
+          },
+          "missing": 0,
+          "required": true
+        },
+        "duplicate_of": {
+          "types": {
+            "str": 6
+          },
+          "missing": 262,
+          "required": false
+        },
+        "synthetic_record": {
+          "types": {
+            "bool_str": 268
+          },
+          "missing": 0,
+          "required": true
+        }
+      },
+      "id_field": "referral_id",
+      "duplicate_ids": [],
+      "duplicate_id_count": 0,
+      "missing_id_count": 0
+    },
+    "hospital_report_tests": {
+      "file": "hospital_report_tests.jsonl",
+      "exists": true,
+      "record_count": 55,
+      "fields": {
+        "scenario_id": {
+          "types": {
+            "str": 55
+          },
+          "missing": 0,
+          "required": true
+        },
+        "scenario_type": {
+          "types": {
+            "str": 55
+          },
+          "missing": 0,
+          "required": true
+        },
+        "reporting_period": {
+          "types": {
+            "str": 55
+          },
+          "missing": 0,
+          "required": true
+        },
+        "selected_facility_id": {
+          "types": {
+            "str": 55
+          },
+          "missing": 0,
+          "required": true
+        },
+        "input_referral_ids": {
+          "types": {
+            "list": 55
+          },
+          "missing": 0,
+          "required": true
+        },
+        "expected_recommended_count": {
+          "types": {
+            "int": 55
+          },
+          "missing": 0,
+          "required": true
+        },
+        "expected_planned_count": {
+          "types": {
+            "int": 55
+          },
+          "missing": 0,
+          "required": true
+        },
+        "expected_attendance_confirmed_count": {
+          "types": {
+            "int": 55
+          },
+          "missing": 0,
+          "required": true
+        },
+        "expected_counts_by_service_category": {
+          "types": {
+            "object": 55
+          },
+          "missing": 0,
+          "required": true
+        },
+        "expected_total_included": {
+          "types": {
+            "int": 55
+          },
+          "missing": 0,
+          "required": true
+        },
+        "expected_excluded_counts": {
+          "types": {
+            "object": 55
+          },
+          "missing": 0,
+          "required": true
+        },
+        "report_generated_at": {
+          "types": {
+            "datetime_str": 55
+          },
+          "missing": 0,
+          "required": true
+        },
+        "device_last_sync_at": {
+          "types": {
+            "datetime_str": 55
+          },
+          "missing": 0,
+          "required": true
+        },
+        "expected_report_timestamp_policy": {
+          "types": {
+            "str": 55
+          },
+          "missing": 0,
+          "required": true
+        },
+        "expected_data_freshness_label": {
+          "types": {
+            "str": 55
+          },
+          "missing": 0,
+          "required": true
+        },
+        "expected_privacy_checks": {
+          "types": {
+            "list": 55
+          },
+          "missing": 0,
+          "required": true
+        },
+        "freshness_rule_assumption": {
+          "types": {
+            "str": 55
+          },
+          "missing": 0,
+          "required": true
+        },
+        "synthetic_record": {
+          "types": {
+            "bool": 55
+          },
+          "missing": 0,
+          "required": true
+        },
+        "expected_empty_report_behaviour": {
+          "types": {
+            "str": 5
+          },
+          "missing": 0,
+          "required": true
+        },
+        "post_report_change": {
+          "types": {
+            "object": 4
+          },
+          "missing": 0,
+          "required": true
+        },
+        "expected_counts_after_change": {
+          "types": {
+            "object": 4
+          },
+          "missing": 0,
+          "required": true
+        },
+        "expected_report_versioning": {
+          "types": {
+            "str": 4
+          },
+          "missing": 0,
+          "required": true
+        },
+        "share_attempts": {
+          "types": {
+            "int": 4
+          },
+          "missing": 0,
+          "required": true
+        },
+        "expected_deliveries": {
+          "types": {
+            "int": 4
+          },
+          "missing": 0,
+          "required": true
+        },
+        "expected_sharing_behaviour": {
+          "types": {
+            "str": 4
+          },
+          "missing": 0,
+          "required": true
+        }
+      },
+      "id_field": "scenario_id",
+      "duplicate_ids": [],
+      "duplicate_id_count": 0,
+      "missing_id_count": 0
+    },
+    "offline_sync_tests": {
+      "file": "offline_sync_tests.jsonl",
+      "exists": true,
+      "record_count": 52,
+      "fields": {
+        "sync_test_id": {
+          "types": {
+            "str": 52
+          },
+          "missing": 0,
+          "required": true
+        },
+        "scenario_description": {
+          "types": {
+            "str": 52
+          },
+          "missing": 0,
+          "required": true
+        },
+        "initial_network_state": {
+          "types": {
+            "str": 52
+          },
+          "missing": 0,
+          "required": true
+        },
+        "local_record_changes": {
+          "types": {
+            "list": 52
+          },
+          "missing": 0,
+          "required": true
+        },
+        "pending_upload_count": {
+          "types": {
+            "int": 52
+          },
+          "missing": 0,
+          "required": true
+        },
+        "duplicate_upload_attempt": {
+          "types": {
+            "bool": 52
+          },
+          "missing": 0,
+          "required": true
+        },
+        "conflicting_update": {
+          "types": {
+            "bool": 52
+          },
+          "missing": 0,
+          "required": true
+        },
+        "expected_local_state": {
+          "types": {
+            "object": 52
+          },
+          "missing": 0,
+          "required": true
+        },
+        "expected_server_state_after_sync": {
+          "types": {
+            "object": 52
+          },
+          "missing": 0,
+          "required": true
+        },
+        "expected_sync_status": {
+          "types": {
+            "str": 52
+          },
+          "missing": 0,
+          "required": true
+        },
+        "data_loss_expected": {
+          "types": {
+            "bool": 52
+          },
+          "missing": 0,
+          "required": true
+        },
+        "policy_assumptions": {
+          "types": {
+            "str": 52
+          },
+          "missing": 0,
+          "required": true
+        },
+        "synthetic_record": {
+          "types": {
+            "bool": 52
+          },
+          "missing": 0,
+          "required": true
+        }
+      },
+      "id_field": "sync_test_id",
+      "duplicate_ids": [],
+      "duplicate_id_count": 0,
+      "missing_id_count": 0
+    },
+    "retrieval_evaluation": {
+      "file": "retrieval_evaluation.jsonl",
+      "exists": true,
+      "record_count": 0,
+      "fields": {},
+      "id_field": "retrieval_test_id",
+      "duplicate_ids": [],
+      "duplicate_id_count": 0,
+      "missing_id_count": 0
+    }
+  },
+  "source_validation_report_present": true,
+  "questions": {
+    "total": 200,
+    "unverified": 200,
+    "missing_expected_answer": 200,
+    "missing_expected_citation": 200
+  },
+  "cross_dataset_fk_failures": {
+    "visits.household_id->households": 0,
+    "referrals.household_id->households": 0,
+    "referrals.visit_id->visits": 0,
+    "visits.referral_id->referrals": 0,
+    "hospital_report_tests.input_referral_ids->referrals": 0
+  },
+  "issues": [
+    {
+      "severity": "BLOCKER",
+      "dataset": "protocol_passages",
+      "message": "file exists but contains 0 records",
+      "count": 1
+    },
+    {
+      "severity": "BLOCKER",
+      "dataset": "retrieval_evaluation",
+      "message": "file exists but contains 0 records",
+      "count": 1
+    },
+    {
+      "severity": "BLOCKER",
+      "dataset": "health_questions",
+      "message": "expected answers/citations are unverified or absent (questions are usable as inputs only)",
+      "count": 200
+    },
+    {
+      "severity": "WARNING",
+      "dataset": "danger_sign_tests",
+      "message": "expected_rule_id is null: no approved clinical ruleset supplied; status labels are preliminary",
+      "count": 142
+    },
+    {
+      "severity": "BLOCKER",
+      "dataset": "protocol_passages",
+      "message": "no protocol source passages supplied: retrieval cannot return real evidence and Recall/citation metrics cannot be computed",
+      "count": 1
+    }
+  ],
+  "counts": {
+    "health_questions": 200,
+    "danger_sign_tests": 142,
+    "protocol_passages": 0,
+    "households": 500,
+    "visits": 2032,
+    "referrals": 268,
+    "hospital_report_tests": 55,
+    "offline_sync_tests": 52,
+    "retrieval_evaluation": 0
+  }
+}

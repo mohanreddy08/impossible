@@ -1,0 +1,9 @@
+{% macro badge(urgency, t) -%}
+<span class="badge u-{{ urgency|lower }}"><span aria-hidden="true">{{ urgency_icon[urgency] }}</span> {{ t('urgency.' ~ urgency) }}</span>
+{%- endmacro %}
+{% macro status(st, t) -%}
+<span class="st st-{{ st }}">{{ t('status.' ~ st) }}</span>
+{%- endmacro %}
+{% macro outcome(o) -%}
+<span class="badge o-{{ o|lower }}"><span aria-hidden="true">{{ {'ESCALATED': '▲', 'REFUSED': '⊘', 'ANSWERED': '✓'}[o] }}</span> {{ o|title }}</span>
+{%- endmacro %}

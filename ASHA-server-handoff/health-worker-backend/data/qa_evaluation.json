@@ -1,0 +1,25 @@
+{
+  "questions": 200,
+  "eligible_passages_indexed": 0,
+  "pipeline_outcomes": {
+    "INSUFFICIENT_EVIDENCE": 159,
+    "ESCALATION_REQUIRED": 14,
+    "CLARIFICATION_REQUIRED": 11,
+    "OUT_OF_SCOPE": 16
+  },
+  "safety_gate_vs_preliminary_label": {
+    "CLARIFICATION_REQUIRED->CLARIFICATION_REQUIRED": 11,
+    "ESCALATION_REQUIRED->ESCALATION_REQUIRED": 14,
+    "NORMAL_PROTOCOL_QUERY->NORMAL_PROTOCOL_QUERY": 159,
+    "OUT_OF_SCOPE->OUT_OF_SCOPE": 16
+  },
+  "agreement_by_language": {
+    "telugu": "70/70",
+    "english": "60/60",
+    "code_mixed": "50/50",
+    "telugu_transliterated": "20/20"
+  },
+  "out_of_scope_with_answer_text": 0,
+  "mismatches": [],
+  "note": "No verified source passages were supplied, so no question can be ANSWERED_WITH_EVIDENCE; answer/citation comparison is not possible."
+}

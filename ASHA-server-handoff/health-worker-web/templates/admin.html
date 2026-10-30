@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}{{ t('adm.title') }}{% endblock %}
+{% block head %}<script src="/static/js/admin.js" defer></script>{% endblock %}
+{% block main %}
+<h1>{{ t('adm.title') }}</h1>
+<div class="grid2">
+<section class="card">
+  <h2>{{ t('adm.server') }}</h2>
+  {% if public_url %}
+  <p class="big mono" id="server-url">{{ public_url }}</p>
+  <p class="muted small">{{ t('set.source') }}: {{ url_source }}</p>
+  <div class="qr" aria-label="{{ t('set.qr') }}">{{ qr|safe }}</div>
+  {% else %}<p class="alert alert-warn">{{ url_source }} — run <code>scripts/start_public.sh</code></p>{% endif %}
+  <p class="small">{{ t('adm.server_help') }}</p>
+</section>
+<section class="card">
+  <h2>{{ t('adm.new_key') }}</h2>
+  <form id="key-form" class="stack">
+    <label for="k-worker">{{ t('adm.for_asha') }}</label>
+    <select id="k-worker" name="worker_id" required>{% for a in ashas %}<option value="{{ a.worker_id }}">{{ a.name }} ({{ a.worker_id }})</option>{% endfor %}</select>
+    <label for="k-label">{{ t('adm.label') }}</label>
+    <input id="k-label" name="label" maxlength="64" required value="phone">
+    <button class="btn" type="submit">{{ t('adm.generate') }}</button>
+  </form>
+  <div id="key-out" class="alert alert-ok" hidden role="status">
+    <p><strong>{{ t('adm.key_once') }}</strong></p>
+    <p class="mono big wrap" id="key-value"></p>
+    <p class="small">{{ t('adm.server') }}: <span class="mono" id="key-url"></span></p>
+  </div>
+</section>
+</div>
+<section class="card">
+  <h2>{{ t('adm.phones') }}</h2>
+  <div class="tablewrap"><table id="phones">
+    <thead><tr><th scope="col">{{ t('col.label') }}</th><th scope="col">{{ t('col.asha') }}</th><th scope="col">{{ t('col.last_sync') }}</th><th scope="col">{{ t('col.last_seen') }}</th><th scope="col">{{ t('col.ops') }}</th><th scope="col">{{ t('col.unresolved') }}</th><th scope="col">{{ t('col.app') }}</th><th scope="col">{{ t('col.actions') }}</th></tr></thead>
+    <tbody>
+    {% for ph in phones %}
+    <tr id="phone-{{ ph.key_id }}"><td>{{ ph.label }}<br><span class="muted small mono">{{ ph.key_id }}</span></td><td>{{ ph.asha_name }}</td>
+      <td>{{ ph.last_sync_at|ist if ph.last_sync_at else t('adm.never') }}{% if ph.stale %}<br><span class="badge u-due"><span aria-hidden="true">⏱</span> {{ t('adm.stale') }}</span>{% endif %}</td>
+      <td>{{ ph.last_seen_at|ist if ph.last_seen_at else t('adm.never') }}</td><td>{{ ph.ops_received }} / {{ ph.ops_acknowledged }}</td><td>{{ ph.conflicts }} / {{ ph.rejected }}</td>
+      <td class="small">{{ ph.client_agent or '—' }}</td>
+      <td>{% if ph.revoked %}<span class="badge">{{ t('adm.revoked') }}</span>{% else %}<button class="btn ghost danger revoke" data-key="{{ ph.key_id }}">{{ t('adm.revoke') }}</button>{% endif %}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table></div>
+</section>
+<section class="card">
+  <h2>{{ t('adm.users') }}</h2>
+  <div class="tablewrap"><table id="users">
+    <thead><tr><th scope="col">{{ t('col.username') }}</th><th scope="col">{{ t('col.name') }}</th><th scope="col">{{ t('col.role') }}</th><th scope="col">{{ t('col.active') }}</th><th scope="col">{{ t('col.actions') }}</th></tr></thead>
+    <tbody>{% for x in users %}<tr><td class="mono">{{ x.username }}</td><td>{{ x.display_name }}</td><td>{{ x.role }}{% if x.worker_id %} ({{ x.worker_id }}){% endif %}</td><td>{{ t('common.yes') if x.is_active else t('common.no') }}</td>
+      <td>{% if x.id != user.id %}<button class="btn ghost toggle-user" data-id="{{ x.id }}" data-active="{{ 'true' if x.is_active else 'false' }}">{{ t('adm.deactivate') if x.is_active else t('adm.activate') }}</button>{% endif %}</td></tr>{% endfor %}</tbody>
+  </table></div>
+  <h3>{{ t('adm.new_user') }}</h3>
+  <form id="user-form" class="grid-form">
+    <label for="u-username">{{ t('col.username') }}</label><input id="u-username" name="username" required pattern="[a-z0-9_.\-]{3,64}" maxlength="64">
+    <label for="u-display">{{ t('adm.display') }}</label><input id="u-display" name="display_name" required maxlength="128">
+    <label for="u-role">{{ t('col.role') }}</label><select id="u-role" name="role"><option>supervisor</option><option>asha</option><option>admin</option></select>
+    <label for="u-worker">{{ t('adm.worker') }}</label><select id="u-worker" name="worker_id"><option value="">—</option>{% for a in ashas %}<option value="{{ a.worker_id }}">{{ a.name }} ({{ a.worker_id }})</option>{% endfor %}</select>
+    <label for="u-password">{{ t('login.password') }} (≥ 10)</label><input id="u-password" name="password" type="password" minlength="10" required autocomplete="new-password">
+    <button class="btn" type="submit">{{ t('adm.create') }}</button>
+  </form>
+  <p id="user-msg" role="status"></p>
+</section>
+<section class="card">
+  <h2>{{ t('adm.audit') }}</h2>
+  <div class="tablewrap"><table><thead><tr><th scope="col">{{ t('col.when') }}</th><th scope="col">Actor</th><th scope="col">Action</th><th scope="col">Target</th></tr></thead>
+  <tbody>{% for a in audit %}<tr><td>{{ a.at|ist }}</td><td>{{ a.actor }}</td><td>{{ a.action }}</td><td>{{ a.target or '' }}</td></tr>{% endfor %}</tbody></table></div>
+</section>
+{% endblock %}

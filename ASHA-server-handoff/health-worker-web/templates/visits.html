@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% from "_macros.html" import badge, status %}
+{% block title %}{{ t('vis.title') }}{% endblock %}
+{% block main %}
+<h1>{{ t('vis.title') }}</h1>
+<form method="get" action="/visits" class="filters">
+  {% if principal.role != 'worker' %}
+  <label for="worker_id">{{ t('vis.asha') }}</label>
+  <select id="worker_id" name="worker_id">
+    {% for a in ashas %}<option value="{{ a.worker_id }}"{% if a.worker_id == worker_id %} selected{% endif %}>{{ a.name }} ({{ a.worker_id }})</option>{% endfor %}
+  </select>
+  {% endif %}
+  <label for="date">{{ t('vis.date') }}</label>
+  <input id="date" name="date" type="date" value="{{ day }}">
+  <button class="btn" type="submit">{{ t('vis.show') }}</button>
+</form>
+<p class="muted small">{{ vl.asha_name or '' }} · {{ day }} · <strong id="vis-total">{{ vl.total }}</strong> {{ t('vis.total') }}. {{ t('vis.rules') }}</p>
+{% for g in vl.groups %}
+<section class="card prio prio-{{ g.priority }}" aria-labelledby="g{{ g.priority }}">
+  <h2 id="g{{ g.priority }}">{{ badge(g.urgency, t) }} {{ t('prio.' ~ g.priority) }} <span class="muted small">({{ g.count }})</span></h2>
+  {% if g['items'] %}
+  <div class="tablewrap"><table class="rows-link">
+    <thead><tr><th scope="col">{{ t('col.name') }}</th><th scope="col">{{ t('col.item') }}</th><th scope="col">{{ t('col.status') }}</th><th scope="col">{{ t('col.due') }}</th><th scope="col">{{ t('col.house') }}</th><th scope="col">{{ t('col.village') }}</th></tr></thead>
+    <tbody>
+    {% for i in g['items'] %}
+      <tr data-href="/households/{{ i.household_id }}"><td><a href="/households/{{ i.household_id }}">{{ i.name }}</a> <span class="muted">{{ i.age }}{% if i.relation %}, {{ i.relation }}{% endif %}</span></td>
+        <td>{{ i.due_item }}</td><td>{{ status(i.status, t) }}</td><td>{{ i.due_date }}</td><td>{{ i.house_no }}</td><td>{{ i.village_name }}</td></tr>
+    {% endfor %}
+    </tbody>
+  </table></div>
+  {% else %}<p>{{ t('vis.empty') }}</p>{% endif %}
+</section>
+{% endfor %}
+{% endblock %}
